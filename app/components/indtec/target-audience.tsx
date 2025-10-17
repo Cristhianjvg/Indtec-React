@@ -1,4 +1,4 @@
-import { PenTool, Monitor, MousePointer, Users } from "lucide-react"
+import { PenTool, Presentation, MousePointer, Users } from "lucide-react"
 
 export function TargetAudience() {
   const audiences = [
@@ -8,7 +8,7 @@ export function TargetAudience() {
       description: "de universidades, institutos tecnológicos, conservatorios.",
     },
     {
-      icon: Monitor,
+      icon: Presentation,
       title: "Investigadores autónomos.",
       description: "",
     },
@@ -35,7 +35,7 @@ export function TargetAudience() {
             return (
               <div key={index} className="text-center text-white">
                 <div className="flex justify-center mb-4">
-                  <Icon className="w-16 h-16 stroke-[1.5]" />
+                  <Icon className="w-16 h-16 stroke-[1.5] text-[var(--color-blue-icon)]" />
                 </div>
                 <h3 className="font-semibold text-lg mb-2">{audience.title}</h3>
                 {audience.description && <p className="text-sm text-white/90">{audience.description}</p>}

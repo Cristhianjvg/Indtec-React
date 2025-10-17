@@ -4,11 +4,15 @@ export function ObjectiveSection() {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-[400px] rounded-lg overflow-hidden">
-            <img src="/conference-room-with-people-attending-presentation" alt="Congreso InDTec" className="w-full h-full object-cover" />
+            <img
+              src="img/indtec2.png"
+              alt="Congreso InDTec"
+              className="w-full h-full object-cover"
+            />
           </div>
 
           <div>
-            <h2 className="text-3xl font-bold text-[var(--color-primary)] mb-4">
+            <h2 className="text-3xl font-bold text-[var(--color-teal-dark)] mb-4">
               OBJETIVO
               <br />
               GENERAL
