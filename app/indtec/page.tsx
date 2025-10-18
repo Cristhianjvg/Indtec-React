@@ -6,7 +6,7 @@ import { Modalities } from "../components/indtec/modalities";
 import { ObjectiveSection } from "../components/indtec/objective-section";
 import { SpecificObjectives } from "../components/indtec/specific-objectives";
 import { TargetAudience } from "../components/indtec/target-audience";
-import { Statistics } from "../components/indtec/statistics";
+import { Statistics } from "../components/shared/statistics";
 
 export default function InDTec() {
   return (

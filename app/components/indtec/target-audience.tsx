@@ -38,7 +38,7 @@ export function TargetAudience() {
                   <Icon className="w-16 h-16 stroke-[1.5] text-[var(--color-blue-icon)]" />
                 </div>
                 <h3 className="font-semibold text-lg mb-2">{audience.title}</h3>
-                {audience.description && <p className="text-sm text-white/90">{audience.description}</p>}
+                {audience.description && <p className="text-base text-white/90">{audience.description}</p>}
               </div>
             )
           })}
