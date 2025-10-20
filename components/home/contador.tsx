@@ -36,9 +36,9 @@ export function Contador() {
   }, []);
 
   return (
-    <section className="py-8 bg-white">
-      <div className="container mx-auto">
-        <div className="flex justify-center gap-4 flex-wrap">
+    <section className="absolute bottom-30 left-0 right-0 py-6 md:py-8 ">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-center gap-8 sm:gap-10 flex-wrap">
           <TimeBox value={timeLeft.days} label="Días" />
           <TimeBox value={timeLeft.hours} label="Horas" />
           <TimeBox value={timeLeft.minutes} label="Minutos" />
@@ -51,11 +51,11 @@ export function Contador() {
 
 function TimeBox({ value, label }: { value: number; label: string }) {
   return (
-    <div className="bg-[#ff6b35] text-white rounded-lg p-6 min-w-[100px] text-center">
-      <div className="text-4xl font-bold">
+    <div className="bg-[#ff6b35] text-white rounded-lg p-3 sm:p-4 md:p-6 min-w-[70px] sm:min-w-[90px] md:min-w-[100px] text-center">
+      <div className="text-2xl sm:text-3xl md:text-4xl font-bold">
         {value.toString().padStart(2, "0")}
       </div>
-      <div className="text-sm mt-1">{label}</div>
+      <div className="text-xs sm:text-sm mt-1">{label}</div>
     </div>
   );
 }
