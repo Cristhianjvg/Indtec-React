@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-// import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Menu,
   Home,
@@ -29,14 +29,14 @@ export function Header() {
 
           <nav className="hidden lg:flex items-center gap-8">
             <Link
-              href="#"
+              href="/"
               className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
             >
               <Home className="h-4 w-4" />
               INICIO
             </Link>
             <Link
-              href="#"
+              href="/congreso"
               className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
             >
               <BookOpen className="h-4 w-4" />
@@ -66,10 +66,10 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-4">
-            {/* <Button className="hidden lg:flex bg-[#ff6b35] hover:bg-[#ff5722] text-white font-medium px-6 py-2 rounded-full items-center gap-2">
+            <Button className="hidden lg:flex bg-[#ff6b35] hover:bg-[#ff5722] text-white font-medium px-6 py-2 rounded-full items-center gap-2">
               Enviar trabajos
               <span className="text-lg">›</span>
-            </Button> */}
+            </Button>
 
             {/* Mobile menu button */}
             <button
@@ -128,13 +128,15 @@ export function Header() {
               <FolderOpen className="h-4 w-4" />
               MEMORIAS
             </Link>
-            {/* <Button className="bg-[#ff6b35] hover:bg-[#ff5722] text-white font-medium px-6 py-2 rounded-full flex items-center justify-center gap-2 mt-2">
+            <Button className="bg-[#ff6b35] hover:bg-[#ff5722] text-white font-medium px-6 py-2 rounded-full flex items-center justify-center gap-2 mt-2">
               Enviar trabajos
               <span className="text-lg">›</span>
-            </Button> */}
+            </Button>
           </nav>
         )}
       </div>
     </header>
   );
 }
+
+export default Header;

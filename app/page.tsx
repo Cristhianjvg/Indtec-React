@@ -19,18 +19,6 @@ export default function Home() {
       <InfoSection />
       <FechasImportantes />
       <AreasTematicas />
-      {/* <Header />
-      <HeroSection />
-      <CountdownTimer />
-      <PartnersSection />
-      <InfoSection />
-      <ImportantDates />
-      <ThematicAreas />
-      <AssistantsSection />
-      <ColorBars />
-      <SponsorsSection />
-      <StatisticsSection />
-      <Footer /> */}
       <Footer />
       {/* </main> */}
     </div>
