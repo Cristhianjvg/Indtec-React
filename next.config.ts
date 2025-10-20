@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
 
   images: { unoptimized: true },
   // si lo pondrás en una SUBCARPETA (p. ej. tudominio.com/indtec):
-  basePath: "/indtec",
+  // basePath: "/indtec",
   // opcional: genera rutas con barra final (útil en estático)
   // trailingSlash: true,
 };
