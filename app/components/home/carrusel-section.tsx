@@ -2,25 +2,25 @@
 
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-// import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 const slides = [
   {
-    image: "img/abstract-technology-network-connections-blue-dark.jpg",
+    image: "/img/carrusel_1.jpg",
     title: "INNOVACIÓN",
     subtitle: "nace de ideas y",
     subtitleHighlight: "transforma realidades",
     subtitleEnd: "sociales y tecnológicas",
   },
   {
-    image: "img/research-science-laboratory-technology-blue.jpg",
+    image: "/img/indtec1.png",
     title: "INVESTIGACIÓN",
     subtitle: "desarrollo científico y",
     subtitleHighlight: "avances tecnológicos",
     subtitleEnd: "para el futuro",
   },
   {
-    image: "img/digital-transformation-network-data-blue.jpg",
+    image: "/img/indtec2.png",
     title: "DESARROLLO",
     subtitle: "construyendo el",
     subtitleHighlight: "conocimiento del mañana",
@@ -48,7 +48,7 @@ export function CarruselSection() {
   };
 
   return (
-    <section className="relative h-[500px] md:h-[600px] bg-[#0a2540] overflow-hidden">
+    <section className="relative h-[580px] sm:h-[680px] md:h-[780px] bg-[#0a2540] overflow-hidden">
       {slides.map((slide, index) => (
         <div
           key={index}
@@ -62,17 +62,16 @@ export function CarruselSection() {
               backgroundImage: `url(${slide.image})`,
             }}
           />
-          {/* Dark overlay for better text readability */}
           <div className="absolute inset-0 bg-black/40" />
         </div>
       ))}
 
       <div className="relative container mx-auto h-full flex items-center justify-center px-4">
         <div className="text-center text-white max-w-4xl">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 md:mb-6 text-balance tracking-wider">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-3 md:mb-6 text-balance tracking-wider text-gray-300">
             {slides[currentSlide].title}
           </h1>
-          <p className="text-lg md:text-2xl lg:text-3xl text-gray-100 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-100 leading-relaxed px-4">
             {slides[currentSlide].subtitle}{" "}
             <span className="text-[#ff6b35] font-semibold">
               {slides[currentSlide].subtitleHighlight}
@@ -82,34 +81,35 @@ export function CarruselSection() {
         </div>
       </div>
 
-      {/* Navigation arrows */}
-      {/* <Button
+      <Button
         variant="ghost"
         size="icon"
-        className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/20 h-12 w-12"
+        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/20 h-8 w-8 md:h-12 md:w-12"
         onClick={prevSlide}
         aria-label="Previous slide"
       >
-        <ChevronLeft className="h-8 w-8" />
+        <ChevronLeft className="h-5 w-5 md:h-8 md:w-8" />
       </Button>
 
       <Button
         variant="ghost"
         size="icon"
-        className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/20 h-12 w-12"
+        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 text-white hover:bg-white/20 h-8 w-8 md:h-12 md:w-12"
         onClick={nextSlide}
         aria-label="Next slide"
       >
-        <ChevronRight className="h-8 w-8" />
-      </Button> */}
+        <ChevronRight className="h-5 w-5 md:h-8 md:w-8" />
+      </Button>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+      <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`h-2 rounded-full transition-all ${
-              index === currentSlide ? "w-8 bg-[#ff6b35]" : "w-2 bg-white/50"
+            className={`h-1.5 md:h-2 rounded-full transition-all ${
+              index === currentSlide
+                ? "w-6 md:w-8 bg-[#ff6b35]"
+                : "w-1.5 md:w-2 bg-white/50"
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />

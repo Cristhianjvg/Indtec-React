@@ -36,9 +36,9 @@ export function Contador() {
   }, []);
 
   return (
-    <section className="py-6 md:py-8 bg-white">
+    <section className="absolute bottom-30 left-0 right-0 py-6 md:py-8 ">
       <div className="container mx-auto px-4">
-        <div className="flex justify-center gap-2 sm:gap-4 flex-wrap">
+        <div className="flex justify-center gap-8 sm:gap-10 flex-wrap">
           <TimeBox value={timeLeft.days} label="Días" />
           <TimeBox value={timeLeft.hours} label="Horas" />
           <TimeBox value={timeLeft.minutes} label="Minutos" />
