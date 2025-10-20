@@ -9,13 +9,13 @@ export function JournalsSection() {
           <div className="p-8 bg-white text-gray-900 rounded-lg shadow-lg">
             <div className="flex justify-center mb-6">
               <div className="w-32 h-32 bg-gray-100 rounded-lg flex items-center justify-center">
-                <img src="/latindex-logo.jpg" alt="Latindex" className="w-full h-full object-contain p-4" />
+                <img src="img/latindex.webp" alt="Latindex" className="w-full h-full object-contain p-4" />
               </div>
             </div>
 
             <div className="space-y-2 text-center">
-              <h3 className="font-bold text-lg">UNAMSIM - Revista Científica</h3>
-              <p className="text-sm text-gray-600">UNAMSIM - Revista Salud y Sociedad</p>
+              <h3 className="font-bold text-lg">UNANCHAY - Revista Científica</h3>
+              <p className="text-sm text-gray-600">UNANCHAY - Revista Salud y Sociedad</p>
               <p className="text-sm text-gray-600">Caminos de Investigación</p>
             </div>
           </div>
@@ -24,12 +24,12 @@ export function JournalsSection() {
           <div className="p-8 bg-white text-gray-900 rounded-lg shadow-lg">
             <div className="flex justify-center mb-6">
               <div className="w-32 h-32 bg-gray-100 rounded-lg flex items-center justify-center">
-                <img src="/cieb-workshop-logo.jpg" alt="CIEB Workshop" className="w-full h-full object-contain p-4" />
+                <img src="img/scopus.webp" alt="CIEB Workshop" className="w-full h-full object-contain p-4" />
               </div>
             </div>
 
             <div className="text-center">
-              <h3 className="font-bold text-lg">CIEB Workshop Proceedings</h3>
+              <h3 className="font-bold text-lg">CEUR Workshop Proceedings</h3>
             </div>
           </div>
         </div>

@@ -1,11 +1,11 @@
 export function TrabajoSection() {
   return (
-    <section className="relative min-h-[400px] flex items-center justify-center bg-gradient-to-br from-[#0a4d5c] via-[#1a5f7a] to-[#2563a8] overflow-hidden">
+    <section className="relative min-h-[550px] flex items-center justify-center bg-gradient-to-br from-[#0a4d5c] via-[#1a5f7a] to-[#2563a8] overflow-hidden">
       {/* Background image overlay */}
       <div
-        className="absolute inset-0 opacity-20 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url('/academic-conference-people-networking.jpg')`,
+          backgroundImage: `url('img/indtec1.png')`,
           filter: "blur(3px)",
         }}
       />

@@ -1,60 +1,105 @@
-import { Users, Award, BookOpen, FileText } from "lucide-react";
+"use client"
+
+import { Presentation, Diamond, Briefcase, Target } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
+
+function Counter({ target, color }: { target: number; color: string }) {
+  const [count, setCount] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
+  const counterRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 },
+    )
+
+    if (counterRef.current) {
+      observer.observe(counterRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!isVisible) return
+
+    const duration = 2000 // 2 seconds
+    const steps = 60
+    const increment = target / steps
+    const stepDuration = duration / steps
+
+    let currentStep = 0
+    const timer = setInterval(() => {
+      currentStep++
+      if (currentStep >= steps) {
+        setCount(target)
+        clearInterval(timer)
+      } else {
+        setCount(Math.floor(increment * currentStep))
+      }
+    }, stepDuration)
+
+    return () => clearInterval(timer)
+  }, [isVisible, target])
+
+  return (
+    <div ref={counterRef} className={`text-5xl font-bold mb-2 ${color}`}>
+      {count}
+    </div>
+  )
+}
 
 export default function Estadisticas() {
   const stats = [
     {
-      icon: Users,
-      number: "5",
-      label: "COORDINADORES",
-      color: "text-blue-600",
+      icon: Presentation,
+      number: 8,
+      label: "COORGANIZADORES",
+      color: "text-[var(--color-blue-icon)]",
     },
     {
-      icon: Award,
-      number: "20",
+      icon: Diamond,
+      number: 20,
       label: "AUSPICIANTES",
-      color: "text-green-600",
+      color: "text-[var(--color-green-bright)]",
     },
     {
-      icon: BookOpen,
-      number: "4",
+      icon: Briefcase,
+      number: 4,
       label: "ÁREAS DE ESTUDIO",
-      color: "text-orange-600",
+      color: "text-[var(--color-orange-accent)]",
     },
     {
-      icon: FileText,
-      number: "2",
+      icon: Target,
+      number: 2,
       label: "MODALIDADES",
-      color: "text-cyan-600",
+      color: "text-[var(--color-blue-icon)]",
     },
-  ];
+  ]
 
   return (
-    <section className="py-12 md:py-20 bg-white">
+    <section className="py-16 bg-background border-t">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           {stats.map((stat, index) => {
-            const Icon = stat.icon;
+            const Icon = stat.icon
             return (
               <div key={index} className="text-center">
                 <div className="flex justify-center mb-4">
-                  <Icon
-                    className={`w-12 h-12 md:w-16 md:h-16 ${stat.color}`}
-                    strokeWidth={1.5}
-                  />
+                  <Icon className={`w-16 h-16 ${stat.color}`} />
                 </div>
-                <div
-                  className={`text-4xl md:text-5xl lg:text-6xl font-bold ${stat.color} mb-2`}
-                >
-                  {stat.number}
-                </div>
-                <p className="text-gray-600 text-sm md:text-base font-medium uppercase">
-                  {stat.label}
-                </p>
+                <Counter target={stat.number} color={stat.color} />
+                <div className={`text-lg font-bold tracking-wide ${stat.color}`}>{stat.label}</div>
               </div>
-            );
+            )
           })}
         </div>
       </div>
     </section>
-  );
+  )
 }

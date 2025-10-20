@@ -1,34 +1,30 @@
 export default function ObjetivoGeneral() {
   return (
-    <section className="py-12 md:py-20 bg-gray-50">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Image */}
-          <div className="order-2 md:order-1">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="relative h-[400px] rounded-lg overflow-hidden">
             <img
-              src="/img/indtec2.png"
-              alt="Objetivo General"
-              className="w-full h-[300px] md:h-[400px] object-cover rounded-lg shadow-lg"
+              src="img/indtec2.png"
+              alt="Congreso InDTec"
+              className="w-full h-full object-cover"
             />
           </div>
 
-          {/* Content */}
-          <div className="order-1 md:order-2">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
+          <div>
+            <h2 className="text-3xl font-bold text-[var(--color-teal-dark)] mb-4">
               OBJETIVO
               <br />
               GENERAL
             </h2>
-            <p className="text-gray-700 leading-relaxed text-justify">
-              Impulsar la divulgación científica y tecnológica, promoviendo la
-              innovación y la transferencia de conocimiento a nivel nacional e
-              internacional, mediante la socialización de resultados de
-              investigación y el fortalecimiento de vínculos entre la academia,
-              el sector productivo y la sociedad.
+            <p className="text-foreground leading-relaxed">
+              Impulsar la divulgación científica y tecnológica, promoviendo la innovación y la transferencia de
+              conocimiento a nivel nacional e internacional, mediante la socialización de resultados de investigación
+              que contribuyan al desarrollo del sector productivo y la sociedad.
             </p>
           </div>
         </div>
       </div>
     </section>
-  );
+  )
 }

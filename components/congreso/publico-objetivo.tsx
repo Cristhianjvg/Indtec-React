@@ -1,52 +1,49 @@
-import { GraduationCap, FlaskConical, Briefcase, Users } from "lucide-react";
+import { PenTool, Presentation, MousePointer, Users } from "lucide-react"
 
 export default function PublicoObjetivo() {
-  const publicos = [
+ const audiences = [
     {
-      icon: GraduationCap,
-      title:
-        "Docentes y estudiantes de universidades, institutos tecnológicos, conservatorios.",
+      icon: PenTool,
+      title: "Docentes y estudiantes",
+      description: "de universidades, institutos tecnológicos, conservatorios.",
     },
     {
-      icon: FlaskConical,
+      icon: Presentation,
       title: "Investigadores autónomos.",
+      description: "",
     },
     {
-      icon: Briefcase,
-      title: "Profesionales del sector productivo, tecnológico y social.",
+      icon: MousePointer,
+      title: "Profesionales del sector productivo,",
+      description: "tecnológico y social.",
     },
     {
       icon: Users,
       title: "Público en general.",
+      description: "",
     },
-  ];
+  ]
 
   return (
-    <section className="py-12 md:py-20 bg-[#4CAF50]">
+    <section className="py-16 bg-[var(--color-green-bright)]">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-10 md:mb-16">
-          PÚBLICO OBJETIVO
-        </h2>
+        <h2 className="text-3xl font-bold text-center text-white mb-12">PÚBLICO OBJETIVO</h2>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-          {publicos.map((publico, index) => {
-            const Icon = publico.icon;
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {audiences.map((audience, index) => {
+            const Icon = audience.icon
             return (
-              <div key={index} className="text-center">
+              <div key={index} className="text-center text-white">
                 <div className="flex justify-center mb-4">
-                  <Icon
-                    className="w-12 h-12 md:w-16 md:h-16 text-white"
-                    strokeWidth={1.5}
-                  />
+                  <Icon className="w-16 h-16 stroke-[1.5] text-[var(--color-blue-icon)]" />
                 </div>
-                <p className="text-white text-sm md:text-base leading-relaxed">
-                  {publico.title}
-                </p>
+                <h3 className="font-semibold text-lg mb-2">{audience.title}</h3>
+                {audience.description && <p className="text-base text-white/90">{audience.description}</p>}
               </div>
-            );
+            )
           })}
         </div>
       </div>
     </section>
-  );
+  )
 }

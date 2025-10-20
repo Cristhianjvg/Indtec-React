@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Menu,
@@ -15,6 +16,7 @@ import { useState } from "react";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const router = useRouter(); // ✅ Para manejar la redirección
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/10">
@@ -27,6 +29,7 @@ export function Header() {
             <span className="text-blue-400">Tec</span>
           </Link>
 
+          {/* Navegación desktop */}
           <nav className="hidden lg:flex items-center gap-8">
             <Link
               href="/"
@@ -65,13 +68,18 @@ export function Header() {
             </Link>
           </nav>
 
+          {/* Botón escritorio y menú móvil */}
           <div className="flex items-center gap-4">
-            <Button className="hidden lg:flex bg-[#ff6b35] hover:bg-[#ff5722] text-white font-medium px-6 py-2 rounded-full items-center gap-2">
+            {/* ✅ Botón con redirección */}
+            <Button
+              onClick={() => router.push("/trabajos")}
+              className="hidden lg:flex bg-[#ff6b35] hover:bg-[#ff5722] text-white font-medium px-6 py-2 rounded-full items-center gap-2"
+            >
               Enviar trabajos
               <span className="text-lg">›</span>
             </Button>
 
-            {/* Mobile menu button */}
+            {/* Botón menú móvil */}
             <button
               className="lg:hidden p-2 text-cyan-400"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -86,10 +94,11 @@ export function Header() {
           </div>
         </div>
 
+        {/* Menú móvil */}
         {mobileMenuOpen && (
           <nav className="lg:hidden mt-4 pb-4 flex flex-col gap-4 border-t border-white/10 pt-4">
             <Link
-              href="#"
+              href="/"
               className="flex items-center gap-3 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -97,7 +106,7 @@ export function Header() {
               INICIO
             </Link>
             <Link
-              href="#"
+              href="/congreso"
               className="flex items-center gap-3 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -113,7 +122,7 @@ export function Header() {
               EVENTO
             </Link>
             <Link
-              href="#"
+              href="/tarifa"
               className="flex items-center gap-3 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -128,7 +137,15 @@ export function Header() {
               <FolderOpen className="h-4 w-4" />
               MEMORIAS
             </Link>
-            <Button className="bg-[#ff6b35] hover:bg-[#ff5722] text-white font-medium px-6 py-2 rounded-full flex items-center justify-center gap-2 mt-2">
+
+            {/* ✅ Botón móvil con redirección */}
+            <Button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                router.push("/trabajos");
+              }}
+              className="bg-[#ff6b35] hover:bg-[#ff5722] text-white font-medium px-6 py-2 rounded-full flex items-center justify-center gap-2 mt-2"
+            >
               Enviar trabajos
               <span className="text-lg">›</span>
             </Button>
