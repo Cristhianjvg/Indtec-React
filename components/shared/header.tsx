@@ -50,7 +50,7 @@ export function Header() {
               EVENTO
             </Link>
             <Link
-              href="#"
+              href="/tarifa"
               className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
             >
               <Diamond className="h-4 w-4" />

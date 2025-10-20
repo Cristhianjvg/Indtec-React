@@ -1,6 +1,6 @@
 "use client";
 
-import { useCounterAnimation } from "@/hooks/use-counter-animation";
+import { useCounterAnimation } from "../../hooks/use-counter-animation";
 
 export default function CoorganizadorSection() {
   const institucionalPrice = useCounterAnimation(0, 2000);

@@ -1,26 +1,23 @@
-// import {Header} from "@/components/header";
-// import {Footer} from "@/components/footer";
-// import TarifasHero from "@/components/tarifas/tarifas-hero";
-// import ParticipacionPricing from "@/components/tarifas/participacion-pricing";
-// import DivulgacionCientifica from "@/components/tarifas/divulgacion-cientifica";
-// import CoorganizadorSection from "@/components/tarifas/coorganizador-section";
-// import DatosPago from "@/components/tarifas/datos-pago";
-// import TarifasStats from "@/components/tarifas/tarifas-stats";
-
+import TarifasHero from "@/components/tarifa/tarifas-hero";
 import Footer from "../../components/shared/footer";
 import Header from "../../components/shared/header";
+import ParticipacionPricing from "@/components/tarifa/participacion-pricing";
+import DivulgacionCientifica from "@/components/tarifa/divulgacion-cientifica";
+import CoorganizadorSection from "@/components/tarifa/coorganizadores";
+import DatosPago from "@/components/tarifa/datos-pago";
+import TarifaEstadisticas from "@/components/tarifa/tarifas-estadisticas";
 
 export default function TarifasPage() {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="pt-20">
-        {/* <TarifasHero />
+      <main>
+        <TarifasHero />
         <ParticipacionPricing />
         <DivulgacionCientifica />
         <CoorganizadorSection />
         <DatosPago />
-        <TarifasStats /> */}
+        <TarifaEstadisticas />
       </main>
       <Footer />
     </div>
