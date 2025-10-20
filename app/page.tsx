@@ -1,12 +1,12 @@
 import Image from "next/image";
-import { Footer } from "./components/shared/footer";
-import { Header } from "./components/shared/header";
-import { CarruselSection } from "./components/home/carrusel-section";
-import { Contador } from "./components/home/contador";
-import { PartnersSection } from "./components/home/partners";
-import { InfoSection } from "./components/home/info-section";
-import { FechasImportantes } from "./components/home/fechas-importantes";
-import { AreasTematicas } from "./components/home/areasTematicas-section";
+import { Footer } from "../components/shared/footer";
+import { Header } from "../components/shared/header";
+import { CarruselSection } from "../components/home/carrusel-section";
+import { Contador } from "../components/home/contador";
+import { PartnersSection } from "../components/home/partners";
+import { InfoSection } from "../components/home/info-section";
+import { FechasImportantes } from "../components/home/fechas-importantes";
+import { AreasTematicas } from "../components/home/areasTematicas-section";
 
 export default function Home() {
   return (
