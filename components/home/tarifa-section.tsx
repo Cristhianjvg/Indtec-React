@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Users, FlaskConical, Handshake } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+
 interface TabContent {
   id: string;
   title: string;
@@ -62,27 +63,28 @@ const tabs: TabContent[] = [
   },
 ];
 
-const COLLAPSED_PX = 56; // ancho de las pilas cerradas (ajústalo)
+const COLLAPSED_PX = 56; // ancho de las pilas cerradas
 
 export function TarifaSection() {
   const [openId, setOpenId] = useState<string>("asistentes");
+  const [animatingId, setAnimatingId] = useState<string | null>(null);
 
   return (
-    <section className="bg-[#062135] py-16 md:py-24">
+    <section className="bg-[#062135] py-8 sm:py-12 md:py-16 lg:py-24">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#ff6b35]">
+        <div className="text-center mb-6 sm:mb-8 md:mb-10">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#ff6b35]">
             TARIFAS
           </h2>
-          <p className="text-cyan-400 text-base md:text-lg mt-3 max-w-3xl mx-auto">
+          <p className="text-cyan-400 text-sm sm:text-base md:text-lg mt-2 md:mt-3 max-w-3xl mx-auto px-4">
             Conecta con la innovación sin complicaciones.
           </p>
         </div>
 
         {/* Card contenedora */}
         <div className="rounded-3xl p-2">
-          {/* Acordeón horizontal: barritas finas a la izquierda */}
-          <div className="flex gap-2 h-[620px] overflow-hidden rounded-2xl">
+          {/* Acordeón horizontal en desktop, vertical en móvil */}
+          <div className="flex flex-col md:flex-row gap-2 md:h-[520px] lg:h-[620px] overflow-hidden rounded-2xl">
             {tabs.map((tab) => {
               const isOpen = openId === tab.id;
               return (
@@ -90,29 +92,50 @@ export function TarifaSection() {
                   key={tab.id}
                   layout
                   initial={false}
-                  onClick={() => setOpenId(tab.id)}
-                  animate={{ flexGrow: isOpen ? 1 : 0 }}
+                  onClick={() => {
+                    setAnimatingId(openId);
+                    setOpenId(tab.id);
+                  }}
+                  onAnimationComplete={() => setAnimatingId(null)}
+                  animate={{
+                    flexGrow: isOpen ? 1 : 0,
+                  }}
                   transition={{ duration: 0.45, ease: "easeInOut" }}
                   className={`relative cursor-pointer ${tab.color} rounded-2xl overflow-hidden`}
                   style={{
-                    width: isOpen ? undefined : COLLAPSED_PX, // barrita fina
-                    minWidth: isOpen ? 0 : COLLAPSED_PX,
-                    flexBasis: isOpen ? 0 : COLLAPSED_PX,
+                    // En móvil: altura fija cuando cerrado, auto cuando abierto
+                    // En desktop: width fija cuando cerrado
+                    width:
+                      window.innerWidth >= 768 && !isOpen
+                        ? COLLAPSED_PX
+                        : undefined,
+                    minWidth:
+                      window.innerWidth >= 768 && !isOpen
+                        ? COLLAPSED_PX
+                        : undefined,
+                    flexBasis:
+                      window.innerWidth >= 768 && !isOpen
+                        ? COLLAPSED_PX
+                        : undefined,
+                    height:
+                      window.innerWidth < 768 && !isOpen ? "60px" : undefined,
+                    minHeight:
+                      window.innerWidth < 768 && !isOpen ? "60px" : undefined,
                   }}
                 >
-                  {/* Etiqueta vertical visible solo cuando está cerrado */}
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <span
-                      className={`text-white font-bold tracking-widest text-[10px] md:text-xs transition-opacity
-      ${
-        isOpen ? "opacity-0" : "opacity-100"
-      } [writing-mode:vertical-rl] rotate-180 leading-none`}
-                    >
-                      {tab.title}
-                    </span>
-                  </div>
+                  {/* Etiqueta visible cuando está cerrado */}
+                  {!isOpen && animatingId !== tab.id && (
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <span
+                        className="text-white font-bold tracking-widest text-xs sm:text-sm
+                          md:[writing-mode:vertical-rl] md:rotate-180 leading-none"
+                      >
+                        {tab.title}
+                      </span>
+                    </div>
+                  )}
 
-                  {/* Contenido cuando está abierto (ocupa todo el panel) */}
+                  {/* Contenido cuando está abierto */}
                   <AnimatePresence>
                     {isOpen && (
                       <motion.div
@@ -123,9 +146,9 @@ export function TarifaSection() {
                         transition={{ duration: 0.35 }}
                         className="relative z-10 h-full bg-black/35 backdrop-blur-sm"
                       >
-                        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6  h-full">
-                          {/* Imagen lateral dentro (opcional, o quítala si prefieres solo fondo) */}
-                          <div className="relative col-span-2 hidden lg:block rounded-l-xl overflow-hidden">
+                        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-6 h-full">
+                          {/* Imagen lateral */}
+                          <div className="relative col-span-1 lg:col-span-2 h-48 sm:h-64 lg:h-full hidden sm:block rounded-xl lg:rounded-l-xl overflow-hidden">
                             <Image
                               src={tab.image}
                               alt={tab.title}
@@ -135,21 +158,21 @@ export function TarifaSection() {
                           </div>
 
                           {/* Texto + botón */}
-                          <div className="col-span-3 flex flex-col justify-center pl-8 pr-12">
-                            <h3 className="text-white text-mg md:text-lg mb-5 text-center md:text-left">
+                          <div className="col-span-1 lg:col-span-3 flex flex-col justify-center px-6 sm:px-8 lg:pl-8 lg:pr-12 py-6 sm:py-8">
+                            <h3 className="text-white text-base sm:text-lg md:text-xl mb-4 sm:mb-5 text-center md:text-left">
                               {tab.title}
                             </h3>
 
-                            <div className="space-y-4 text-gray-100/90 text-sm md:text-base leading-relaxed my-10 text-justify">
+                            <div className="space-y-3 sm:space-y-4 text-gray-100/90 text-xs sm:text-sm md:text-base leading-relaxed my-6 sm:my-8 lg:my-10 text-justify">
                               {tab.description.map((p, i) => (
                                 <p key={i}>{p}</p>
                               ))}
                             </div>
 
-                            <div className="text-right">
+                            <div className="text-center md:text-right mt-4">
                               <Button
                                 asChild
-                                className="rounded-xl bg-sky-800 hover:bg-white/20 text-white px-8 py-4 text-sm md:text-base"
+                                className="rounded-xl bg-sky-800 hover:bg-white/20 text-white px-6 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm md:text-base w-full sm:w-auto"
                               >
                                 <a href={tab.buttonLink}>{tab.buttonText}</a>
                               </Button>
