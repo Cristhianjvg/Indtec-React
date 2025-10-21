@@ -2,13 +2,14 @@ import Image from "next/image";
 import { Footer } from "../components/shared/footer";
 import { Header } from "../components/shared/header";
 import { CarruselSection } from "../components/home/carrusel-section";
-import { Contador } from "../components/home/contador";
-import { PartnersSection } from "../components/home/partners";
+import { Contador } from "../components/home/contador-section";
+import { PartnersSection } from "../components/home/partners-section";
 import { InfoSection } from "../components/home/info-section";
-import { FechasImportantes } from "../components/home/fechas-importantes";
-import { AreasTematicas } from "../components/home/areasTematicas-section";
-import { Experiencia } from "@/components/home/experiencia";
+import { FechasImportantes } from "../components/home/fechas-importantes-section";
+import { Experiencia } from "@/components/home/experiencia-section";
 import { TarifaSection } from "@/components/home/tarifa-section";
+import { AreasTematicas } from "@/components/home/areas-tematicas-section";
+import { EnviosTrabajoSection } from "@/components/home/envio-trabajo-section";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <Experiencia />
       <AreasTematicas />
       <TarifaSection />
+      <EnviosTrabajoSection />
       <Footer />
       {/* </main> */}
     </div>
