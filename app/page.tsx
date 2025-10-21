@@ -7,6 +7,8 @@ import { PartnersSection } from "../components/home/partners";
 import { InfoSection } from "../components/home/info-section";
 import { FechasImportantes } from "../components/home/fechas-importantes";
 import { AreasTematicas } from "../components/home/areasTematicas-section";
+import { Experiencia } from "@/components/home/experiencia";
+import { TarifaSection } from "@/components/home/tarifa-section";
 
 export default function Home() {
   return (
@@ -18,7 +20,9 @@ export default function Home() {
       <PartnersSection />
       <InfoSection />
       <FechasImportantes />
+      <Experiencia />
       <AreasTematicas />
+      <TarifaSection />
       <Footer />
       {/* </main> */}
     </div>

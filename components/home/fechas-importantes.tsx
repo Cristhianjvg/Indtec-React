@@ -1,68 +1,58 @@
-import { Calendar, FileText } from "lucide-react";
+import { Calendar, Users } from "lucide-react";
 
 export function FechasImportantes() {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-8 md:py-12 bg-gray-100">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12 text-[#0a2540]">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12 text-[#0a7ea4]">
           FECHAS IMPORTANTES
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-[#ff6b35] flex items-center gap-2">
-              <Calendar className="h-6 w-6" />
-              Fechas
-            </h3>
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="bg-[#ff6b35] p-3 rounded-lg">
+                <Calendar className="h-6 w-6 text-white" />
+              </div>
+              <div className="px-4 py-2 border-2 border-gray-300 rounded-full">
+                <span className="font-semibold text-[#0a2540]">Fecha</span>
+              </div>
+            </div>
 
-            <DateItem
-              date="26 de julio"
-              description="Inicio de inscripciones"
-            />
-            <DateItem
-              date="08 de agosto"
-              description="Fecha límite envío de resúmenes"
-            />
-            <DateItem
-              date="15 de octubre"
-              description="Notificación de aceptación"
-            />
-            <DateItem
-              date="16 al 26 de octubre"
-              description="Inscripción de ponentes"
-            />
-            <DateItem
-              date="27 y 28 de noviembre"
-              description="Desarrollo del congreso"
-            />
-            <DateItem
-              date="Diciembre 2025"
-              description="Entrega de certificados"
-            />
+            <div className="space-y-4">
+              <DateItem text="24 de julio" />
+              <DateItem text="04 de agosto" />
+              <DateItem text="30 de septiembre" />
+              <DateItem text="01 al 17 de octubre" />
+              <DateItem text="20 de octubre al 04 de noviembre" />
+              <DateItem text="27 y 28 de noviembre" />
+              <DateItem text="Diciembre 2025" />
+              <DateItem text="Enero - Febrero 2025" />
+            </div>
           </div>
 
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-[#ff6b35] flex items-center gap-2">
-              <FileText className="h-6 w-6" />
-              Actividades
-            </h3>
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="bg-[#ff6b35] p-3 rounded-lg">
+                <Users className="h-6 w-6 text-white" />
+              </div>
+              <div className="px-4 py-2 border-2 border-gray-300 rounded-full">
+                <span className="font-semibold text-[#0a2540]">
+                  Actividades
+                </span>
+              </div>
+            </div>
 
-            <DateItem
-              date="Conferencias magistrales"
-              description="Expertos internacionales compartirán sus investigaciones"
-            />
-            <DateItem
-              date="Presentación de ponencias"
-              description="Espacio para presentar trabajos de investigación"
-            />
-            <DateItem
-              date="Talleres especializados"
-              description="Actividades prácticas en áreas específicas"
-            />
-            <DateItem
-              date="Mesas redondas"
-              description="Debates sobre temas de actualidad científica"
-            />
+            <div className="space-y-4">
+              <ActivityItem text="Lanzamiento oficial de InDTec 2025." />
+              <ActivityItem text="Apertura de la plataforma EasyChair para envío de trabajos científicos." />
+              <ActivityItem text="Cierre de recepción de trabajos." />
+              <ActivityItem text="Evaluación de trabajos por parte del Comité Científico." />
+              <ActivityItem text="Notificación de aceptación de trabajos." />
+              <ActivityItem text="Desarrollo del Congreso InDTec 2025." />
+              <ActivityItem text="Publicación del libro de memorias del evento." />
+              <ActivityItem text="Publicación de artículos científicos en revistas indexadas, de acuerdo con el tipo de revista." />
+            </div>
           </div>
         </div>
       </div>
@@ -70,17 +60,18 @@ export function FechasImportantes() {
   );
 }
 
-function DateItem({
-  date,
-  description,
-}: {
-  date: string;
-  description: string;
-}) {
+function DateItem({ text }: { text: string }) {
   return (
-    <div className="border-l-4 border-[#ff6b35] pl-4">
-      <div className="font-semibold text-[#0a2540]">{date}</div>
-      <div className="text-gray-600 text-sm">{description}</div>
+    <div className="text-[#0a2540] font-medium text-sm md:text-base py-2 border-b border-gray-300">
+      {text}
+    </div>
+  );
+}
+
+function ActivityItem({ text }: { text: string }) {
+  return (
+    <div className="text-gray-700 text-sm md:text-base py-2 border-b border-gray-300">
+      {text}
     </div>
   );
 }
