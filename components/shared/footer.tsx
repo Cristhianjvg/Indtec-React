@@ -1,65 +1,72 @@
-import { Mail, Phone, MapPin } from "lucide-react";
-
 export function Footer() {
   return (
-    <footer className="bg-[#0a2540] text-white py-8 md:py-12">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-          <div>
-            <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4">
-              INDTEC
-            </h3>
-            <p className="text-gray-300 text-sm leading-relaxed">
-              Congreso Internacional de Investigación y Desarrollo Tecnológico
-            </p>
-          </div>
+    <footer className="bg-[#0d475b] text-white py-12 relative overflow-hidden">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10">
+        <span className="text-[20rem] font-bold text-[#0a3a4d] select-none">InDTec</span>
+      </div>
 
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
-            <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4">
-              Contacto
-            </h3>
-            <div className="space-y-2 md:space-y-3">
-              <div className="flex items-start gap-2 md:gap-3 text-sm">
-                <Mail className="h-4 w-4 md:h-5 md:w-5 text-[#ff6b35] flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">contacto@indtec.edu</span>
-              </div>
-              <div className="flex items-start gap-2 md:gap-3 text-sm">
-                <Phone className="h-4 w-4 md:h-5 md:w-5 text-[#ff6b35] flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">+593 123 456 789</span>
-              </div>
-              <div className="flex items-start gap-2 md:gap-3 text-sm">
-                <MapPin className="h-4 w-4 md:h-5 md:w-5 text-[#ff6b35] flex-shrink-0 mt-0.5" />
-                <span className="text-gray-300">Quito, Ecuador</span>
-              </div>
+            <h2 className="text-2xl font-bold mb-6">InDTec</h2>
+            <h3 className="text-[#ff6b35] font-semibold mb-4">Contactos:</h3>
+            <div className="space-y-2">
+              <p className="text-sm">Mgs. Jackson Michael Quevedo Organizador</p>
+              <p className="text-sm">(+593)997235466</p>
             </div>
           </div>
 
           <div>
-            <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4">
-              Suscríbete
-            </h3>
-            <p className="text-gray-300 text-sm mb-3 md:mb-4">
-              Recibe actualizaciones sobre el congreso
-            </p>
-            <div className="flex flex-col sm:flex-row gap-2">
-              <input
-                type="email"
-                placeholder="Tu email"
-                className="flex-1 px-3 md:px-4 py-2 rounded bg-white/10 border border-white/20 text-white placeholder:text-gray-400 focus:outline-none focus:border-[#ff6b35] text-sm"
+            <h3 className="text-[#ff6b35] font-semibold mb-4">Dirección:</h3>
+            <div className="w-full h-40 bg-gray-200 rounded overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.103564839608!2d-79.20510512549494!3d-3.9991267446082546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cb37ffb67d5df1%3A0x5e500dda7a2998e1!2sInstituto%20Tecnologico%20Superior%20%22Sudamericano%22!5e0!3m2!1ses-419!2sec!4v1761094684979!5m2!1ses-419!2sec"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Ubicación Instituto Tecnológico Superior Sudamericano"
               />
-              <button className="bg-[#ff6b35] hover:bg-[#ff5722] px-4 md:px-6 py-2 rounded font-semibold transition-colors text-sm whitespace-nowrap">
-                Enviar
-              </button>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-[#ff6b35] font-semibold mb-4">Síguenos en:</h3>
+            <div className="space-y-3">
+              <a
+                href="https://www.facebook.com/ISTSLoja"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-white hover:text-[#ff6b35] transition-colors"
+              >
+                Facebok
+              </a>
+              <a
+                href="https://www.instagram.com/istsloja/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-white hover:text-[#ff6b35] transition-colors"
+              >
+                Instagram
+              </a>
+              <a
+                href="https://www.youtube.com/watch?v=FtZbqJN6V9A"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-white hover:text-[#ff6b35] transition-colors"
+              >
+                Youtube
+              </a>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-6 md:mt-8 pt-6 md:pt-8 text-center text-xs md:text-sm text-gray-400">
-          <p>&copy; 2025 INDTEC. Todos los derechos reservados.</p>
+        <div className="text-center text-sm border-t border-white/10 pt-6">
+          <p>ISTS | Derechos reservados | 2025</p>
         </div>
       </div>
     </footer>
-  );
+  )
 }
-
-export default Footer;
