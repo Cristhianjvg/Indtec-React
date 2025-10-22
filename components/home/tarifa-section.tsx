@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -63,11 +63,35 @@ const tabs: TabContent[] = [
   },
 ];
 
+function useMediaQuery(query: string) {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const mql = window.matchMedia(query);
+    const onChange = (e: MediaQueryListEvent) => setMatches(e.matches);
+
+    // estado inicial
+    setMatches(mql.matches);
+
+    // suscripción
+    mql.addEventListener("change", onChange);
+
+    return () => {
+      mql.removeEventListener("change", onChange);
+    };
+  }, [query]);
+
+  return matches;
+}
+
 const COLLAPSED_PX = 56; // ancho de las pilas cerradas
 
 export function TarifaSection() {
   const [openId, setOpenId] = useState<string>("asistentes");
   const [animatingId, setAnimatingId] = useState<string | null>(null);
+  const isMd = useMediaQuery("(min-width: 768px)");
 
   return (
     <section className="bg-[#062135] py-8 sm:py-12 md:py-16 lg:py-24">
@@ -83,10 +107,11 @@ export function TarifaSection() {
 
         {/* Card contenedora */}
         <div className="rounded-3xl p-2">
-          {/* Acordeón horizontal en desktop, vertical en móvil */}
           <div className="flex flex-col md:flex-row gap-2 md:h-[520px] lg:h-[620px] overflow-hidden rounded-2xl">
             {tabs.map((tab) => {
               const isOpen = openId === tab.id;
+              const collapsed = !isOpen;
+
               return (
                 <motion.div
                   key={tab.id}
@@ -97,45 +122,26 @@ export function TarifaSection() {
                     setOpenId(tab.id);
                   }}
                   onAnimationComplete={() => setAnimatingId(null)}
-                  animate={{
-                    flexGrow: isOpen ? 1 : 0,
-                  }}
+                  animate={{ flexGrow: isOpen ? 1 : 0 }}
                   transition={{ duration: 0.45, ease: "easeInOut" }}
                   className={`relative cursor-pointer ${tab.color} rounded-2xl overflow-hidden`}
                   style={{
-                    // En móvil: altura fija cuando cerrado, auto cuando abierto
-                    // En desktop: width fija cuando cerrado
-                    width:
-                      window.innerWidth >= 768 && !isOpen
-                        ? COLLAPSED_PX
-                        : undefined,
-                    minWidth:
-                      window.innerWidth >= 768 && !isOpen
-                        ? COLLAPSED_PX
-                        : undefined,
-                    flexBasis:
-                      window.innerWidth >= 768 && !isOpen
-                        ? COLLAPSED_PX
-                        : undefined,
-                    height:
-                      window.innerWidth < 768 && !isOpen ? "60px" : undefined,
-                    minHeight:
-                      window.innerWidth < 768 && !isOpen ? "60px" : undefined,
+                    // ✅ usa isMd en vez de window.innerWidth
+                    width: isMd && collapsed ? COLLAPSED_PX : undefined,
+                    minWidth: isMd && collapsed ? COLLAPSED_PX : undefined,
+                    flexBasis: isMd && collapsed ? COLLAPSED_PX : undefined,
+                    height: !isMd && collapsed ? "60px" : undefined,
+                    minHeight: !isMd && collapsed ? "60px" : undefined,
                   }}
                 >
-                  {/* Etiqueta visible cuando está cerrado */}
                   {!isOpen && animatingId !== tab.id && (
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <span
-                        className="text-white font-bold tracking-widest text-xs sm:text-sm
-                          md:[writing-mode:vertical-rl] md:rotate-180 leading-none"
-                      >
+                      <span className="text-white font-bold tracking-widest text-xs sm:text-sm md:[writing-mode:vertical-rl] md:rotate-180 leading-none">
                         {tab.title}
                       </span>
                     </div>
                   )}
 
-                  {/* Contenido cuando está abierto */}
                   <AnimatePresence>
                     {isOpen && (
                       <motion.div
@@ -147,7 +153,6 @@ export function TarifaSection() {
                         className="relative z-10 h-full bg-black/35 backdrop-blur-sm"
                       >
                         <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-6 h-full">
-                          {/* Imagen lateral */}
                           <div className="relative col-span-1 lg:col-span-2 h-48 sm:h-64 lg:h-full hidden sm:block rounded-xl lg:rounded-l-xl overflow-hidden">
                             <Image
                               src={tab.image}
@@ -156,27 +161,14 @@ export function TarifaSection() {
                               className="object-cover"
                             />
                           </div>
-
-                          {/* Texto + botón */}
                           <div className="col-span-1 lg:col-span-3 flex flex-col justify-center px-6 sm:px-8 lg:pl-8 lg:pr-12 py-6 sm:py-8">
-                            <h3 className="text-white text-base sm:text-lg md:text-xl mb-4 sm:mb-5 text-center md:text-left">
-                              {tab.title}
-                            </h3>
-
-                            <div className="space-y-3 sm:space-y-4 text-gray-100/90 text-xs sm:text-sm md:text-base leading-relaxed my-6 sm:my-8 lg:my-10 text-justify">
-                              {tab.description.map((p, i) => (
-                                <p key={i}>{p}</p>
-                              ))}
-                            </div>
-
-                            <div className="text-center md:text-right mt-4">
-                              <Button
-                                asChild
-                                className="rounded-xl bg-sky-800 hover:bg-white/20 text-white px-6 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm md:text-base w-full sm:w-auto"
-                              >
-                                <a href={tab.buttonLink}>{tab.buttonText}</a>
-                              </Button>
-                            </div>
+                            {/* ...texto y botón... */}
+                            <Button
+                              asChild
+                              className="rounded-xl bg-sky-800 hover:bg-white/20 text-white px-6 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm md:text-base w-full sm:w-auto"
+                            >
+                              <a href={tab.buttonLink}>{tab.buttonText}</a>
+                            </Button>
                           </div>
                         </div>
                       </motion.div>

@@ -6,23 +6,27 @@ export function InfoSection() {
   const imageRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeTab, setActiveTab] = useState("innotec");
+  const [vh, setVh] = useState(0); // <— viewport height seguro para SSR
+
+  useEffect(() => {
+    // Medimos viewport y escuchamos resize (solo en el cliente)
+    const updateVh = () => setVh(window.innerHeight);
+    updateVh();
+    window.addEventListener("resize", updateVh);
+    return () => window.removeEventListener("resize", updateVh);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!containerRef.current || !imageRef.current) return;
-
-      const container = containerRef.current;
-      const rect = container.getBoundingClientRect();
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
       const containerTop = rect.top;
       const containerHeight = rect.height;
-      const windowHeight = window.innerHeight;
 
-      if (
-        containerTop <= 0 &&
-        containerTop > -(containerHeight - windowHeight)
-      ) {
-        const progress =
-          Math.abs(containerTop) / (containerHeight - windowHeight);
+      if (vh === 0) return; // aún no medimos el viewport
+
+      if (containerTop <= 0 && containerTop > -(containerHeight - vh)) {
+        const progress = Math.abs(containerTop) / (containerHeight - vh);
         setScrollProgress(Math.min(Math.max(progress, 0), 1));
       } else if (containerTop > 0) {
         setScrollProgress(0);
@@ -33,9 +37,8 @@ export function InfoSection() {
 
     window.addEventListener("scroll", handleScroll);
     handleScroll();
-
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [vh]);
 
   const content = {
     innotec: {
@@ -107,11 +110,13 @@ export function InfoSection() {
             <div
               className="absolute top-0 left-0 w-full transition-transform duration-100 ease-out"
               style={{
-                transform: `translateY(-${
-                  scrollProgress * (2400 - window.innerHeight)
-                }px)`,
+                transform:
+                  vh > 0
+                    ? `translateY(-${scrollProgress * (2400 - vh)}px)`
+                    : undefined, // evita tocar window/medidas en SSR
               }}
             >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/img/inDTecCollage.png"
                 alt="Congreso InnoTec"

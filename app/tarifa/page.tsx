@@ -1,5 +1,5 @@
 import TarifasHero from "@/components/tarifa/tarifas-hero";
-import Footer from "../../components/shared/footer";
+import { Footer } from "../../components/shared/footer";
 import Header from "../../components/shared/header";
 import ParticipacionPricing from "@/components/tarifa/participacion-pricing";
 import DivulgacionCientifica from "@/components/tarifa/divulgacion-cientifica";
