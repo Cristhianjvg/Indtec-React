@@ -191,8 +191,6 @@ export function PartnersSection() {
     { src: "/img/logos/itsdab.webp", alt: "ISTDAB" },
     { src: "/img/logos/itsup.png", alt: "Tecnoecuatoriano" },
     { src: "/img/logos/Caces.png", alt: "Partner 3" },
-    { src: "/img/logos/Caces.png", alt: "Partner 4" },
-    { src: "/img/logos/Caces.png", alt: "Partner 5" },
   ];
 
   return (
