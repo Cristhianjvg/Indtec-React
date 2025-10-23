@@ -5,7 +5,7 @@ export default function ObjetivoGeneral() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-[400px] rounded-lg overflow-hidden">
             <img
-              src="img/indtec2.png"
+              src="img/indtec2.webp"
               alt="Congreso InDTec"
               className="w-full h-full object-cover"
             />
@@ -18,13 +18,15 @@ export default function ObjetivoGeneral() {
               GENERAL
             </h2>
             <p className="text-foreground leading-relaxed">
-              Impulsar la divulgación científica y tecnológica, promoviendo la innovación y la transferencia de
-              conocimiento a nivel nacional e internacional, mediante la socialización de resultados de investigación
-              que contribuyan al desarrollo del sector productivo y la sociedad.
+              Impulsar la divulgación científica y tecnológica, promoviendo la
+              innovación y la transferencia de conocimiento a nivel nacional e
+              internacional, mediante la socialización de resultados de
+              investigación que contribuyan al desarrollo del sector productivo
+              y la sociedad.
             </p>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -9,7 +9,7 @@ export function Experiencia() {
         {/* Image - takes 30% width on desktop */}
         <div className="relative h-64 md:h-80 lg:h-96 w-full md:w-[40%] flex-shrink-0">
           <Image
-            src="/img/indtec2.png"
+            src="/img/indtec2.webp"
             alt="Conferencia InDTec"
             fill
             className="object-cover"

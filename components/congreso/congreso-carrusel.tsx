@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { X } from "lucide-react"
+import { useState } from "react";
+import { X } from "lucide-react";
 
 export default function CongresoCarrusel() {
- const [isVideoOpen, setIsVideoOpen] = useState(false)
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   return (
     <>
@@ -12,16 +12,18 @@ export default function CongresoCarrusel() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('img/indtec1.png')`,
+            backgroundImage: `url('img/indtec1.webp')`,
           }}
         />
-        <div/>
+        <div />
 
         <div className="relative z-10 container mx-auto px-4 text-center text-white">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-balance">El congreso</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-balance">
+            El congreso
+          </h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-balance">
-            InDTec es un espacio académico y tecnológico que convoca a la comunidad en el desarrollo y la innovación con
-            base en el método.
+            InDTec es un espacio académico y tecnológico que convoca a la
+            comunidad en el desarrollo y la innovación con base en el método.
           </p>
         </div>
 
@@ -37,7 +39,10 @@ export default function CongresoCarrusel() {
       {isVideoOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           {/* Backdrop */}
-          <div className="absolute inset-0 bg-black/80" onClick={() => setIsVideoOpen(false)} />
+          <div
+            className="absolute inset-0 bg-black/80"
+            onClick={() => setIsVideoOpen(false)}
+          />
 
           {/* Modal content */}
           <div className="relative z-10 w-full max-w-4xl mx-4">
@@ -66,5 +71,5 @@ export default function CongresoCarrusel() {
         </div>
       )}
     </>
-  )
+  );
 }

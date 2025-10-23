@@ -6,12 +6,6 @@ import ObjetivosEspecificos from "../../components/congreso/objetivos-especifico
 import PublicoObjetivo from "../../components/congreso/publico-objetivo";
 import Modalidades from "../../components/congreso/modalidades";
 import Estadisticas from "../../components/congreso/estadisticas";
-// import CongresoHero from "@/components/congreso/congreso-hero";
-// import ObjetivoGeneral from "@/components/congreso/objetivo-general";
-// import ObjetivosEspecificos from "@/components/congreso/objetivos-especificos";
-// import PublicoObjetivo from "@/components/congreso/publico-objetivo";
-// import Modalidades from "@/components/congreso/modalidades";
-// import CongresoStats from "@/components/congreso/congreso-stats";
 
 export default function CongresoPage() {
   return (
@@ -24,12 +18,6 @@ export default function CongresoPage() {
         <PublicoObjetivo />
         <Modalidades />
         <Estadisticas />
-        {/* <CongresoHero />
-        <ObjetivoGeneral />
-        <ObjetivosEspecificos />
-        <PublicoObjetivo />
-        <Modalidades />
-        <CongresoStats /> */}
       </main>
       <Footer />
     </div>

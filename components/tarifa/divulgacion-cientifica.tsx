@@ -20,7 +20,7 @@ export default function DivulgacionCientifica() {
           <div className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden">
             <div className="relative h-48 md:h-56">
               <Image
-                src="/students-in-conference-room-green-chairs-audience.jpg"
+                src="/img/indtec1.webp"
                 alt="Ponencia General"
                 fill
                 className="object-cover"
@@ -53,7 +53,7 @@ export default function DivulgacionCientifica() {
           <div className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden">
             <div className="relative h-48 md:h-56">
               <Image
-                src="/students-in-conference-room-green-chairs-audience.jpg"
+                src="/img/indtec1.webp"
                 alt="Ponencia y Publicación en Revista Latindex"
                 fill
                 className="object-cover"
@@ -92,7 +92,7 @@ export default function DivulgacionCientifica() {
           <div className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden">
             <div className="relative h-48 md:h-56">
               <Image
-                src="/students-in-conference-room-green-chairs-audience.jpg"
+                src="/img/indtec1.webp"
                 alt="Ponencia y Publicación en Revista Scopus"
                 fill
                 className="object-cover"
