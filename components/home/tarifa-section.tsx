@@ -23,7 +23,7 @@ const tabs: TabContent[] = [
     title: "ASISTENTES",
     icon: <Users className="w-5 h-5" />,
     color: "bg-[#1e5a7d]",
-    image: "/img/indtec2.png",
+    image: "/img/indtec2.webp",
     description: [
       "gravida at, viverra placerat lorem. adipiscing quis enim. nibh Cras efficitur. ullamcorper massa lacus Quisque sit adipiscing in commodo est. elementum Donec ",
       "non fringilla Nam nec elit. tempor Quisque Praesent dui nisi Nunc ipsum felis, cursus nec dui porta nec nisl. faucibus nisl. Nullam quis Sed ex ex massa urna. ",
@@ -37,7 +37,7 @@ const tabs: TabContent[] = [
     title: "DIVULGACIÓN CIENTÍFICA",
     icon: <FlaskConical className="w-5 h-5" />,
     color: "bg-[#ff6b35]",
-    image: "/img/indtec2.png",
+    image: "/img/indtec2.webp",
     description: [
       "Presenta tus investigaciones y comparte conocimiento...",
       "Accede a espacios de divulgación científica con evaluación...",
@@ -51,7 +51,7 @@ const tabs: TabContent[] = [
     title: "COORGANIZADORES",
     icon: <Handshake className="w-5 h-5" />,
     color: "bg-[#7cb342]",
-    image: "/img/indtec2.png",
+    image: "/img/indtec2.webp",
     description: [
       "Forma parte de la organización del congreso...",
       "Obtén visibilidad y fortalece alianzas estratégicas...",

@@ -6,21 +6,21 @@ import { Button } from "@/components/ui/button";
 
 const slides = [
   {
-    image: "/img/carrusel_1.jpg",
+    image: "/img/carrusel1.webp",
     title: "INNOVACIÓN",
     subtitle: "nace de ideas y",
     subtitleHighlight: "transforma realidades",
     subtitleEnd: "sociales y tecnológicas",
   },
   {
-    image: "/img/indtec1.png",
+    image: "/img/indtec1.webp",
     title: "INVESTIGACIÓN",
     subtitle: "desarrollo científico y",
     subtitleHighlight: "avances tecnológicos",
     subtitleEnd: "para el futuro",
   },
   {
-    image: "/img/indtec2.png",
+    image: "/img/indtec2.webp",
     title: "DESARROLLO",
     subtitle: "construyendo el",
     subtitleHighlight: "conocimiento del mañana",

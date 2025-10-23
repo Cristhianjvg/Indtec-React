@@ -118,7 +118,7 @@ export function InfoSection() {
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/img/inDTecCollage.png"
+                src="/img/inDTecCollage.webp"
                 alt="Congreso InnoTec"
                 className="w-full h-[2400px] object-cover"
               />
