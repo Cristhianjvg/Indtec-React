@@ -10,6 +10,7 @@ import { Experiencia } from "@/components/home/experiencia-section";
 import { TarifaSection } from "@/components/home/tarifa-section";
 import { AreasTematicas } from "@/components/home/areas-tematicas-section";
 import Estadisticas from "@/components/congreso/estadisticas";
+import { PonentesSection } from "@/components/home/ponentes-section";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <Experiencia />
       <AreasTematicas />
       <TarifaSection />
+      <PonentesSection />
       <Estadisticas />
       <Footer />
       {/* </main> */}
