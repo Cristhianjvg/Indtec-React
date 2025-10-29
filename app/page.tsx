@@ -11,6 +11,7 @@ import { TarifaSection } from "@/components/home/tarifa-section";
 import { AreasTematicas } from "@/components/home/areas-tematicas-section";
 import Estadisticas from "@/components/congreso/estadisticas";
 import { PonentesSection } from "@/components/home/ponentes-section";
+import Auspiciantes from "@/components/indtec/auspiciantes";
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
       <Experiencia />
       <AreasTematicas />
       <TarifaSection />
+      <Auspiciantes/>
       <PonentesSection />
       <Estadisticas />
       <Footer />
