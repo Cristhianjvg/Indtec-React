@@ -31,7 +31,7 @@ export default function Auspiciantes() {
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center">
               <Image
-                src="img/auspiciantes/padre julian lorente.webp"
+                src="img/auspiciantes/plorente.webp"
                 alt="Padre Julian Lorente"
                 width={120}
                 height={80}
@@ -71,7 +71,7 @@ export default function Auspiciantes() {
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center">
               <Image
-                src="img/auspiciantes/ros futura.webp"
+                src="img/auspiciantes/rosfutura.webp"
                 alt="Ross Futura"
                 width={120}
                 height={80}
@@ -80,7 +80,7 @@ export default function Auspiciantes() {
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center col-span-2 md:col-span-1">
               <Image
-                src="img/auspiciantes/cacpe pastaza.webp"
+                src="img/auspiciantes/cacpepastaza.webp"
                 alt="CACPE PASTAZA"
                 width={120}
                 height={80}
@@ -114,7 +114,7 @@ export default function Auspiciantes() {
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center">
               <Image
-                src="img/auspiciantes/motorplus.png"
+                src="img/auspiciantes/motorplus.webp"
                 alt="Motoplus"
                 width={120}
                 height={80}
@@ -122,7 +122,7 @@ export default function Auspiciantes() {
               />
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center">
-              <Image src="/zaruz-panaderia-artesanos-logo.jpg" alt="Zarúz" width={120} height={80} className="object-contain" />
+              <Image src="img/auspiciantes/zaruz.webp" alt="Zarúz" width={120} height={80} className="object-contain" />
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center col-span-2 md:col-span-1">
               <Image
@@ -142,7 +142,7 @@ export default function Auspiciantes() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center justify-items-center max-w-4xl mx-auto">
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center">
               <Image
-                src="img/auspiciantes/primer reporte.webp"
+                src="img/auspiciantes/primerreporte.webp"
                 alt="Primer Reporte"
                 width={120}
                 height={80}
@@ -151,7 +151,7 @@ export default function Auspiciantes() {
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center">
               <Image
-                src="img/auspiciantes/rumba stereo.webp"
+                src="img/auspiciantes/rumbastereo.webp"
                 alt="Rumba Stereo"
                 width={120}
                 height={80}
@@ -203,7 +203,7 @@ export default function Auspiciantes() {
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center">
               <Image
-                src="img/auspiciantes/el oro.webp"
+                src="img/auspiciantes/eloro.webp"
                 alt="El Oro Prefectura"
                 width={120}
                 height={80}

@@ -7,20 +7,44 @@ import { Briefcase, GraduationCap, MapPin } from "lucide-react";
 
 const ponentes = [
   {
-    nombre: "Nombre y Apellido",
-    cargo: "Investigador - Universidad Técnica de Loja",
-    tema: "Transformación digital en educación",
-    imagen: "/img/ponentes/ANA-MILENA.webp",
+    nombre: "María del Cisne Merino Vivanco",
+    cargo: "Entrenadora de CrossFit certificada",
+    institucion: "CrossFit SF",
+    imagen: "/img/ponentes/cisnemerina.png",
     pais: "Ecuador",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Experto en transformación digital y educación superior con más de 10 años de trayectoria en investigación y desarrollo académico.",
+    tema: "Entrenar para vivir mejor, el ejercicio en la salud y la logevidad",
   },
   {
-    nombre: "Nombre y Apellido",
-    cargo: "Docente - Universidad Técnica de Loja",
-    tema: "Innovación educativa",
-    imagen: "/img/ponente.jpg",
+    nombre: "Ingrid Weingärtner Reis",
+    cargo: "Profesora investigadora",
+    institucion: "Universidad Técnica Particular de Loja - UTPL",
+    imagen: "img/ponentes/ingrid.png",
     pais: "Ecuador",
-    bio: "Apasionada por la innovación educativa, con experiencia en proyectos de formación docente y metodologías activas.",
+    tema: " Tema a definir",
+  },
+  {
+    nombre: "Daniel Fernando Bovolenta Ovigli",
+    cargo: "Profesor del DECMT/ICENE de la UFTM",
+    institucion: "Universidade Federal do Triângulo Mineiro",
+    imagen: "/img/ponentes/bovolenta.png",
+    pais: "Brasil",
+    tema: "Tratamiento de la controversia en educación patrimonial: el caso del Geoparque Uberaba, Minas Gerais, Brasil",
+  },
+  {
+    nombre: "Juan Carlos Acosta Quevedo",
+    cargo: "Catedrático Investigador Fundación Universitaria Área Andina",
+    institucion: "Fundación Universitaria Área Andina ",
+    imagen: "/img/ponentes/juanacosta.png",
+    pais: "Colombia",
+    tema: "Revisión bibliográfica de tendencias tecnológicas adoptadas por empresas de transporte para reducir contaminación en Bogotá.",
+  },
+    {
+    nombre: "Ana Milena Guzmán Valeta",
+    cargo: "Docente Investigadora en Universidad de la Costa",
+    institucion: "Universidad de la Costa",
+    imagen: "/img/ponentes/milena.png",
+    pais: "Colombia",
+    tema: "Gestión educativa sostenible: Perspectivas teórico-prácticas para contribuir con estados deseables del medio socioambiental.",
   },
 ];
 
@@ -109,7 +133,7 @@ export function PonentesSection() {
 
                           <p className="flex items-center gap-2">
                             <GraduationCap className="w-4 h-4 text-[#f3efe9]/90" />
-                            {p.tema}
+                            {p.institucion}
                           </p>
 
                           <p className="flex items-center gap-2">
@@ -142,7 +166,7 @@ export function PonentesSection() {
                             transition-colors duration-1000 ease-in-out w-full
                           "
                         >
-                          Leer bio completa
+                          Tema de Conferencia
                         </button>
                       </div>
                     </div>
@@ -150,12 +174,9 @@ export function PonentesSection() {
 
                   {/* ---- CARA TRASERA ---- */}
                   <div className="absolute inset-0 [transform:rotateY(180deg)] [backface-visibility:hidden] bg-[#0b2431] rounded-[28px] border border-[#1f3d4b] flex flex-col justify-center items-center p-6">
-                    <h3 className="text-xl font-semibold text-orange-400 mb-2 text-center">
-                      {p.nombre}
+                    <h3 className="text-xl font-semibold text-white-400 mb-2 text-center">
+                      {p.tema}
                     </h3>
-                    <p className="text-sm text-gray-300 leading-relaxed text-center">
-                      {p.bio}
-                    </p>
                   </div>
                 </motion.div>
               </div>
