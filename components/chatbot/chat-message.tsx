@@ -10,7 +10,7 @@ const ChatMessage = ({ chat }) => {
     <div className={`flex gap-3 items-start ${!isBot ? 'flex-row-reverse' : ''}`}>
       {/* Avatar */}
       <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-        isBot ? 'bg-blue-600' : 'bg-gray-600'
+        isBot ? 'bg-[#0d475b]' : 'bg-[#ff6b35]'
       }`}>
         {isBot ? (
           <Bot className="w-4 h-4 text-white" />
@@ -23,7 +23,7 @@ const ChatMessage = ({ chat }) => {
       <div className={`rounded-lg p-3 shadow-sm max-w-[80%] ${
         isBot
           ? 'bg-white rounded-tl-none'
-          : 'bg-blue-600 text-white rounded-tr-none'
+          : 'bg-[#ff6b35] text-white rounded-tr-none'
       }`}>
         <div className={`text-sm prose prose-sm max-w-none ${!isBot ? 'prose-invert' : ''}`}>
           <ReactMarkdown

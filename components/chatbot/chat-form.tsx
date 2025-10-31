@@ -20,13 +20,13 @@ const ChatForm = ({ chatHistory, setChatHistory, generateBotResponse }) => {
     <form onSubmit={handleFormSubmit} className="flex gap-2 items-center">
       <input
         type="text"
-        className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+        className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0d475b] focus:border-transparent text-sm"
         placeholder="Escribe un mensaje..."
         ref={inputRef}
       />
       <button
         type="submit"
-        className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg p-2 transition-colors flex items-center justify-center"
+        className="bg-[#ff6b35] hover:bg-[#e55a2a] text-white rounded-lg p-2 transition-colors flex items-center justify-center"
       >
         <Send className="h-5 w-5" />
       </button>
