@@ -11,12 +11,12 @@ const ChatbotIcon = () => <Bot className="w-6 h-6 text-white" />;
 
 async function InitializeIdentifier() {
   try {
-    const uid = new UID()
-    const completeID = await uid.completeID()
-    localStorage.setItem("KEY_ID_DEVICE", completeID)
+    const uid = new UID();
+    const completeID = await uid.completeID();
+    localStorage.setItem("KEY_ID_DEVICE", completeID);
   } catch (error) {
-    console.warn('Error inicializando ID del dispositivo:', error)
-    localStorage.setItem("KEY_ID_DEVICE", navigator.userAgent || 'unknown')
+    console.warn("Error inicializando ID del dispositivo:", error);
+    localStorage.setItem("KEY_ID_DEVICE", navigator.userAgent || "unknown");
   }
 }
 
@@ -27,10 +27,10 @@ interface ChatMessage {
 
 // Helper function to detect event from pathname
 function getEventFilterFromPath(pathname: string): string[] {
-  if (pathname.includes('/indtec')) return ['INDTEC'];
-  if (pathname.includes('/congreso')) return ['CONGRESO'];
-  if (pathname.includes('/tarifa')) return ['TARIFA'];
-  if (pathname.includes('/trabajos')) return ['TRABAJOS'];
+  if (pathname.includes("/indtec")) return ["INDTEC"];
+  if (pathname.includes("/congreso")) return ["CONGRESO"];
+  if (pathname.includes("/tarifa")) return ["TARIFA"];
+  if (pathname.includes("/trabajos")) return ["TRABAJOS"];
   return []; // No filter for home page
 }
 
@@ -39,16 +39,20 @@ const Chatbot = () => {
   const eventFilter = getEventFilterFromPath(pathname);
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
   const [showChatbot, setShowChatbot] = useState(false);
-  const chatBodyRef = useRef();
-  const generateBotResponse = async (history) => {
-    const updateHistory = (text) => {
-      setChatHistory((prev) => [...prev.filter(msg => msg.text !== "Thinking..."), { role: "model", text }]);
-    }
+  const chatBodyRef = useRef<HTMLDivElement>(null);
+  const generateBotResponse = async (history: ChatMessage[]) => {
+    const updateHistory = (text: string) => {
+      setChatHistory((prev) => [
+        ...prev.filter((msg) => msg.text !== "Thinking..."),
+        { role: "model", text },
+      ]);
+    };
 
     try {
       // Get device information from localStorage
       const idDevice = localStorage.getItem("KEY_ID_DEVICE") || "unknown";
-      const deviceAddress = localStorage.getItem("KEY_DEVICE_ADDRESS") || "0.0.0.0";
+      const deviceAddress =
+        localStorage.getItem("KEY_DEVICE_ADDRESS") || "0.0.0.0";
 
       // Get the last message (user's message)
       const lastMessage = history[history.length - 1];
@@ -73,18 +77,22 @@ const Chatbot = () => {
       }
 
       const data = await response.json();
-      const botText = data.response || data.message || "Lo siento, no pude generar una respuesta.";
+      const botText =
+        data.response ||
+        data.message ||
+        "Lo siento, no pude generar una respuesta.";
       updateHistory(botText);
-
     } catch (error) {
       console.error("Error generating bot response:", error);
-      updateHistory("Lo siento, estoy teniendo problemas de conexión. Por favor, intenta de nuevo más tarde.");
+      updateHistory(
+        "Lo siento, estoy teniendo problemas de conexión. Por favor, intenta de nuevo más tarde."
+      );
     }
   };
 
   // Initialize device ID only once on mount
   useEffect(() => {
-    InitializeIdentifier()
+    InitializeIdentifier();
   }, []);
 
   // Scroll to bottom when chat history changes
@@ -92,7 +100,7 @@ const Chatbot = () => {
     if (chatBodyRef.current) {
       chatBodyRef.current.scrollTo({
         top: chatBodyRef.current.scrollHeight,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
   }, [chatHistory]);
@@ -105,12 +113,34 @@ const Chatbot = () => {
         className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#ff6b35] hover:bg-[#e55a2a] text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
       >
         {showChatbot ? (
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         ) : (
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+            />
           </svg>
         )}
       </button>
@@ -133,14 +163,28 @@ const Chatbot = () => {
               onClick={() => setShowChatbot(false)}
               className="text-white hover:bg-[#0a3845] rounded-full p-1 transition-colors"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
           </div>
 
           {/* Chatbot Body */}
-          <div ref={chatBodyRef} className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
+          <div
+            ref={chatBodyRef}
+            className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50"
+          >
             {/* Welcome Message */}
             <div className="flex gap-3 items-start">
               <div className="w-8 h-8 bg-[#0d475b] rounded-full flex items-center justify-center flex-shrink-0">

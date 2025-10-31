@@ -2,7 +2,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { Users, FlaskConical, Handshake } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 

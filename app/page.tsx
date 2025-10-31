@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Footer } from "../components/shared/footer";
 import { Header } from "../components/shared/header";
 import { CarruselSection } from "../components/home/carrusel-section";

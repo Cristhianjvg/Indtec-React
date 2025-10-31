@@ -35,8 +35,8 @@ export function StickyRevealImage({
       // Progreso 0 → 1 mientras el usuario atraviesa el “track”
       // El track mide trackHeight * vh y el sticky ocupa 1 * vh
       const trackPx = (trackHeight / 100) * vh;
-      const start = rect.top - (trackPx - vh); // cuando el sticky empieza a “pegarse”
-      const end = rect.top + rect.height - vh; // cuando deja de estar visible
+      // const start = rect.top - (trackPx - vh); // cuando el sticky empieza a “pegarse”
+      // const end = rect.top + rect.height - vh; // cuando deja de estar visible
       const raw = (vh - rect.top) / (trackPx - vh); // 0..1 durante el tramo central
       const p = Math.min(1, Math.max(0, raw));
 

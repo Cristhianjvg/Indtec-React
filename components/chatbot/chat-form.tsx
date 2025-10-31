@@ -1,19 +1,49 @@
 import { useRef } from "react";
 import { Send } from "lucide-react";
 
-const ChatForm = ({ chatHistory, setChatHistory, generateBotResponse }) => {
+type ChatMessage = {
+  role: "user" | "model";
+  text: string;
+};
+
+// Cambia esto para que retorne Promise<void>
+type GenerateBotResponse = (history: ChatMessage[]) => Promise<void>;
+
+const ChatForm = ({
+  chatHistory,
+  setChatHistory,
+  generateBotResponse,
+}: {
+  chatHistory: ChatMessage[];
+  setChatHistory: React.Dispatch<React.SetStateAction<ChatMessage[]>>;
+  generateBotResponse: GenerateBotResponse;
+}) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const userMessage = inputRef.current?.value.trim();
     if (!userMessage) return;
     if (inputRef.current) inputRef.current.value = "";
 
-    setChatHistory((history: any) => [...history, { role: "user", text: userMessage }]);
-    setTimeout(() => setChatHistory((history: any) => [...history, { role: "model", text: "Thinking..." }]), 300);
+    setChatHistory((history) => [
+      ...history,
+      { role: "user", text: userMessage },
+    ]);
+    setTimeout(
+      () =>
+        setChatHistory((history) => [
+          ...history,
+          { role: "model", text: "Thinking..." },
+        ]),
+      300
+    );
 
-    generateBotResponse([...chatHistory, { role: "user", text: userMessage }]);
+    // Espera a que se complete la generación de respuesta
+    await generateBotResponse([
+      ...chatHistory,
+      { role: "user", text: userMessage },
+    ]);
   };
 
   return (

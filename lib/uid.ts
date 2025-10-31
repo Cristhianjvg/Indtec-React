@@ -8,39 +8,52 @@ export default class UID {
   }
 
   async generateHeaderID(): Promise<string> {
-    const nav = navigator as any;
-    const res: any[] = [];
+    const res: (string | number | string[])[] = [];
     try {
-      res.push(nav.userAgent);
-      res.push(nav.platform);
-      res.push(nav.product);
-      res.push(nav.productSub);
-      res.push(nav.vendor);
-      res.push(nav.vendorSub);
-      res.push(nav.plugins?.length ?? 0);
-      // basic plugin names if available
-      if (nav.plugins) {
+      // Propiedades básicas de navigator
+      res.push(navigator.userAgent);
+      res.push(navigator.platform);
+      res.push(navigator.product);
+      res.push(navigator.productSub);
+      res.push(navigator.vendor);
+      res.push(navigator.vendorSub);
+      res.push(navigator.plugins?.length ?? 0);
+
+      // Nombres de plugins si están disponibles
+      if (navigator.plugins) {
         const names: string[] = [];
-        for (let i = 0; i < nav.plugins.length; i++) {
-          names.push(nav.plugins[i]?.name ?? "");
+        for (let i = 0; i < navigator.plugins.length; i++) {
+          names.push(navigator.plugins[i]?.name ?? "");
         }
         res.push(names.join("|"));
       } else {
         res.push("");
       }
-      res.push(nav.mimeTypes?.length ?? 0);
-      if (nav.mimeTypes) {
-        const m: string[] = [];
-        for (let i = 0; i < nav.mimeTypes.length; i++) {
-          m.push(nav.mimeTypes[i]?.type ?? "");
+
+      // MIME types
+      res.push(navigator.mimeTypes?.length ?? 0);
+      if (navigator.mimeTypes) {
+        const mimeTypes: string[] = [];
+        for (let i = 0; i < navigator.mimeTypes.length; i++) {
+          mimeTypes.push(navigator.mimeTypes[i]?.type ?? "");
         }
-        res.push(m.join("|"));
+        res.push(mimeTypes.join("|"));
       } else {
         res.push("");
       }
-      res.push(nav.languages ?? []);
-      res.push(nav.hardwareConcurrency ?? 0);
-      res.push(Object.keys(nav).length);
+
+      // Otras propiedades
+      res.push((navigator.languages ?? []) as string[]);
+      res.push(navigator.hardwareConcurrency ?? 0);
+
+      // Contar propiedades de navigator
+      let navigatorKeyCount = 0;
+      for (const key in navigator) {
+        if (Object.prototype.hasOwnProperty.call(navigator, key)) {
+          navigatorKeyCount++;
+        }
+      }
+      res.push(navigatorKeyCount);
     } catch {
       // ignore
     }
@@ -69,19 +82,32 @@ export default class UID {
       const canvas = document.createElement("canvas");
       const gl = (canvas.getContext("webgl2") ||
         canvas.getContext("webgl")) as WebGLRenderingContext | null;
-      const res: any[] = [];
+      const res: string[] = [];
+
       if (gl) {
         try {
-          const renderer = gl.getParameter((gl as any).RENDERER);
-          const vendor = gl.getParameter((gl as any).VENDOR);
-          res.push(renderer);
-          res.push(vendor);
-          const dbg = gl.getExtension("WEBGL_debug_renderer_info");
-          if (dbg) {
-            res.push(gl.getParameter((dbg as any).UNMASKED_RENDERER_WEBGL));
-            res.push(gl.getParameter((dbg as any).UNMASKED_VENDOR_WEBGL));
+          // Usar constantes estándar de WebGL
+          const RENDERER = 0x1f01; // gl.RENDERER
+          const VENDOR = 0x1f00; // gl.VENDOR
+
+          const renderer = gl.getParameter(RENDERER);
+          const vendor = gl.getParameter(VENDOR);
+          res.push(String(renderer));
+          res.push(String(vendor));
+
+          const debugInfo = gl.getExtension("WEBGL_debug_renderer_info");
+          if (debugInfo) {
+            const UNMASKED_RENDERER_WEBGL = 0x9246;
+            const UNMASKED_VENDOR_WEBGL = 0x9245;
+
+            const unmaskedRenderer = gl.getParameter(UNMASKED_RENDERER_WEBGL);
+            const unmaskedVendor = gl.getParameter(UNMASKED_VENDOR_WEBGL);
+            res.push(String(unmaskedRenderer));
+            res.push(String(unmaskedVendor));
           }
-        } catch { }
+        } catch {
+          // Ignorar errores en la obtención de parámetros WebGL
+        }
       }
       return this.hash(JSON.stringify(res));
     } catch {
@@ -91,22 +117,22 @@ export default class UID {
 
   async getIPAddress(): Promise<string> {
     try {
-      const response = await fetch('https://api.ipify.org?format=json');
-      const data = await response.json();
+      const response = await fetch("https://api.ipify.org?format=json");
+      const data = (await response.json()) as { ip: string };
       localStorage.setItem("KEY_DEVICE_ADDRESS", data.ip);
-      return data.ip || '0.0.0.0';
+      return data.ip || "0.0.0.0";
     } catch {
-      return '0.0.0.0';
+      return "0.0.0.0";
     }
   }
 
   async completeID(): Promise<string> {
-    const [h, c, w, i] = await Promise.all([
+    const [headerId, canvasId, webGlId, ipAddress] = await Promise.all([
       this.generateHeaderID(),
       this.generateCanvasID(),
       this.generateWebGlID(),
       this.getIPAddress(),
     ]);
-    return this.hash(h + c + w + i);
+    return this.hash(headerId + canvasId + webGlId + ipAddress);
   }
 }
