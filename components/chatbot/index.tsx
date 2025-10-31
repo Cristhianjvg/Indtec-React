@@ -73,12 +73,12 @@ const Chatbot = () => {
       }
 
       const data = await response.json();
-      const botText = data.response || data.message || "Sorry, I couldn't generate a response.";
+      const botText = data.response || data.message || "Lo siento, no pude generar una respuesta.";
       updateHistory(botText);
 
     } catch (error) {
       console.error("Error generating bot response:", error);
-      updateHistory("Sorry, I'm having trouble connecting. Please try again later.");
+      updateHistory("Lo siento, estoy teniendo problemas de conexión. Por favor, intenta de nuevo más tarde.");
     }
   };
 
@@ -102,7 +102,7 @@ const Chatbot = () => {
       {/* Chatbot Toggle Button */}
       <button
         onClick={() => setShowChatbot(!showChatbot)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#ff6b35] hover:bg-[#e55a2a] text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
       >
         {showChatbot ? (
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -119,19 +119,19 @@ const Chatbot = () => {
       {showChatbot && (
         <div className="fixed bottom-24 right-6 z-50 w-96 h-[600px] bg-white rounded-lg shadow-2xl flex flex-col border border-gray-200 animate-in slide-in-from-bottom-4 duration-300">
           {/* Chatbot Header */}
-          <div className="bg-blue-600 text-white p-4 rounded-t-lg flex items-center justify-between">
+          <div className="bg-[#0d475b] text-white p-4 rounded-t-lg flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
+              <div className="w-10 h-10 bg-[#0a3845] rounded-full flex items-center justify-center">
                 <ChatbotIcon />
               </div>
               <div>
-                <h3 className="font-semibold text-lg">ChatBot</h3>
-                <p className="text-xs text-blue-100">Online</p>
+                <h3 className="font-semibold text-lg">Chatbot ISTS</h3>
+                <p className="text-xs text-blue-100">En línea</p>
               </div>
             </div>
             <button
               onClick={() => setShowChatbot(false)}
-              className="text-white hover:bg-blue-700 rounded-full p-1 transition-colors"
+              className="text-white hover:bg-[#0a3845] rounded-full p-1 transition-colors"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -143,12 +143,12 @@ const Chatbot = () => {
           <div ref={chatBodyRef} className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
             {/* Welcome Message */}
             <div className="flex gap-3 items-start">
-              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-8 h-8 bg-[#0d475b] rounded-full flex items-center justify-center flex-shrink-0">
                 <Bot className="w-4 h-4 text-white" />
               </div>
               <div className="bg-white rounded-lg rounded-tl-none p-3 shadow-sm max-w-[80%]">
                 <p className="text-sm text-gray-800">
-                  Hey there 👋 <br /> How can I assist you today?
+                  ¡Hola! 👋 <br /> ¿En qué puedo ayudarte hoy?
                 </p>
               </div>
             </div>
