@@ -1,10 +1,12 @@
+import Image from "next/image";
+
 export function ObjectiveSection() {
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-[400px] rounded-lg overflow-hidden">
-            <img
+            <Image
               src="img/indtec2.png"
               alt="Congreso InDTec"
               className="w-full h-full object-cover"
@@ -18,13 +20,15 @@ export function ObjectiveSection() {
               GENERAL
             </h2>
             <p className="text-foreground leading-relaxed">
-              Impulsar la divulgación científica y tecnológica, promoviendo la innovación y la transferencia de
-              conocimiento a nivel nacional e internacional, mediante la socialización de resultados de investigación
-              que contribuyan al desarrollo del sector productivo y la sociedad.
+              Impulsar la divulgación científica y tecnológica, promoviendo la
+              innovación y la transferencia de conocimiento a nivel nacional e
+              internacional, mediante la socialización de resultados de
+              investigación que contribuyan al desarrollo del sector productivo
+              y la sociedad.
             </p>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
