@@ -3,9 +3,9 @@
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
 
 export default function ParticipacionPricing() {
-  const price1 = useCounterAnimation(500, 1200); // $5.00
-  const price2 = useCounterAnimation(100, 1400); // $10.00
-  const price3 = useCounterAnimation(150, 1600); // $15.00
+  const price1 = useCounterAnimation(10.00, 1200); // $5.00
+  const price2 = useCounterAnimation(20.00, 1400); // $10.00
+  const price3 = useCounterAnimation(40.00, 1600); // $15.00
 
   return (
     <section className="py-12 md:py-16 bg-gray-50">
@@ -61,11 +61,11 @@ export default function ParticipacionPricing() {
             </li>
             <li className="flex items-start">
               <span className="mr-2">•</span>
-              <span>Acceso a la revista cultural y humanidad.</span>
+              <span>Acceso a la noche cultural y fraternidad.</span>
             </li>
             <li className="flex items-start">
               <span className="mr-2">•</span>
-              <span>Certificado de asistencia.</span>
+              <span>Kit del congreso.</span>
             </li>
             <li className="flex items-start">
               <span className="mr-2">•</span>

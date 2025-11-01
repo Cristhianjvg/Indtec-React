@@ -5,7 +5,7 @@ import ParticipacionPricing from "@/components/tarifa/participacion-pricing";
 import DivulgacionCientifica from "@/components/tarifa/divulgacion-cientifica";
 import CoorganizadorSection from "@/components/tarifa/coorganizadores";
 import DatosPago from "@/components/tarifa/datos-pago";
-import TarifaEstadisticas from "@/components/tarifa/tarifas-estadisticas";
+import { Statistics } from "@/components/shared/statistics";
 
 export default function TarifasPage() {
   return (
@@ -17,7 +17,7 @@ export default function TarifasPage() {
         <DivulgacionCientifica />
         <CoorganizadorSection />
         <DatosPago />
-        <TarifaEstadisticas />
+        <Statistics />
       </main>
       <Footer />
     </div>

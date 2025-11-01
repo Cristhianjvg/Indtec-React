@@ -1,11 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Briefcase, GraduationCap, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
+import {Briefcase, GraduationCap, MapPin,ChevronLeft, ChevronRight,} from "lucide-react";
 
 const ponentes = [
+  {
+    nombre: "Dr. Fidel Márquez Sánchez Ph.D.",
+    cargo: "Consejero Académico del Consejo de Educación Superior",
+    institucion: "CES Ecuador",
+    imagen: "/img/ponentes/fidel.jpg",
+    pais: "ECUADOR",
+    tema: "Tema a definir",
+  },
+
   {
     nombre: "María del Cisne Merino Vivanco",
     cargo: "Entrenadora de CrossFit certificada",
@@ -46,6 +55,38 @@ const ponentes = [
     pais: "COLOMBIA",
     tema: "Gestión educativa sostenible: Perspectivas teórico-prácticas para contribuir con estados deseables del medio socioambiental.",
   },
+  {
+    nombre: "Marvi Alexander Viteri Ruiz",
+    cargo: "Docente universitario e investigador independiente",
+    institucion: "Pontificia Universidad Católica del Ecuador",
+    imagen: "/img/ponentes/marvi.jpg",
+    pais: "ECUADOR",
+    tema: "Autocuidado en la vulnerabilidad: Una perspectiva innovadora desde la investigación formativa.",
+  },
+  {
+    nombre: "Edgar Edurman García Silvera",
+    cargo: "Docente investigador Instituto Superior Tecnológico Tecnoecuatoriano",
+    institucion: "Instituto Superior Tecnológico Tecnoecuatoriano",
+    imagen: "/img/ponentes/Ponente.png",
+    pais: "ECUADOR",
+    tema: "Retos y perspectivas de la Innovación: Una Mirada Global",
+  },
+  {
+    nombre: "María José Martínez Granda",
+    cargo: "Jefe de Control de Calidad",
+    institucion: "Industria Lojana de Especerías ILE C.A.  ",
+    imagen: "/img/ponentes/mariajose.JPG",
+    pais: "ECUADOR",
+    tema: "Certificaciones y Cultura de calidad en ILE C.A. ",
+  },
+  {
+    nombre: "Rosa Paola Flores Loaiza",
+    cargo: "Jefe de Control de Calidad",
+    institucion: " Universidad Nacional de Loja",
+    imagen: "/img/ponentes/rosaflores.jpeg",
+    pais: "ECUADOR",
+    tema: "Emprendimiento en Ingeniería: Construyendo el Futuro a Través de la Innovación Aplicada",
+  },
 ];
 
 export function PonentesSection() {
@@ -54,6 +95,14 @@ export function PonentesSection() {
 
   const itemsPerSlide = 4;
   const totalSlides = Math.ceil(ponentes.length / itemsPerSlide);
+
+  // slide cada 2 segundos
+  useEffect(() => {
+    const intervalo = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % totalSlides);
+    }, 2000); // Puedes ajustar el tiempo (milisegundos)
+    return () => clearInterval(intervalo);
+  }, [totalSlides]);
 
   const handleFlip = (index: number) => {
     setFlippedIndex(flippedIndex === index ? null : index);
@@ -97,7 +146,9 @@ export function PonentesSection() {
                 <div
                   key={i}
                   className="relative h-[460px] perspective-[1000px]"
-                  onMouseLeave={() => handleMouseLeave(i + currentSlide * itemsPerSlide)}
+                  onMouseLeave={() =>
+                    handleMouseLeave(i + currentSlide * itemsPerSlide)
+                  }
                 >
                   <motion.div
                     animate={{ rotateY: isFlipped ? 180 : 0 }}
@@ -135,7 +186,8 @@ export function PonentesSection() {
                               <Briefcase className="w-4 h-4" /> {p.cargo}
                             </p>
                             <p className="flex items-center gap-2">
-                              <GraduationCap className="w-4 h-4" /> {p.institucion}
+                              <GraduationCap className="w-4 h-4" />{" "}
+                              {p.institucion}
                             </p>
 
                             {/* --- País con bandera --- */}
@@ -148,13 +200,17 @@ export function PonentesSection() {
                                 height={14}
                                 className="rounded-sm shadow-sm"
                               />
-                              <span className="font-semibold text-blue-400">{p.pais}</span>
+                              <span className="font-semibold text-blue-400">
+                                {p.pais}
+                              </span>
                             </p>
                           </div>
                         </div>
                         <div className="absolute left-1/2 -translate-x-1/2 z-30 bottom-3 group-hover:top-1/2 group-hover:bottom-auto group-hover:-translate-y-1/2 transition-all duration-1000 ease-out">
                           <button
-                            onClick={() => handleFlip(i + currentSlide * itemsPerSlide)}
+                            onClick={() =>
+                              handleFlip(i + currentSlide * itemsPerSlide)
+                            }
                             className="rounded-xl px-2 py-3 text-[14px] bg-transparent group-hover:bg-[#15384a] border border-[#15384a] backdrop-blur-sm shadow-lg cursor-pointer text-[#15384a] group-hover:text-white transition-colors duration-1000 ease-in-out w-full"
                           >
                             Tema de Conferencia

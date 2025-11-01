@@ -4,9 +4,9 @@ import { useCounterAnimation } from "@/hooks/use-counter-animation";
 import Image from "next/image";
 
 export default function DivulgacionCientifica() {
-  const price1 = useCounterAnimation(1, 2000);
-  const price2 = useCounterAnimation(2, 2000);
-  const price3 = useCounterAnimation(13, 2000);
+  const price1 = useCounterAnimation(40.00, 2000);
+  const price2 = useCounterAnimation(70.00, 2000);
+  const price3 = useCounterAnimation(400.00, 2000);
 
   return (
     <section className="py-12 md:py-16 bg-primary text-white">
@@ -35,11 +35,10 @@ export default function DivulgacionCientifica() {
               <ul className="space-y-1 text-sm">
                 <li>• Acceso a todas las ponencias.</li>
                 <li>• Acceso a talleres prácticos.</li>
-                <li>• Acceso a la revista cultural y multidisciplinaria.</li>
+                <li>• Acceso a la noche cultural y de confraternidad.</li>
                 <li>• Certificado de ponente.</li>
                 <li>
-                  • Certificado de participación equivalente a 40 horas
-                  académicas.
+                  • Souvenir del congreso.
                 </li>
                 <li>
                   • Divulgación del trabajo completo en el libro de memorias con
@@ -70,11 +69,10 @@ export default function DivulgacionCientifica() {
               <ul className="space-y-1 text-sm">
                 <li>• Acceso a todas las ponencias.</li>
                 <li>• Acceso a talleres prácticos.</li>
-                <li>• Acceso a la revista cultural y multidisciplinaria.</li>
+                <li>• Acceso a la noche cultural y de confraternidad.</li>
                 <li>• Certificado de ponente.</li>
                 <li>
-                  • Certificado de participación equivalente a 40 horas
-                  académicas.
+                  • Souvenir del congreso.
                 </li>
                 <li>
                   • Divulgación del artículo completo en el libro de memorias
@@ -109,18 +107,17 @@ export default function DivulgacionCientifica() {
               <ul className="space-y-1 text-sm">
                 <li>• Acceso a todas las ponencias.</li>
                 <li>• Acceso a talleres prácticos.</li>
-                <li>• Acceso a la revista cultural y multidisciplinaria.</li>
+                <li>• Acceso a la revista cultural y de confraternidad.</li>
                 <li>• Certificado de ponente.</li>
                 <li>
-                  • Certificado de participación equivalente a 40 horas
-                  académicas.
+                  • Souvenir del congreso.
                 </li>
                 <li>
                   • Divulgación del artículo completo en el libro de memorias
                   con registro ISBN.
                 </li>
                 <li>
-                  • Publicación del artículo completo en la Revista Scopus.
+                  • Publicación de revista indexada en Scopus.
                 </li>
                 <li>• No incluye traducción de artículos científicos.</li>
               </ul>

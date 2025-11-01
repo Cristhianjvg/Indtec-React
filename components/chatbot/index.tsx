@@ -31,6 +31,7 @@ function getEventFilterFromPath(pathname: string): string[] {
   if (pathname.includes("/congreso")) return ["CONGRESO"];
   if (pathname.includes("/tarifa")) return ["TARIFA"];
   if (pathname.includes("/trabajos")) return ["TRABAJOS"];
+  if (pathname.includes("/eventos")) return ["EVENTOS"];
   return []; // No filter for home page
 }
 

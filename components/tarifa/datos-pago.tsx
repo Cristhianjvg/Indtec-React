@@ -21,35 +21,29 @@ export default function DatosPago() {
                 Superior Tecnológico Sudamericano
               </p>
               <p>
-                <span className="font-semibold">RUC:</span> 1190086237001
+                <span className="font-semibold">RUC:</span> 1190082748001
               </p>
               <p>
                 <span className="font-semibold">Número de cuenta:</span>{" "}
-                1100482367
+                2901040939
               </p>
               <p>
                 <span className="font-semibold">Email:</span>{" "}
-                sudamericano.edu.ec
+                cuotaists@tecnologicosudamericano.edu.ec
               </p>
             </div>
           </div>
 
           <div className="bg-orange-500/20 backdrop-blur-sm rounded-lg p-6 md:p-8 mb-6">
             <p className="text-sm md:text-base leading-relaxed">
-              * Luego del pago, el comprobante de depósito o transferencia,
-              junto con sus datos personales (nombre completo, cédula, correo
-              electrónico, teléfono) y el comprobante de inscripción, deberán
-              ser enviados al correo: sudamericano.edu.ec
+              * Existe método de pago con tarjeta de crédito por medio de Payphone con un recargo del 6% del valor
             </p>
           </div>
 
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 md:p-8">
             <p className="text-sm md:text-base leading-relaxed">
-              Nota: Enviar el comprobante de depósito o transferencia, junto con
-              sus datos personales (nombre completo, cédula, correo electrónico,
-              teléfono) y el comprobante de inscripción, deberán ser enviados al
-              correo: sudamericano.edu.ec. Dirección, teléfonos y correo
-              electrónico al número 099 ISTS 2025.
+              Nota: Enviar el comprobante de depósito o transferencia, junto con los datos de facturación (nombres
+              completos, número de cédula o RUC, dirección, teléfono y correo electrónico) al número 096 351 5705.
             </p>
           </div>
         </div>

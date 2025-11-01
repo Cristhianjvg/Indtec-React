@@ -3,19 +3,19 @@
 import { useCounterAnimation } from "../../hooks/use-counter-animation";
 
 export default function CoorganizadorSection() {
-  const institucionalPrice = useCounterAnimation(0, 2000);
-  const broncePrice = useCounterAnimation(103, 2000);
-  const plataPrice = useCounterAnimation(206, 2000);
-  const oroPrice = useCounterAnimation(275, 2000);
+  const institucionalPrice = useCounterAnimation(10.00, 2000);
+  const broncePrice = useCounterAnimation(600.00, 2000);
+  const plataPrice = useCounterAnimation(1200.00, 2000);
+  const oroPrice = useCounterAnimation(1600.00, 2000);
 
   return (
     <section className="py-12 md:py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-2">
-          CO-ORGANIZADOR
+          PLANES PARA
         </h2>
         <p className="text-center text-green-600 font-semibold mb-8 md:mb-12">
-          CO-ORGANIZADOR
+          COORGANIZADORES
         </p>
 
         {/* Institucional */}
@@ -30,8 +30,8 @@ export default function CoorganizadorSection() {
                   USD {institucionalPrice.toFixed(2)}
                 </p>
                 <p className="text-sm md:text-base text-gray-700">
-                  Inscripción preferencial de 10 participantes de la institución
-                  en cada una de las modalidades (sin incluir costo).
+                  Inscripción preferencial de 30 participantes de la institución a un costo
+                  de USD 10,00 cada uno.
                 </p>
               </div>
               <div>
@@ -44,26 +44,29 @@ export default function CoorganizadorSection() {
                     material visual y audiovisual del evento.
                   </li>
                   <li>
-                    • Logotipo distribuido a partir del material institucional.
+                    • Espacios destinados a publicidad institucional.
                   </li>
                   <li>
-                    • Participación en el evento a través de un stand de
-                    publicaciones científicas.
+                    • Participación en el comité científico de
+                    selección de publicaciones científicas.
                   </li>
                   <li>
-                    • Participación en el evento a través de un stand de
-                    publicaciones científicas.
+                    • Registro como coorganizador en el
+                    libro de memorias con ISBN.
                   </li>
-                  <li>• Certificado del evento como organizador.</li>
+                  <li>• Certificado oficial como coorganizador.</li>
                   <li>
-                    • Acceso a todas las ponencias, talleres y actividades.
+                    • Acceso a todas las ponencias locales,
+                    nacionales e internacionales.
                   </li>
-                  <li>• Acceso a la revista cultural y humanidad.</li>
-                  <li>• Acceso a la revista cultural y humanidad.</li>
+                  <li>• Acceso a la actividad cultural y de confraternidad.</li>
+                  <li>• Acceso a talleres prácticos.</li>
                   <li>
-                    • Soporte de confirmación y relaciones internacionales.
+                    • Almuerzo de confraternidad y
+                    relaciones interinstitucionales.
                   </li>
-                  <li>• Participación en el comité científico requerido.</li>
+                  <li>• Participación en una ponencia magistral (opcional).</li>
+                  <li>• Una (1) publicación en revista del catálogo Latindex 2.0.</li>
                 </ul>
               </div>
             </div>
@@ -81,9 +84,10 @@ export default function CoorganizadorSection() {
             <h4 className="font-bold mb-3">Beneficios</h4>
             <p className="text-sm md:text-base text-gray-700">
               Incluye todos los beneficios del Plan Institucional, más:
-              Inscripción preferencial de 10 participantes en el catálogo del
-              evento. Una (1) publicación gratis en revista indexada en Latindex
-              2.0.
+            </p>
+            <p className="text-sm md:text-base text-gray-700">
+              • Tres (3) publicaciones en revistas
+              del catálogo Latindex 2.0.
             </p>
           </div>
 
@@ -96,9 +100,14 @@ export default function CoorganizadorSection() {
             <h4 className="font-bold mb-3">Beneficios</h4>
             <p className="text-sm md:text-base text-gray-700">
               Incluye todos los beneficios del Plan Institucional, más:
-              Inscripción preferencial de 20 participantes en el catálogo del
-              evento. Dos (2) publicaciones gratis en revista indexada en
-              Latindex 2.0.
+            </p>
+            <p className="text-sm md:text-base text-gray-700">
+              • Tres (3) publicaciones en revistas
+              del catálogo Latindex 2.0.
+            </p>
+            <p className="text-sm md:text-base text-gray-700">
+              • Una (1) publicación en revista indexada
+              en Scopus (área de tecnología).
             </p>
           </div>
 
@@ -111,9 +120,14 @@ export default function CoorganizadorSection() {
             <h4 className="font-bold mb-3">Beneficios</h4>
             <p className="text-sm md:text-base text-gray-700">
               Incluye todos los beneficios del Plan Institucional, más:
-              Inscripción preferencial de 30 participantes en el catálogo del
-              evento. Tres (3) publicaciones gratis en revista indexada en
-              Latindex 2.0.
+            </p>
+            <p className="text-sm md:text-base text-gray-700">
+              • Tres (3) publicaciones en revistas
+              del catálogo Latindex 2.0.
+            </p>
+            <p className="text-sm md:text-base text-gray-700">
+              • Tres (3) publicaciones en revistas indexadas
+              en Scopus (área de tecnología).
             </p>
           </div>
         </div>
