@@ -96,11 +96,11 @@ export function PonentesSection() {
   const itemsPerSlide = 4;
   const totalSlides = Math.ceil(ponentes.length / itemsPerSlide);
 
-  // slide cada 2 segundos
+  // slide cada 4 segundos
   useEffect(() => {
     const intervalo = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % totalSlides);
-    }, 2000); // Puedes ajustar el tiempo (milisegundos)
+    }, 4000); // Puedes ajustar el tiempo (milisegundos)
     return () => clearInterval(intervalo);
   }, [totalSlides]);
 

@@ -9,6 +9,8 @@ export default function ObjetivoGeneral() {
             <Image
               src="img/indtec2.webp"
               alt="Congreso InDTec"
+              width={500}
+              height={300}
               className="w-full h-full object-cover"
             />
           </div>
