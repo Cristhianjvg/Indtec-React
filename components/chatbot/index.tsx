@@ -35,6 +35,29 @@ function getEventFilterFromPath(pathname: string): string[] {
   return []; // No filter for home page
 }
 
+function buildRequestBody(
+  message: string,
+  idDevice: string,
+  deviceAddress: string
+) {
+  return {
+    model: "rag-default",
+    messages: [{ role: "user", content: message }],
+    rag_config: {
+      enabled: true,
+      search_limit: 5,
+      min_similarity: 0.5,
+      keyword_weight: 0.3,
+    },
+    idSession: "session-chatbot-indtec",
+    idRequest: crypto.randomUUID(),
+    dateProcess: new Date().toISOString(),
+    process: "chatbot-message",
+    idDevice: idDevice || "unknown",
+    deviceAddress: deviceAddress || "0.0.0.0",
+  };
+}
+
 const Chatbot = () => {
   const pathname = usePathname();
   const eventFilter = getEventFilterFromPath(pathname);
@@ -59,18 +82,27 @@ const Chatbot = () => {
       const lastMessage = history[history.length - 1];
 
       // Call the Next.js API route (server-side)
-      const response = await fetch("/api/chatbot", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          message: lastMessage.text,
-          idDevice,
-          deviceAddress,
-          eventFilter: eventFilter,
-        }),
-      });
+      // 🔗 Llamada directa al backend remoto
+      const requestBody = buildRequestBody(
+        lastMessage.text,
+        idDevice,
+        deviceAddress
+      );
+
+      const response = await fetch(
+        "https://istschat.xyz/api/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-App-Authorization": "X-Auth wiaAchcHks3rBxIhJQem1nLoMDwdoQ==",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.KMUFsIDTnFmyG3nMiGM6H9FNFUROf3wh7SmqJp-QV30",
+          },
+          body: JSON.stringify(requestBody),
+        }
+      );
+
       // const response = await fetch(
       //   "https://istschat.xyz/api/v1/chat/completions",
       //   {
@@ -95,9 +127,10 @@ const Chatbot = () => {
       }
 
       const data = await response.json();
+      console.log("Chatbot response:", data);
       const botText =
-        data.response ||
-        data.message ||
+        data?.data?.choices?.[0]?.message?.content ??
+        data?.info ??
         "Lo siento, no pude generar una respuesta.";
       updateHistory(botText);
     } catch (error) {
