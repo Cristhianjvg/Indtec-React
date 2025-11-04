@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "UNDICI_NO_WASM=1 next start",
+    "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
