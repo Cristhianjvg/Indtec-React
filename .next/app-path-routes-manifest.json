@@ -1,10 +1,10 @@
 {
-  "/_not-found/page": "/_not-found",
   "/api/chatbot/route": "/api/chatbot",
+  "/_not-found/page": "/_not-found",
   "/favicon.ico/route": "/favicon.ico",
   "/eventos/page": "/eventos",
-  "/congreso/page": "/congreso",
   "/page": "/",
+  "/congreso/page": "/congreso",
   "/indtec/page": "/indtec",
   "/tarifa/page": "/tarifa",
   "/trabajos/page": "/trabajos"

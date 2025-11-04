@@ -1,10 +1,10 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
   "/api/chatbot/route": "app/api/chatbot/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
   "/eventos/page": "app/eventos/page.js",
-  "/congreso/page": "app/congreso/page.js",
   "/page": "app/page.js",
+  "/congreso/page": "app/congreso/page.js",
   "/indtec/page": "app/indtec/page.js",
   "/tarifa/page": "app/tarifa/page.js",
   "/trabajos/page": "app/trabajos/page.js"
