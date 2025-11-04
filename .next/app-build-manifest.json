@@ -1,0 +1,83 @@
+{
+  "pages": {
+    "/_not-found/page": [
+      "static/chunks/webpack-01a8b225504b0466.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-839588e0f3decf6f.js",
+      "static/chunks/main-app-3165475a54f30314.js",
+      "static/chunks/app/_not-found/page-dca101c24e941fca.js"
+    ],
+    "/api/chatbot/route": [
+      "static/chunks/webpack-01a8b225504b0466.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-839588e0f3decf6f.js",
+      "static/chunks/main-app-3165475a54f30314.js",
+      "static/chunks/app/api/chatbot/route-b178522f554ed915.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-01a8b225504b0466.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-839588e0f3decf6f.js",
+      "static/chunks/main-app-3165475a54f30314.js",
+      "static/css/aae9ad272644ba97.css",
+      "static/chunks/137-90aaccd167eb392c.js",
+      "static/chunks/app/layout-5b6ef954e5f27bea.js"
+    ],
+    "/indtec/page": [
+      "static/chunks/webpack-01a8b225504b0466.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-839588e0f3decf6f.js",
+      "static/chunks/main-app-3165475a54f30314.js",
+      "static/chunks/618-eed98d8f1cf8c5b7.js",
+      "static/chunks/268-1536cefae0ac8ab8.js",
+      "static/chunks/app/indtec/page-977eb48a7946336a.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-01a8b225504b0466.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-839588e0f3decf6f.js",
+      "static/chunks/main-app-3165475a54f30314.js",
+      "static/chunks/618-eed98d8f1cf8c5b7.js",
+      "static/chunks/268-1536cefae0ac8ab8.js",
+      "static/chunks/386-866f8c3f31281018.js",
+      "static/chunks/527-95819b3dec20217e.js",
+      "static/chunks/500-36f34f7a859a39b4.js",
+      "static/chunks/app/page-435f28b740825694.js"
+    ],
+    "/congreso/page": [
+      "static/chunks/webpack-01a8b225504b0466.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-839588e0f3decf6f.js",
+      "static/chunks/main-app-3165475a54f30314.js",
+      "static/chunks/618-eed98d8f1cf8c5b7.js",
+      "static/chunks/app/congreso/page-4ccc0dcf737847c4.js"
+    ],
+    "/eventos/page": [
+      "static/chunks/webpack-01a8b225504b0466.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-839588e0f3decf6f.js",
+      "static/chunks/main-app-3165475a54f30314.js",
+      "static/chunks/618-eed98d8f1cf8c5b7.js",
+      "static/chunks/268-1536cefae0ac8ab8.js",
+      "static/chunks/386-866f8c3f31281018.js",
+      "static/chunks/500-36f34f7a859a39b4.js",
+      "static/chunks/app/eventos/page-3a4fedb6ac2137d7.js"
+    ],
+    "/trabajos/page": [
+      "static/chunks/webpack-01a8b225504b0466.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-839588e0f3decf6f.js",
+      "static/chunks/main-app-3165475a54f30314.js",
+      "static/chunks/618-eed98d8f1cf8c5b7.js",
+      "static/chunks/app/trabajos/page-39083d3dbbb78616.js"
+    ],
+    "/tarifa/page": [
+      "static/chunks/webpack-01a8b225504b0466.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-839588e0f3decf6f.js",
+      "static/chunks/main-app-3165475a54f30314.js",
+      "static/chunks/618-eed98d8f1cf8c5b7.js",
+      "static/chunks/app/tarifa/page-226ee84b355261a1.js"
+    ]
+  }
+}

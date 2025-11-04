@@ -1,0 +1,11 @@
+{
+  "/api/chatbot/route": "/api/chatbot",
+  "/favicon.ico/route": "/favicon.ico",
+  "/_not-found/page": "/_not-found",
+  "/indtec/page": "/indtec",
+  "/page": "/",
+  "/congreso/page": "/congreso",
+  "/eventos/page": "/eventos",
+  "/trabajos/page": "/trabajos",
+  "/tarifa/page": "/tarifa"
+}

@@ -1,0 +1,11 @@
+{
+  "/api/chatbot/route": "app/api/chatbot/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/indtec/page": "app/indtec/page.js",
+  "/page": "app/page.js",
+  "/congreso/page": "app/congreso/page.js",
+  "/eventos/page": "app/eventos/page.js",
+  "/trabajos/page": "app/trabajos/page.js",
+  "/tarifa/page": "app/tarifa/page.js"
+}

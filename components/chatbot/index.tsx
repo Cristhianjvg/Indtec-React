@@ -71,6 +71,23 @@ const Chatbot = () => {
           eventFilter: eventFilter,
         }),
       });
+      // const response = await fetch(
+      //   "https://istschat.xyz/api/v1/chat/completions",
+      //   {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //       "X-App-Authorization": "X-Auth wiaAchcHks3rBxIhJQem1nLoMDwdoQ==",
+      //       Authorization: "Bearer ...",
+      //     },
+      //     body: JSON.stringify({
+      //       message: lastMessage.text,
+      //       idDevice,
+      //       deviceAddress,
+      //       eventFilter: eventFilter,
+      //     }),
+      //   }
+      // );
 
       if (!response.ok) {
         const error = await response.json();
