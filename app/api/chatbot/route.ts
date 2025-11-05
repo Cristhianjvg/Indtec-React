@@ -4,8 +4,7 @@ import { withBody } from "@/lib/body";
 // Store your API token securely in environment variables
 const API_TOKEN =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.KMUFsIDTnFmyG3nMiGM6H9FNFUROf3wh7SmqJp-QV30";
-// const API_ENDPOINT = "https://istschat.xyz/api";
-const API_ENDPOINT = "http://localhost:8080";
+const API_ENDPOINT = "https://istschat.xyz/api";
 const APP_AUTHORIZATION = "wiaAchcHks3rBxIhJQem1nLoMDwdoQ==";
 
 export async function POST(request: NextRequest) {
