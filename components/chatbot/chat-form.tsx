@@ -34,7 +34,7 @@ const ChatForm = ({
       () =>
         setChatHistory((history) => [
           ...history,
-          { role: "model", text: "Thinking..." },
+          { role: "model", text: "..." },
         ]),
       300
     );
