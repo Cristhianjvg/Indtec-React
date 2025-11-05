@@ -13,14 +13,14 @@ const slides = [
     subtitleEnd: "sociales y tecnológicas",
   },
   {
-    image: "/img/indtec1.webp",
+    image: "/img/carrusel2.webp",
     title: "INVESTIGACIÓN",
     subtitle: "desarrollo científico y",
     subtitleHighlight: "avances tecnológicos",
     subtitleEnd: "para el futuro",
   },
   {
-    image: "/img/indtec2.webp",
+    image: "/img/carrusel3.webp",
     title: "DESARROLLO",
     subtitle: "construyendo el",
     subtitleHighlight: "conocimiento del mañana",

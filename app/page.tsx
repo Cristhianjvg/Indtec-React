@@ -20,9 +20,9 @@ export default function Home() {
       <Contador />
       <PartnersSection />
       <InfoSection />
-      <FechasImportantes />
+      {/* <FechasImportantes /> */}
       <Experiencia />
-      <AreasTematicas />
+      {/* <AreasTematicas /> */}
       <Auspiciantes />
       <Estadisticas />
       <Footer />

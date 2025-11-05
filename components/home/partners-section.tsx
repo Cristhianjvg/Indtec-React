@@ -1,166 +1,117 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import Image from "next/image";
-import type { CSSProperties } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Users, Crown, Award } from "lucide-react";
 
-type Logo = {
+interface LogoAsset {
   src: string;
   alt: string;
-};
-
-type CarouselSingleProps = {
-  title: string;
-  logos: Logo[];
-  /** Intervalo de autoplay en ms. Si es 0 o null, no hay autoplay */
-  autoplayMs?: number | null;
-};
-
-function CarouselSingle({
-  title,
-  logos,
-  autoplayMs = 4000,
-}: CarouselSingleProps) {
-  const [idx, setIdx] = useState(0);
-  const total = logos.length;
-
-  // Evita errores si no hay logos
-  useEffect(() => {
-    if (total === 0) return;
-    if (!autoplayMs) return;
-
-    const t = setInterval(() => setIdx((i) => (i + 1) % total), autoplayMs);
-    return () => clearInterval(t);
-  }, [autoplayMs, total]);
-
-  const prev = () => setIdx((i) => (total === 0 ? 0 : (i - 1 + total) % total));
-  const next = () => setIdx((i) => (total === 0 ? 0 : (i + 1) % total));
-
-  const current = logos[idx] as Logo | undefined;
-
-  return (
-    <div className="relative">
-      <p className="mb-3 text-[11px] tracking-[0.2em] text-gray-600 uppercase select-none">
-        {title}
-      </p>
-
-      <div className="relative flex items-center justify-center">
-        <button
-          onClick={prev}
-          className="p-2 text-gray-500 hover:text-gray-800 absolute left-0 disabled:opacity-40"
-          disabled={total <= 1}
-          aria-label="Anterior"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
-
-        {current ? (
-          <Image
-            src={current.src}
-            alt={current.alt}
-            width={700}
-            height={200}
-            className="h-24 sm:h-28 object-contain"
-            sizes="(max-width: 640px) 280px, (max-width: 1024px) 480px, 700px"
-            priority={false}
-          />
-        ) : (
-          <div className="h-24 sm:h-28 grid place-items-center text-xs text-gray-500">
-            Sin logos
-          </div>
-        )}
-
-        <button
-          onClick={next}
-          className="p-2 text-gray-500 hover:text-gray-800 absolute right-0 disabled:opacity-40"
-          disabled={total <= 1}
-          aria-label="Siguiente"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
-      </div>
-    </div>
-  );
+  width?: number;
+  height?: number;
 }
 
-type CarouselMultiProps = {
+interface CarouselMultiProps {
   title: string;
-  logos: Logo[];
+  icon: React.ReactNode;
+  logos: LogoAsset[];
   itemsPerView?: number;
   gap?: number;
-  /** Intervalo de autoplay en ms. Si es 0 o null, no hay autoplay */
-  autoplayMs?: number | null;
-};
+  autoplayInterval?: number | null;
+}
 
-function CarouselMulti({
+const CarouselMulti = ({
   title,
+  icon,
   logos,
-  itemsPerView = 2,
-  gap = 28,
-  autoplayMs = 3000,
-}: CarouselMultiProps) {
-  const [idx, setIdx] = useState(0);
-  const total = logos.length;
-  const maxIdx = Math.max(0, total - itemsPerView);
+  itemsPerView = 3,
+  gap = 32,
+  autoplayInterval = 3000,
+}: CarouselMultiProps) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const totalItems = logos.length;
+  const maxIndex = Math.max(0, totalItems - itemsPerView);
 
+  // Auto-advance carousel
   useEffect(() => {
-    if (total === 0) return;
-    if (!autoplayMs) return;
+    if (!totalItems || !autoplayInterval || totalItems <= itemsPerView) return;
 
-    const t = setInterval(
-      () => setIdx((i) => (i >= maxIdx ? 0 : i + 1)),
-      autoplayMs
+    const interval = setInterval(
+      () =>
+        setCurrentIndex((current) => (current >= maxIndex ? 0 : current + 1)),
+      autoplayInterval
     );
-    return () => clearInterval(t);
-  }, [autoplayMs, maxIdx, total]);
+    return () => clearInterval(interval);
+  }, [autoplayInterval, maxIndex, totalItems, itemsPerView]);
 
-  const prev = () => setIdx((i) => (i <= 0 ? maxIdx : i - 1));
-  const next = () => setIdx((i) => (i >= maxIdx ? 0 : i + 1));
+  const navigatePrevious = () =>
+    setCurrentIndex((current) => (current <= 0 ? maxIndex : current - 1));
 
-  const basis = `calc((100% - ${
+  const navigateNext = () =>
+    setCurrentIndex((current) => (current >= maxIndex ? 0 : current + 1));
+
+  // Calculate responsive dimensions
+  const itemBasis = `calc((100% - ${
     (itemsPerView - 1) * gap
   }px) / ${itemsPerView})`;
-  const translate = `translateX(calc(-${idx} * (${basis} + ${gap}px)))`;
+  const translateValue = `translateX(calc(-${currentIndex} * (${itemBasis} + ${gap}px)))`;
 
   const trackStyle: CSSProperties = {
     gap: `${gap}px`,
-    transform: translate,
-    transition: "transform 400ms ease",
+    transform: translateValue,
+    transition: "transform 400ms ease-in-out",
   };
 
-  return (
-    <div className="relative">
-      <p className="mb-3 text-[11px] tracking-[0.2em] text-gray-600 uppercase select-none">
-        {title}
-      </p>
+  const isNavigationDisabled = totalItems <= itemsPerView;
 
+  return (
+    <div className="relative px-4 py-8">
+      {/* Section Header */}
+      <div className="flex items-center justify-center gap-3 mb-10">
+        {icon}
+        <h2 className="text-2xl md:text-3xl font-bold text-center text-[#0a7ea4]">
+          {title}
+        </h2>
+      </div>
+
+      {/* Carousel Container */}
       <div className="relative">
+        {/* Navigation Buttons */}
         <button
-          onClick={prev}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 text-gray-500 hover:text-gray-800 disabled:opacity-40"
-          disabled={total <= itemsPerView}
+          onClick={navigatePrevious}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 
+                     text-gray-400 hover:text-gray-700 
+                     transition-colors duration-200 disabled:opacity-30 disabled:cursor-not-allowed"
+          disabled={isNavigationDisabled}
           aria-label="Anterior"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
 
-        <div className="overflow-hidden">
-          <div className="flex items-center" style={trackStyle}>
-            {logos.map((l: Logo, i: number) => (
+        {/* Carousel Track */}
+        <div className="overflow-hidden px-12">
+          <div
+            className="flex items-center"
+            style={trackStyle}
+            role="list"
+            aria-label={`Carrusel de ${title.toLowerCase()}`}
+          >
+            {logos.map((logo, index) => (
               <div
-                key={`${l.src}-${i}`}
+                key={`${logo.src}-${index}`}
                 className="shrink-0"
-                style={{ flexBasis: basis }}
+                style={{ flexBasis: itemBasis }}
+                role="listitem"
               >
-                <div className="grid place-items-center">
+                <div className="grid place-items-center p-4">
                   <Image
-                    src={l.src}
-                    alt={l.alt}
-                    width={700}
-                    height={200}
-                    className="h-20 sm:h-24 object-contain"
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={logo.width || 700}
+                    height={logo.height || 200}
+                    className="h-16 sm:h-20 md:h-24 object-contain"
                     sizes="(max-width: 640px) 240px, (max-width: 1024px) 400px, 700px"
+                    priority={index < 3}
                   />
                 </div>
               </div>
@@ -169,9 +120,11 @@ function CarouselMulti({
         </div>
 
         <button
-          onClick={next}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 text-gray-500 hover:text-gray-800 disabled:opacity-40"
-          disabled={total <= itemsPerView}
+          onClick={navigateNext}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 
+                     text-gray-400 hover:text-gray-700 
+                     transition-colors duration-200 disabled:opacity-30 disabled:cursor-not-allowed"
+          disabled={isNavigationDisabled}
           aria-label="Siguiente"
         >
           <ChevronRight className="w-5 h-5" />
@@ -179,43 +132,119 @@ function CarouselMulti({
       </div>
     </div>
   );
-}
+};
 
-export function PartnersSection() {
-  const organizadores: Logo[] = [
-    { src: "/img/logos/Caces.png", alt: "CACES" },
-    { src: "/img/logos/suda.webp", alt: "ISTS" },
+export const PartnersSection = () => {
+  // Logo assets configuration - Ahora con dimensiones consistentes
+  const organizer: LogoAsset = {
+    src: "/img/logos/suda.webp",
+    alt: "Tecnológico Sudamericano",
+    width: 500,
+    height: 150,
+  };
+
+  const sponsors: LogoAsset[] = [
+    {
+      src: "/img/logos/Caces.png",
+      alt: "Consejo de Aseguramiento de la Calidad de la Educación Superior - CACES",
+      width: 500, // Mismo ancho que el organizador
+      height: 150, // Misma altura que el organizador
+    },
   ];
 
-  const coorganizadores: Logo[] = [
-    { src: "/img/logos/itsdab.webp", alt: "ISTDAB" },
-    { src: "/img/logos/itsup.png", alt: "Tecnoecuatoriano" },
-    { src: "/img/logos/Caces.png", alt: "Partner 3" },
+  const coOrganizers: LogoAsset[] = [
+    {
+      src: "/img/logos/itsdab.webp",
+      alt: "Instituto Superior Tecnológico DAB - ISTDAB",
+      width: 700,
+      height: 200,
+    },
+    {
+      src: "/img/logos/itsup.png",
+      alt: "Instituto Tecnológico Superior Universitario Portoviejo - ITSUP",
+      width: 700,
+      height: 200,
+    },
+    {
+      src: "/img/logos/Caces.png",
+      alt: "Consejo de Aseguramiento de la Calidad de la Educación Superior - CACES",
+      width: 700,
+      height: 200,
+    },
+    {
+      src: "/img/logos/tecnounion.png",
+      alt: "Tecno Unión",
+      width: 700,
+      height: 200,
+    },
   ];
 
   return (
-    <section className="py-14 bg-transparent">
-      <div className="container mx-auto px-4">
-        <div className="md:flex md:flex-nowrap md:items-start md:gap-8">
-          <div className="w-full md:w-5/12">
-            <CarouselSingle
-              title="Organizador & Sponsoring"
-              logos={organizadores}
-            />
+    <section className="py-16 bg-transparent">
+      <div className="container mx-auto px-4 max-w-7xl">
+        {/* Top Row: Organizer & Sponsors */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
+          {/* Organizer Section */}
+          <div className="space-y-6">
+            <div className="flex items-center justify-center gap-3">
+              <Crown className="h-6 w-6 text-[#0a7ea4]" />
+              <h3 className="text-2xl md:text-3xl font-bold text-[#0a7ea4]">
+                Organizador
+              </h3>
+              {/* <Crown className="h-6 w-6 text-[#0a7ea4]" /> */}
+            </div>
+            <div className="flex justify-start">
+              <Image
+                src={organizer.src}
+                alt={organizer.alt}
+                width={organizer.width}
+                height={organizer.height}
+                className="h-20 sm:h-24 md:h-28 object-contain"
+                priority
+              />
+            </div>
           </div>
 
-          <div className="hidden md:block w-px self-stretch bg-gray-300" />
-
-          <div className="w-full md:w-7/12">
-            <CarouselMulti
-              title="Coorganizadores"
-              logos={coorganizadores}
-              itemsPerView={2}
-              gap={28}
-            />
+          {/* Sponsors Section */}
+          <div className="space-y-6">
+            <div className="flex items-center justify-center gap-3">
+              <Award className="h-6 w-6 text-[#0a7ea4]" />
+              <h3 className="text-2xl md:text-3xl font-bold text-[#0a7ea4]">
+                Sponsoring
+              </h3>
+              {/* <Award className="h-6 w-6 text-[#0a7ea4]" /> */}
+            </div>
+            <div className="flex justify-start">
+              {sponsors.map((sponsor) => (
+                <Image
+                  key={sponsor.alt}
+                  src={sponsor.src}
+                  alt={sponsor.alt}
+                  width={sponsor.width}
+                  height={sponsor.height}
+                  className="h-20 sm:h-24 md:h-28 object-contain" // Mismas clases de tamaño
+                  priority
+                />
+              ))}
+            </div>
           </div>
         </div>
+
+        {/* Subtle Divider Line */}
+        <div className="flex justify-center mb-16">
+          <div className="w-24 h-px bg-gradient-to-r from-transparent via-[#0a7ea4] to-transparent opacity-40"></div>
+        </div>
+
+        {/* Co-organizers Carousel */}
+        <CarouselMulti
+          title="Coorganizadores"
+          icon={<Users className="h-6 w-6 text-[#0a7ea4]" />}
+          logos={coOrganizers}
+          itemsPerView={3}
+          gap={40}
+          autoplayInterval={3500}
+        />
       </div>
     </section>
   );
-}
+};

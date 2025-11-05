@@ -80,9 +80,9 @@ export function InfoSection() {
     },
     caces: {
       paragraphs: [
-        "El Congreso InDTec 2025, en su presente edición, cuenta con el respaldo del Consejo de Aseguramiento de la Calidad de la Educación Superior (CACES),", 
+        "El Congreso InDTec 2025, en su presente edición, cuenta con el respaldo del Consejo de Aseguramiento de la Calidad de la Educación Superior (CACES),",
         "amparado por la resolución GCE‑UCS‑REG‑02‑2025‑001. Este aval institucional certifica la excelencia académica del evento y garantiza su alineación con los estándares del sistema de educación superior",
-        "Su apoyo refuerza el carácter del congreso como medio de divulgación científica y como plataforma de impulso a la investigación regional e internacional."
+        "Su apoyo refuerza el carácter del congreso como medio de divulgación científica y como plataforma de impulso a la investigación regional e internacional.",
       ],
     },
   };
@@ -102,13 +102,18 @@ export function InfoSection() {
     return activeTab === "caces";
   };
 
+  // Función para determinar si mostrar el botón
+  const shouldShowButton = () => {
+    return activeTab !== "caces"; // Solo mostrar en "congreso" y "caces"
+  };
+
   return (
     <section
       ref={containerRef}
       className="relative bg-[#0a2540] text-white"
       style={{ height: "2100px" }}
     >
-      <div className="sticky top-0 h-screen overflow-hidden">
+      <div className="sticky top-0  h-screen overflow-hidden">
         <div className="flex flex-col lg:flex-row h-full">
           {/* Imagen con scroll interno */}
           <div
@@ -134,7 +139,7 @@ export function InfoSection() {
           </div>
 
           {/* Contenido derecho */}
-          <div className="w-full lg:w-[50%] flex items-center justify-center px-5 sm:px-8 md:px-12 py-6 lg:py-0 order-2 lg:order-2">
+          <div className="w-full lg:w-[50%] flex items-center justify-center px-5 sm:px-8 md:px-12 py-12 lg:py-12 order-2 lg:order-2">
             <div className="w-full max-w-xl">
               {/* Pestañas con separadores */}
               <div className="flex flex-wrap items-center gap-2 sm:gap-2 mb-5 lg:mb-12">
@@ -204,51 +209,54 @@ export function InfoSection() {
                 ))}
               </div>
 
-              <div className="mt-5 lg:mt-10">
-                {isExternalLink() ? (
-                  <a
-                    href={getButtonLink()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-transparent border-2 border-[#ff6b35] text-[#ff6b35] hover:bg-[#ff6b35] hover:text-white px-5 sm:px-8 py-2 sm:py-2.5 rounded-md transition-colors font-semibold text-xs sm:text-sm lg:text-base inline-flex items-center gap-2"
-                  >
-                    Saber más
-                    <svg
-                      className="w-3 h-3 sm:w-4 sm:h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+              {/* Botón condicional - Solo se muestra en "congreso" y "caces" */}
+              {shouldShowButton() && (
+                <div className="mt-5 lg:mt-10">
+                  {isExternalLink() ? (
+                    <a
+                      href={getButtonLink()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-transparent border-2 border-[#ff6b35] text-[#ff6b35] hover:bg-[#ff6b35] hover:text-white px-5 sm:px-8 py-2 sm:py-2.5 rounded-md transition-colors font-semibold text-xs sm:text-sm lg:text-base inline-flex items-center gap-2"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2.5}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </a>
-                ) : (
-                  <Link
-                    href={getButtonLink()}
-                    className="bg-transparent border-2 border-[#ff6b35] text-[#ff6b35] hover:bg-[#ff6b35] hover:text-white px-5 sm:px-8 py-2 sm:py-2.5 rounded-md transition-colors font-semibold text-xs sm:text-sm lg:text-base inline-flex items-center gap-2"
-                  >
-                    Saber más
-                    <svg
-                      className="w-3 h-3 sm:w-4 sm:h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                      Saber más
+                      <svg
+                        className="w-3 h-3 sm:w-4 sm:h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2.5}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </a>
+                  ) : (
+                    <Link
+                      href={getButtonLink()}
+                      className="bg-transparent border-2 border-[#ff6b35] text-[#ff6b35] hover:bg-[#ff6b35] hover:text-white px-5 sm:px-8 py-2 sm:py-2.5 rounded-md transition-colors font-semibold text-xs sm:text-sm lg:text-base inline-flex items-center gap-2"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2.5}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </Link>
-                )}
-              </div>
+                      Saber más
+                      <svg
+                        className="w-3 h-3 sm:w-4 sm:h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2.5}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </Link>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
