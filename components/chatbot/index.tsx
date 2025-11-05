@@ -45,9 +45,10 @@ function buildRequestBody(
     messages: [{ role: "user", content: message }],
     rag_config: {
       enabled: true,
-      search_limit: 5,
-      min_similarity: 0.5,
+      search_limit: 7,
+      min_similarity: 0.7,
       keyword_weight: 0.3,
+	  event_filter: ["DOC_INDTEC"]
     },
     idSession: "session-chatbot-indtec",
     idRequest: crypto.randomUUID(),
@@ -67,7 +68,7 @@ const Chatbot = () => {
   const generateBotResponse = async (history: ChatMessage[]) => {
     const updateHistory = (text: string) => {
       setChatHistory((prev) => [
-        ...prev.filter((msg) => msg.text !== "Thinking..."),
+        ...prev.filter((msg) => msg.text !== "..."),
         { role: "model", text },
       ]);
     };
@@ -206,7 +207,7 @@ const Chatbot = () => {
                 <ChatbotIcon />
               </div>
               <div>
-                <h3 className="font-semibold text-lg">Chatbot ISTS</h3>
+                <h3 className="font-semibold text-lg">CHATBOT INDTEC</h3>
                 <p className="text-xs text-blue-100">En línea</p>
               </div>
             </div>

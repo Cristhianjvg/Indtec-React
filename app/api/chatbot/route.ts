@@ -26,10 +26,10 @@ export async function POST(request: NextRequest) {
         messages: [{ role: "user", content: message }],
         rag_config: {
           enabled: true,
-          search_limit: 5,
+          search_limit: 6,
           min_similarity: 0.5,
           keyword_weight: 0.3,
-          // event_filter: eventFilter || [] // Disabled for now - documents don't have categories set
+          event_filter: ["DOC_INDTEC"]
         },
       },
       "chatbot-message",
