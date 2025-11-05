@@ -91,7 +91,7 @@ const Chatbot = () => {
       );
 
       const response = await fetch(
-        "http://localhost:8080/api/v1/chat/completions",
+        "https://istschat.xyz/api/v1/chat/completions",
         {
           method: "POST",
           headers: {
