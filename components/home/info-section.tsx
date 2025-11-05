@@ -80,11 +80,9 @@ export function InfoSection() {
     },
     caces: {
       paragraphs: [
-        "El Consejo de Aseguramiento de la Calidad de la Educación Superior (CACES) es el organismo público técnico.",
-        "Encargado de normar, regular y coordinar el Sistema de Aseguramiento de la Calidad de la Educación Superior.",
-        "CACES garantiza la calidad de las instituciones de educación superior mediante procesos de evaluación y acreditación.",
-        "Su objetivo es promover la excelencia académica y el mejoramiento continuo de la educación superior en el país.",
-        "Trabaja en conjunto con instituciones educativas para elevar los estándares de calidad educativa.",
+        "El Congreso InDTec 2025, en su presente edición, cuenta con el respaldo del Consejo de Aseguramiento de la Calidad de la Educación Superior (CACES),", 
+        "amparado por la resolución GCE‑UCS‑REG‑02‑2025‑001. Este aval institucional certifica la excelencia académica del evento y garantiza su alineación con los estándares del sistema de educación superior",
+        "Su apoyo refuerza el carácter del congreso como medio de divulgación científica y como plataforma de impulso a la investigación regional e internacional."
       ],
     },
   };
@@ -95,8 +93,6 @@ export function InfoSection() {
         return "/congreso";
       case "congreso":
         return "/congreso";
-      case "caces":
-        return "https://www.caces.gob.ec/";
       default:
         return "/congreso";
     }

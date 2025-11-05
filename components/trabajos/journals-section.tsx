@@ -14,7 +14,7 @@ export function JournalsSection() {
             <div className="flex justify-center mb-6">
               <div className="w-32 h-32 bg-gray-100 rounded-lg flex items-center justify-center">
                 <Image
-                  src="img/latindex.webp"
+                  src="img/latindex.png"
                   alt="Latindex"
                   className="w-full h-full object-contain p-4"
                 />

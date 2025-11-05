@@ -39,7 +39,7 @@ export function Header() {
               className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
             >
               <Calendar className="h-4 w-4" />
-              EVENTO
+              ACTIVIDADES
             </Link>
             <Link
               href="/tarifa"
@@ -48,13 +48,7 @@ export function Header() {
               <DollarSign className="h-4 w-4" />
               TARIFAS
             </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
-            >
-              <BookOpen className="h-4 w-4" />
-              MEMORIAS
-            </Link>
+            
           </nav>
 
           {/* Botón escritorio y menú móvil */}

@@ -6,11 +6,9 @@ import { PartnersSection } from "../components/home/partners-section";
 import { InfoSection } from "../components/home/info-section";
 import { FechasImportantes } from "../components/home/fechas-importantes-section";
 import { Experiencia } from "@/components/home/experiencia-section";
-import { TarifaSection } from "@/components/home/tarifa-section";
+import { TarifaSection } from "@/components/tarifa/tarifa-section";
 import { AreasTematicas } from "@/components/home/areas-tematicas-section";
 import Estadisticas from "@/components/congreso/estadisticas";
-import { PonentesSection } from "@/components/home/ponentes-section";
-import { EnviosTrabajoSection } from "@/components/home/envio-trabajo-section";
 import Auspiciantes from "@/components/indtec/auspiciantes";
 
 export default function Home() {
@@ -25,10 +23,7 @@ export default function Home() {
       <FechasImportantes />
       <Experiencia />
       <AreasTematicas />
-      <TarifaSection />
-      <EnviosTrabajoSection />
       <Auspiciantes />
-      <PonentesSection />
       <Estadisticas />
       <Footer />
       {/* </main> */}

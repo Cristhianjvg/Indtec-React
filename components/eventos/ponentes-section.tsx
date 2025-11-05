@@ -10,7 +10,7 @@ const ponentes = [
     nombre: "Dr. Fidel Márquez Sánchez Ph.D.",
     cargo: "Consejero Académico del Consejo de Educación Superior",
     institucion: "CES Ecuador",
-    imagen: "/img/ponentes/fidel.jpg",
+    imagen: "/img/ponentes/fidel.png",
     pais: "ECUADOR",
     tema: "Tema a definir",
   },
@@ -29,7 +29,7 @@ const ponentes = [
     institucion: "Universidad Técnica Particular de Loja - UTPL",
     imagen: "img/ponentes/ingrid.png",
     pais: "ECUADOR",
-    tema: "Tema a definir",
+    tema: "Sociedad 5.0 y el reencantamiento del ser humano: educación e investigación desde América Latina",
   },
   {
     nombre: "Daniel Fernando Bovolenta Ovigli",
@@ -59,7 +59,7 @@ const ponentes = [
     nombre: "Marvi Alexander Viteri Ruiz",
     cargo: "Docente universitario e investigador independiente",
     institucion: "Pontificia Universidad Católica del Ecuador",
-    imagen: "/img/ponentes/marvi.jpg",
+    imagen: "/img/ponentes/marvi.png",
     pais: "ECUADOR",
     tema: "Autocuidado en la vulnerabilidad: Una perspectiva innovadora desde la investigación formativa.",
   },
@@ -67,7 +67,7 @@ const ponentes = [
     nombre: "Edgar Edurman García Silvera",
     cargo: "Docente investigador Instituto Superior Tecnológico Tecnoecuatoriano",
     institucion: "Instituto Superior Tecnológico Tecnoecuatoriano",
-    imagen: "/img/ponentes/Ponente.png",
+    imagen: "/img/ponentes/edgar.png",
     pais: "ECUADOR",
     tema: "Retos y perspectivas de la Innovación: Una Mirada Global",
   },
@@ -75,7 +75,7 @@ const ponentes = [
     nombre: "María José Martínez Granda",
     cargo: "Jefe de Control de Calidad",
     institucion: "Industria Lojana de Especerías ILE C.A.  ",
-    imagen: "/img/ponentes/mariajose.JPG",
+    imagen: "/img/ponentes/maria.png",
     pais: "ECUADOR",
     tema: "Certificaciones y Cultura de calidad en ILE C.A. ",
   },
@@ -83,9 +83,17 @@ const ponentes = [
     nombre: "Rosa Paola Flores Loaiza",
     cargo: "Jefe de Control de Calidad",
     institucion: " Universidad Nacional de Loja",
-    imagen: "/img/ponentes/rosaflores.jpeg",
+    imagen: "/img/ponentes/rosa.png",
     pais: "ECUADOR",
     tema: "Emprendimiento en Ingeniería: Construyendo el Futuro a Través de la Innovación Aplicada",
+  },
+  {
+    nombre: "Alexandra Monserrate Jara Minga",
+    cargo: "Gobernadora de la ciudad de Loja",
+    institucion: "Gobernación de Loja",
+    imagen: "/img/ponentes/alexandra.png",
+    pais: "ECUADOR",
+    tema: "La Administración Pública con enfoque de género en la agricultura",
   },
 ];
 
@@ -96,13 +104,13 @@ export function PonentesSection() {
   const itemsPerSlide = 4;
   const totalSlides = Math.ceil(ponentes.length / itemsPerSlide);
 
-  // slide cada 4 segundos
-  useEffect(() => {
+  // slide cada 5 segundos
+  /*useEffect(() => {
     const intervalo = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % totalSlides);
-    }, 4000); // Puedes ajustar el tiempo (milisegundos)
+    }, 5000); // Puedes ajustar el tiempo (milisegundos)
     return () => clearInterval(intervalo);
-  }, [totalSlides]);
+  }, [totalSlides]);*/
 
   const handleFlip = (index: number) => {
     setFlippedIndex(flippedIndex === index ? null : index);
@@ -131,10 +139,10 @@ export function PonentesSection() {
     <section className="py-24 bg-[#062135] text-white relative overflow-hidden">
       <div className="mx-auto max-w-[1360px] sm:px-2 px-8 md:px-10 relative">
         <h2 className="text-center text-3xl font-bold text-orange-500 mb-2">
-          EVENTO
+          CONFERENCIAS MAGISTRALES
         </h2>
         <p className="text-center uppercase text-gray-300 mb-12 tracking-widest">
-          Ponentes
+          Invitados Especiales
         </p>
 
         {/* --- Grid de tarjetas (slide) --- */}
