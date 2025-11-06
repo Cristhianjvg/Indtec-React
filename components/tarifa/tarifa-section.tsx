@@ -23,7 +23,7 @@ const tabs: TabContent[] = [
     title: "ASISTENTES",
     icon: <Users className="w-5 h-5" />,
     color: "bg-[#1e5a7d]",
-    image: "/img/indtec2.webp",
+    image: "/img/general/asistentes.webp",
     description:
       "Los participantes, de forma presencial o virtual, acceden a ponencias, talleres interactivos, materiales exclusivos, certificación de 40 horas, actividades culturales y networking. Una experiencia integral para potenciar su formación académica y profesional.",
     buttonText: "Conocer más",
@@ -34,7 +34,7 @@ const tabs: TabContent[] = [
     title: "DIVULGACIÓN CIENTÍFICA",
     icon: <FlaskConical className="w-5 h-5" />,
     color: "bg-[#ff6b35]",
-    image: "/img/indtec2.webp",
+    image: "/img/general/divulgacion.webp",
     description:
       "Participa como ponente en InDTec 2025. Accede a ponencias, talleres, noche cultural, certificado, difusión en libro con ISBN y opción de publicación en revistas indexadas Latindex o Scopus. Modalidad presencial o virtual. ¡Impulsa tu proyección investigativa!",
     buttonText: "Conocer más",
@@ -45,7 +45,7 @@ const tabs: TabContent[] = [
     title: "COORGANIZADORES",
     icon: <Handshake className="w-5 h-5" />,
     color: "bg-[#7cb342]",
-    image: "/img/indtec2.webp",
+    image: "/img/general/coorganizadores.webp",
     description:
       "Tu institución puede ser coorganizadora del congreso, accediendo a visibilidad institucional, ponencias, talleres, publicaciones en Latindex o Scopus, certificación oficial y espacios de networking. Participa en el comité científico y fortalece tu posicionamiento académico con impacto nacional e internacional.",
     buttonText: "Conocer más",

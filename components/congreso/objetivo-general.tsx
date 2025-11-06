@@ -7,7 +7,7 @@ export default function ObjetivoGeneral() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-[400px] rounded-lg overflow-hidden">
             <Image
-              src="img/indtec2.webp"
+              src="img/general/objetivos.webp"
               alt="Congreso InDTec"
               width={500}
               height={300}
