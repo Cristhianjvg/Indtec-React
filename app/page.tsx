@@ -5,7 +5,7 @@ import { Contador } from "../components/home/contador-section";
 import { PartnersSection } from "../components/home/partners-section";
 import { InfoSection } from "../components/home/info-section";
 import { FechasImportantes } from "../components/home/fechas-importantes-section";
-import { Experiencia } from "@/components/eventos/experiencia-section";
+import { Experiencia } from "@/components/actividades/experiencia-section";
 import { TarifaSection } from "@/components/tarifa/tarifa-section";
 import { AreasTematicas } from "@/components/home/areas-tematicas-section";
 import Estadisticas from "@/components/congreso/estadisticas";

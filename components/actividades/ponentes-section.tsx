@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import {Briefcase, GraduationCap, MapPin,ChevronLeft, ChevronRight,} from "lucide-react";
+import { Briefcase, GraduationCap, MapPin, ChevronLeft, ChevronRight, } from "lucide-react";
 
 const ponentes = [
   {
@@ -81,7 +81,7 @@ const ponentes = [
   },
   {
     nombre: "Rosa Paola Flores Loaiza",
-    cargo: "Jefe de Control de Calidad",
+    cargo: "Docente investigadora en la Universidad Nacional de Loja",
     institucion: " Universidad Nacional de Loja",
     imagen: "/img/ponentes/rosa.png",
     pais: "ECUADOR",
@@ -94,6 +94,22 @@ const ponentes = [
     imagen: "/img/ponentes/alexandra.png",
     pais: "ECUADOR",
     tema: "La Administración Pública con enfoque de género en la agricultura",
+  },
+  {
+    nombre: "Pablo Jose Ruíz Aguirre",
+    cargo: "Profesor de pregrado en la UIDE y de postgrado en la UNL",
+    institucion: "UIDE",
+    imagen: "/img/ponentes/pabloruiz.png",
+    pais: "ECUADOR",
+    tema: "La filosofía como innovación en el siglo XXI",
+  },
+  {
+    nombre: "Bruno Valarezo Correa",
+    cargo: "CEO de Clipp Ecuador SAS",
+    institucion: "Clipp Ecuador SAS",
+    imagen: "/img/ponentes/bruno.png",
+    pais: "ECUADOR",
+    tema: "Tema a definir",
   },
 ];
 
@@ -165,14 +181,12 @@ export function PonentesSection() {
                   >
                     {/* --- CARA FRONTAL --- */}
                     <div
-                      className={`absolute inset-0 [backface-visibility:hidden] ${
-                        isFlipped ? "pointer-events-none" : "pointer-events-auto"
-                      }`}
+                      className={`absolute inset-0 [backface-visibility:hidden] ${isFlipped ? "pointer-events-none" : "pointer-events-auto"
+                        }`}
                     >
                       <div
-                        className={`relative h-full overflow-hidden rounded-[28px] shadow-[0_14px_40px_rgba(0,0,0,.35)] ${
-                          isFlipped ? "" : "group"
-                        }`}
+                        className={`relative h-full overflow-hidden rounded-[28px] shadow-[0_14px_40px_rgba(0,0,0,.35)] ${isFlipped ? "" : "group"
+                          }`}
                       >
                         <Image
                           src={p.imagen}
@@ -182,9 +196,8 @@ export function PonentesSection() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0b2431]/70 via-[#0b2431]/20 to-transparent" />
                         <div
-                          className={`absolute bottom-0 z-20 w-full bg-[#b55e2b]/35 backdrop-blur-md border-t border-[#b55e2b]/40 rounded-b-[28px] px-7 pt-5 pb-[90px] h-[210px] transition-transform duration-500 ease-out ${
-                            isFlipped ? "" : "group-hover:translate-y-[50px]"
-                          }`}
+                          className={`absolute bottom-0 z-20 w-full bg-[#b55e2b]/35 backdrop-blur-md border-t border-[#b55e2b]/40 rounded-b-[28px] px-7 pt-5 pb-[90px] h-[210px] transition-transform duration-500 ease-out ${isFlipped ? "" : "group-hover:translate-y-[50px]"
+                            }`}
                         >
                           <h3 className="text-[20px] pb-2 font-semibold border-b border-[#1c1c1c] leading-tight">
                             {p.nombre}
