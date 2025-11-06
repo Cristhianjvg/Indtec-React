@@ -15,18 +15,13 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Header />
-      {/* <main className="pt-16"> */}
       <CarruselSection />
-      <Contador />
+
       <PartnersSection />
       <InfoSection />
-      {/* <FechasImportantes /> */}
-      {/*<Experiencia/>*/}
-      {/* <AreasTematicas /> */}
       <Auspiciantes />
       <Estadisticas />
       <Footer />
-      {/* </main> */}
     </div>
   );
 }

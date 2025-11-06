@@ -18,20 +18,13 @@ export function Contador() {
   });
 
   useEffect(() => {
-    // función para obtener la próxima fecha 27 de noviembre 08:00 (-05:00 Guayaquil)
     const getTargetDate = () => {
       const now = new Date();
       const year = now.getFullYear();
-
-      // 27 de noviembre a las 08:00 en Guayaquil (UTC-05:00)
-      // usamos la ISO con offset -05:00 para que no se desplace
       let target = new Date(`${year}-11-27T08:00:00-05:00`);
-
-      // si ya pasó este año, usamos el próximo
       if (now.getTime() > target.getTime()) {
         target = new Date(`${year + 1}-11-27T08:00:00-05:00`);
       }
-
       return target;
     };
 
@@ -42,13 +35,7 @@ export function Contador() {
       const distance = targetDate.getTime() - now;
 
       if (distance <= 0) {
-        // llegó a cero
-        setTimeLeft({
-          days: 0,
-          hours: 0,
-          minutes: 0,
-          seconds: 0,
-        });
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         return;
       }
 
@@ -66,9 +53,19 @@ export function Contador() {
   }, []);
 
   return (
-    <section className="absolute bottom-30 left-0 right-0 py-6 md:py-8">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-center gap-8 flex-wrap">
+    <section
+      className="
+        absolute
+        left-1/2 -translate-x-1/2
+        w-full
+        z-20
+        bottom-[12%] md:bottom-[10%] lg:bottom-[8%]
+      "
+      // fallback por si tailwind no genera bottom-[12%]
+      style={{ bottom: "12%" }}
+    >
+      <div className="px-4">
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6">
           <TimeBox value={timeLeft.days} label="Días" />
           <TimeBox value={timeLeft.hours} label="Horas" />
           <TimeBox value={timeLeft.minutes} label="Minutos" />
@@ -81,11 +78,20 @@ export function Contador() {
 
 function TimeBox({ value, label }: { value: number; label: string }) {
   return (
-    <div className="bg-[#ff6b35] text-white rounded-lg p-3 sm:p-4 md:p-6 min-w-[70px] sm:min-w-[90px] md:min-w-[100px] text-center">
-      <div className="text-2xl sm:text-3xl md:text-4xl font-bold">
+    <div
+      className="
+        bg-[#ff6b35] text-white rounded-lg
+        px-3 py-3 sm:px-4 sm:py-4 md:px-5 md:py-5
+        text-center
+        min-w-[68px] sm:min-w-[82px] md:min-w-[92px]"
+    >
+      <div
+        className="font-bold leading-none"
+        style={{ fontSize: "clamp(1.6rem, 3vw, 2.6rem)" }}
+      >
         {value.toString().padStart(2, "0")}
       </div>
-      <div className="text-xs sm:text-sm mt-1">{label}</div>
+      <div className="mt-1 text-[0.6rem] sm:text-xs md:text-sm">{label}</div>
     </div>
   );
 }

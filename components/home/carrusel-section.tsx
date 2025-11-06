@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Contador } from "@/components/home/contador-section"; // 👈 tu ruta
 
 const slides = [
   {
@@ -49,6 +50,7 @@ export function CarruselSection() {
 
   return (
     <section className="relative h-[580px] sm:h-[680px] md:h-[780px] bg-[#0a2540] overflow-hidden">
+      {/* Fondo / slides */}
       {slides.map((slide, index) => (
         <div
           key={index}
@@ -66,6 +68,7 @@ export function CarruselSection() {
         </div>
       ))}
 
+      {/* Contenido */}
       <div className="relative container mx-auto h-full flex items-center justify-center px-4">
         <div className="text-center text-white max-w-4xl">
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-3 md:mb-6 text-balance tracking-wider text-gray-300">
@@ -78,9 +81,13 @@ export function CarruselSection() {
             </span>{" "}
             {slides[currentSlide].subtitleEnd}
           </p>
+
+          {/* ⬇️ aquí queda fijo el contador dentro del carrusel */}
+          <Contador />
         </div>
       </div>
 
+      {/* Controles */}
       <Button
         variant="ghost"
         size="icon"
@@ -101,6 +108,7 @@ export function CarruselSection() {
         <ChevronRight className="h-5 w-5 md:h-8 md:w-8" />
       </Button>
 
+      {/* indicadores */}
       <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
         {slides.map((_, index) => (
           <button
