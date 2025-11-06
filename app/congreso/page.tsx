@@ -6,6 +6,8 @@ import ObjetivosEspecificos from "../../components/congreso/objetivos-especifico
 import PublicoObjetivo from "../../components/congreso/publico-objetivo";
 import Modalidades from "../../components/congreso/modalidades";
 import Estadisticas from "../../components/congreso/estadisticas";
+import { FechasImportantes } from "@/components/home/fechas-importantes-section";
+import { AreasTematicas } from "@/components/home/areas-tematicas-section";
 
 export default function CongresoPage() {
   return (
@@ -17,6 +19,8 @@ export default function CongresoPage() {
         <ObjetivosEspecificos />
         <PublicoObjetivo />
         <Modalidades />
+        <AreasTematicas/>
+        <FechasImportantes />
         <Estadisticas />
       </main>
       <Footer />

@@ -14,10 +14,13 @@ export function JournalsSection() {
             <div className="flex justify-center mb-6">
               <div className="w-32 h-32 bg-gray-100 rounded-lg flex items-center justify-center">
                 <Image
-                  src="img/latindex.png"
+                  src="/img/logos/latindex.png"
                   alt="Latindex"
+                  width={128}
+                  height={128}
                   className="w-full h-full object-contain p-4"
                 />
+
               </div>
             </div>
 
@@ -37,10 +40,13 @@ export function JournalsSection() {
             <div className="flex justify-center mb-6">
               <div className="w-32 h-32 bg-gray-100 rounded-lg flex items-center justify-center">
                 <Image
-                  src="img/scopus.webp"
-                  alt="CIEB Workshop"
+                  src="/img/logos/scopus.png"
+                  alt="Scopus"
+                  width={128}
+                  height={128}
                   className="w-full h-full object-contain p-4"
                 />
+
               </div>
             </div>
 

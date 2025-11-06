@@ -3,13 +3,14 @@
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
 
 export default function ParticipacionPricing() {
-  const price1 = useCounterAnimation(10.00, 1200); // $5.00
-  const price2 = useCounterAnimation(20.00, 1400); // $10.00
-  const price3 = useCounterAnimation(40.00, 1600); // $15.00
+  const price1 = useCounterAnimation(10.00, 1200);
+  const price2 = useCounterAnimation(20.00, 1400);
+  const price3 = useCounterAnimation(40.00, 1600);
 
   return (
-    <section className="py-12 md:py-16 bg-gray-50">
+    <section id="participacion-pricing" className="py-12 md:py-16 bg-gray-50">
       <div className="container mx-auto px-4">
+        {/* HEADER NORMAL - SIN BOTÓN CERRAR */}
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-2">
             TARIFAS DE PARTICIPACIÓN

@@ -3,17 +3,39 @@
 import { useCounterAnimation } from "@/hooks/use-counter-animation";
 import Image from "next/image";
 
-export default function DivulgacionCientifica() {
+interface DivulgacionCientificaProps {
+  onClose?: () => void;
+}
+
+export default function DivulgacionCientifica({ onClose }: DivulgacionCientificaProps) {
   const price1 = useCounterAnimation(40.00, 2000);
   const price2 = useCounterAnimation(70.00, 2000);
   const price3 = useCounterAnimation(400.00, 2000);
 
   return (
-    <section className="py-12 md:py-16 bg-primary text-white">
+    <section id="divulgacion-cientifica" className="py-12 md:py-16 bg-primary text-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">
-          DIVULGACIÓN CIENTÍFICA
-        </h2>
+        {/* Header con botón de cerrar */}
+        {onClose && (
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold">
+              DIVULGACIÓN CIENTÍFICA
+            </h2>
+            <button 
+              onClick={onClose}
+              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors text-sm md:text-base"
+            >
+              Cerrar
+            </button>
+          </div>
+        )}
+        
+        {/* Si no hay onClose (sección siempre visible), mostrar el header normal */}
+        {!onClose && (
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">
+            DIVULGACIÓN CIENTÍFICA
+          </h2>
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
           {/* Card 1 */}

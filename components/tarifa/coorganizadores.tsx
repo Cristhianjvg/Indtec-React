@@ -2,21 +2,50 @@
 
 import { useCounterAnimation } from "../../hooks/use-counter-animation";
 
-export default function CoorganizadorSection() {
+interface CoorganizadorSectionProps {
+  onClose?: () => void;
+}
+
+export default function CoorganizadorSection({ onClose }: CoorganizadorSectionProps) {
   const institucionalPrice = useCounterAnimation(10.00, 2000);
   const broncePrice = useCounterAnimation(600.00, 2000);
   const plataPrice = useCounterAnimation(1200.00, 2000);
   const oroPrice = useCounterAnimation(1600.00, 2000);
 
   return (
-    <section className="py-12 md:py-16 bg-gray-50">
+    <section id="coorganizadores" className="py-12 md:py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-2">
-          PLANES PARA
-        </h2>
-        <p className="text-center text-green-600 font-semibold mb-8 md:mb-12">
-          COORGANIZADORES
-        </p>
+        {/* Header con botón de cerrar */}
+        {onClose && (
+          <div className="flex justify-between items-center mb-8">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-2">
+                PLANES PARA
+              </h2>
+              <p className="text-green-600 font-semibold">
+                COORGANIZADORES
+              </p>
+            </div>
+            <button 
+              onClick={onClose}
+              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors text-sm md:text-base"
+            >
+              Cerrar
+            </button>
+          </div>
+        )}
+        
+        {/* Si no hay onClose (sección siempre visible), mostrar el header normal */}
+        {!onClose && (
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold mb-2">
+              PLANES PARA
+            </h2>
+            <p className="text-green-600 font-semibold">
+              COORGANIZADORES
+            </p>
+          </div>
+        )}
 
         {/* Institucional */}
         <div className="max-w-5xl mx-auto mb-12">

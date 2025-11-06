@@ -10,7 +10,7 @@ export default function Modalidades() {
           <div className="bg-muted p-10 rounded-lg">
             <div className="flex items-center gap-3 mb-4">
               <Home className="w-10 h-10 text-[var(--color-orange-accent)]" />
-              <h3 className="text-3xl font-bold text-foreground">Artículo Científico</h3>
+              <h3 className="text-3xl font-bold text-foreground">Presencial</h3>
             </div>
             <p className="text-lg text-muted-foreground leading-relaxed">
               En la sede del Instituto Superior Tecnológico Sudamericano (ISTS), ubicada en Loja, Ecuador.
@@ -20,7 +20,7 @@ export default function Modalidades() {
           <div className="bg-muted p-10 rounded-lg">
             <div className="flex items-center gap-3 mb-4">
               <Monitor className="w-10 h-10 text-[var(--color-orange-accent)]" />
-              <h3 className="text-3xl font-bold text-foreground">Ponencias</h3>
+              <h3 className="text-3xl font-bold text-foreground">Virtual</h3>
             </div>
             <p className="text-lg text-muted-foreground leading-relaxed">
               A través de plataformas digitales que permitirán la transmisión en tiempo real de las actividades

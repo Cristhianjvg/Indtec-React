@@ -1,3 +1,4 @@
+// components/tarifa/tarifa-section.tsx
 "use client";
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -13,7 +14,7 @@ interface TabContent {
   image: string;
   description: string;
   buttonText: string;
-  buttonLink: string;
+  sectionId: string;
 }
 
 const tabs: TabContent[] = [
@@ -26,7 +27,7 @@ const tabs: TabContent[] = [
     description:
       "Los participantes, de forma presencial o virtual, acceden a ponencias, talleres interactivos, materiales exclusivos, certificación de 40 horas, actividades culturales y networking. Una experiencia integral para potenciar su formación académica y profesional.",
     buttonText: "Conocer más",
-    buttonLink: "/tarifa",
+    sectionId: "participacion-pricing"
   },
   {
     id: "divulgacion",
@@ -37,7 +38,7 @@ const tabs: TabContent[] = [
     description:
       "Participa como ponente en InDTec 2025. Accede a ponencias, talleres, noche cultural, certificado, difusión en libro con ISBN y opción de publicación en revistas indexadas Latindex o Scopus. Modalidad presencial o virtual. ¡Impulsa tu proyección investigativa!",
     buttonText: "Conocer más",
-    buttonLink: "/tarifa",
+    sectionId: "divulgacion-cientifica"
   },
   {
     id: "coorganizadores",
@@ -48,7 +49,7 @@ const tabs: TabContent[] = [
     description:
       "Tu institución puede ser coorganizadora del congreso, accediendo a visibilidad institucional, ponencias, talleres, publicaciones en Latindex o Scopus, certificación oficial y espacios de networking. Participa en el comité científico y fortalece tu posicionamiento académico con impacto nacional e internacional.",
     buttonText: "Conocer más",
-    buttonLink: "/tarifa",
+    sectionId: "coorganizadores"
   },
 ];
 
@@ -75,10 +76,32 @@ function useMediaQuery(query: string) {
 
 const COLLAPSED_PX = 56;
 
-export function TarifaSection() {
+// HAZ LA PROP OPCIONAL
+interface TarifaSectionProps {
+  onShowSection?: (sectionId: string) => void;
+}
+
+// PROPORCIONA UN VALOR POR DEFECTO
+export function TarifaSection({ onShowSection }: TarifaSectionProps = {}) {
   const [openId, setOpenId] = useState<string>("asistentes");
   const [animatingId, setAnimatingId] = useState<string | null>(null);
   const isMd = useMediaQuery("(min-width: 768px)");
+
+  // MODIFICA LA FUNCIÓN PARA VERIFICAR SI EXISTE
+  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>, sectionId: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (onShowSection) {
+      onShowSection(sectionId);
+    } else {
+      // Si no hay onShowSection, hacer scroll a la sección
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
 
   return (
     <section className="bg-[#062135] py-8 sm:py-12 md:py-16 lg:py-24">
@@ -93,7 +116,6 @@ export function TarifaSection() {
         </div>
 
         <div className="rounded-3xl p-2">
-          {/* Acordeón horizontal en desktop, vertical en móvil */}
           <div className="flex flex-col md:flex-row gap-2 md:h-[520px] lg:h-[620px] overflow-hidden rounded-2xl">
             {tabs.map((tab) => {
               const isOpen = openId === tab.id;
@@ -123,7 +145,6 @@ export function TarifaSection() {
                     ease: "easeInOut",
                   }}
                 >
-                  {/* Etiqueta visible cuando está cerrado */}
                   {!isOpen && animatingId !== tab.id && (
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                       <span className="text-white font-bold tracking-widest text-xs sm:text-sm md:[writing-mode:vertical-rl] md:rotate-180 leading-none">
@@ -132,7 +153,6 @@ export function TarifaSection() {
                     </div>
                   )}
 
-                  {/* Contenido cuando está abierto */}
                   <AnimatePresence>
                     {isOpen && (
                       <motion.div
@@ -144,7 +164,6 @@ export function TarifaSection() {
                         className="relative z-10 h-full bg-black/35 backdrop-blur-sm"
                       >
                         <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-6 h-full">
-                          {/* Imagen lateral */}
                           <div className="relative col-span-1 lg:col-span-2 h-48 sm:h-64 lg:h-full hidden sm:block rounded-xl lg:rounded-l-xl overflow-hidden">
                             <Image
                               src={tab.image || "/placeholder.svg"}
@@ -154,7 +173,6 @@ export function TarifaSection() {
                             />
                           </div>
 
-                          {/* Texto + botón */}
                           <div className="col-span-1 lg:col-span-3 flex flex-col justify-center px-6 sm:px-8 lg:pl-8 lg:pr-12 py-6 sm:py-8">
                             <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4 md:mb-6">
                               {tab.title}
@@ -162,12 +180,12 @@ export function TarifaSection() {
                             <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6 md:mb-8 text-justify">
                               {tab.description}
                             </p>
-                            <a
-                              href={tab.buttonLink}
-                              className="rounded-xl bg-sky-800 hover:bg-sky-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm md:text-base sm:w-auto text-center transition-colors duration-200"
+                            <button
+                              onClick={(e) => handleButtonClick(e, tab.sectionId)}
+                              className="rounded-xl bg-sky-800 hover:bg-sky-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm md:text-base sm:w-auto text-center transition-colors duration-200 cursor-pointer"
                             >
                               {tab.buttonText}
-                            </a>
+                            </button>
                           </div>
                         </div>
                       </motion.div>

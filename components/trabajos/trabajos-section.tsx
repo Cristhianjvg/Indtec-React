@@ -5,7 +5,7 @@ export function TrabajoSection() {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url('img/indtec1.png')`,
+          backgroundImage: `url('img/indtec1.webp')`,
           filter: "blur(3px)",
         }}
       />

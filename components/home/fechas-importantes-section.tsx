@@ -22,9 +22,9 @@ export function FechasImportantes() {
             <div className="space-y-4">
               <DateItem text="24 de julio" />
               <DateItem text="04 de agosto" />
-              <DateItem text="30 de septiembre" />
-              <DateItem text="01 al 17 de octubre" />
-              <DateItem text="20 de octubre al 04 de noviembre" />
+              <DateItem text="15 de octubre" />
+              <DateItem text="16 al 30 de octubre" />
+              <DateItem text="31 de octubre al 10 de noviembre" />
               <DateItem text="27 y 28 de noviembre" />
               <DateItem text="Diciembre 2025" />
               <DateItem text="Enero - Febrero 2025" />

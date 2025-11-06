@@ -39,15 +39,7 @@ export function Experiencia() {
               size="default"
               className="border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-colors bg-transparent"
             >
-              Ver en línea
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-            <Button
-              variant="outline"
-              size="default"
-              className="border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-colors bg-transparent"
-            >
-              Descargar
+              Ver Agenda
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             {/* <Button size="default" className="bg-primary hover:bg-primary/90">
