@@ -24,10 +24,13 @@ export default function Auspiciantes() {
           <h2 className="text-3xl md:text-4xl font-bold text-center text-[#22c55e]">ORO</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center">
-              <Image src="img/auspiciantes/ile.webp" alt="ILE" width={120} height={80} className="object-contain" />
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center">
-              <Image src="img/auspiciantes/tikee.webp" alt="tikee" width={120} height={80} className="object-contain" />
+              <Image
+                src="img/auspiciantes/visioonart.webp"
+                alt="Visioonart"
+                width={120}
+                height={80}
+                className="object-contain"
+              />
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center">
               <Image
@@ -39,13 +42,10 @@ export default function Auspiciantes() {
               />
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center">
-              <Image
-                src="img/auspiciantes/velocity.webp"
-                alt="velocity"
-                width={120}
-                height={80}
-                className="object-contain"
-              />
+              <Image src="img/auspiciantes/tikee.webp" alt="tikee" width={120} height={80} className="object-contain" />
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center">
+              <Image src="img/auspiciantes/ile.webp" alt="ILE" width={120} height={80} className="object-contain" />
             </div>
           </div>
         </div>
@@ -53,11 +53,11 @@ export default function Auspiciantes() {
         {/* PLATA */}
         <div className="space-y-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-[#22c55e]">PLATA</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center">
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center col-span-2 md:col-span-1">
               <Image
-                src="img/auspiciantes/visioonart.webp"
-                alt="Visioonart"
+                src="img/auspiciantes/cacpepastaza.webp"
+                alt="CACPE PASTAZA"
                 width={120}
                 height={80}
                 className="object-contain"
@@ -78,22 +78,13 @@ export default function Auspiciantes() {
                 className="object-contain"
               />
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center col-span-2 md:col-span-1">
-              <Image
-                src="img/auspiciantes/cacpepastaza.webp"
-                alt="CACPE PASTAZA"
-                width={120}
-                height={80}
-                className="object-contain"
-              />
-            </div>
           </div>
         </div>
 
         {/* BRONCE */}
         <div className="space-y-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-[#22c55e]">BRONCE</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-items-center">
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center">
               <Image
                 src="img/auspiciantes/elemental.webp"
@@ -121,9 +112,6 @@ export default function Auspiciantes() {
                 className="object-contain"
               />
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center">
-              <Image src="img/auspiciantes/zaruz.webp" alt="Zarúz" width={120} height={80} className="object-contain" />
-            </div>
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center col-span-2 md:col-span-1">
               <Image
                 src="img/auspiciantes/pcenter.webp"
@@ -132,6 +120,9 @@ export default function Auspiciantes() {
                 height={80}
                 className="object-contain"
               />
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center">
+              <Image src="img/auspiciantes/zaruz.webp" alt="Zarúz" width={120} height={80} className="object-contain" />
             </div>
           </div>
         </div>
