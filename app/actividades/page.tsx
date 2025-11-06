@@ -7,17 +7,16 @@ import { Contador } from "@/components/home/contador-section";
 import { Experiencia } from "@/components/actividades/experiencia-section";
 
 export default function EventosPage() {
-    return (
-        <div className="min-h-screen bg-white">
-            <Header />
-            <main>
-                <CarruselSection />
-                <Contador />
-                <Experiencia/>
-                <PonentesSection />
-                <Estadisticas />
-            </main>
-            <Footer />
-        </div>
-    );
+  return (
+    <div className="min-h-screen bg-white">
+      <Header />
+      <main>
+        <CarruselSection />
+        <Experiencia />
+        <PonentesSection />
+        <Estadisticas />
+      </main>
+      <Footer />
+    </div>
+  );
 }
