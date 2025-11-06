@@ -51,9 +51,8 @@ const CarouselMulti = ({
     setCurrentIndex((current) => (current >= maxIndex ? 0 : current + 1));
 
   // Calculate responsive dimensions
-  const itemBasis = `calc((100% - ${
-    (itemsPerView - 1) * gap
-  }px) / ${itemsPerView})`;
+  const itemBasis = `calc((100% - ${(itemsPerView - 1) * gap
+    }px) / ${itemsPerView})`;
   const translateValue = `translateX(calc(-${currentIndex} * (${itemBasis} + ${gap}px)))`;
 
   const trackStyle: CSSProperties = {
@@ -172,8 +171,38 @@ export const PartnersSection = () => {
       height: 200,
     },
     {
-      src: "/img/logos/tecnounion.png",
-      alt: "Tecno Unión",
+      src: "/img/logos/apsybi.webp",
+      alt: "apsybi",
+      width: 700,
+      height: 200,
+    },
+    {
+      src: "/img/logos/unl.webp",
+      alt: "UNL",
+      width: 700,
+      height: 200,
+    },
+    {
+      src: "/img/logos/conservatorio.webp",
+      alt: "Conservatorio",
+      width: 700,
+      height: 200,
+    },
+    {
+      src: "/img/logos/tecnoecuatoriano.webp",
+      alt: "Tecnoecuatoriano",
+      width: 700,
+      height: 200,
+    },
+    {
+      src: "/img/logos/istamazonico.webp",
+      alt: "Instituto Amazonico",
+      width: 700,
+      height: 200,
+    },
+     {
+      src: "/img/logos/tecnopichincha.webp",
+      alt: "Tecnologico Universitario Pichincha",
       width: 700,
       height: 200,
     },
