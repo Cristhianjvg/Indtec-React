@@ -1,21 +1,36 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { Menu, Home, Presentation, Calendar, DollarSign, BookOpen, X } from "lucide-react"
-import { useState } from "react"
-import Image from "next/image"
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import {
+  Menu,
+  Home,
+  Presentation,
+  Calendar,
+  DollarSign,
+  BookOpen,
+  X,
+} from "lucide-react";
+import { useState } from "react";
+import Image from "next/image";
 
 export function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const router = useRouter()
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const router = useRouter();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-md border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/10">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center">
-            <Image src="img/logos/logoInDTec.webp" alt="InDTec Logo" width={150} height={40} className="h-10 w-auto" priority />
+            <Image
+              src="img/logos/logoInDTec.webp"
+              alt="InDTec Logo"
+              width={150}
+              height={40}
+              className="h-10 w-auto"
+              priority
+            />
           </Link>
 
           {/* Navegación desktop */}
@@ -48,7 +63,6 @@ export function Header() {
               <DollarSign className="h-4 w-4" />
               TARIFAS
             </Link>
-            
           </nav>
 
           {/* Botón escritorio y menú móvil */}
@@ -67,7 +81,11 @@ export function Header() {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {mobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
@@ -118,8 +136,8 @@ export function Header() {
 
             <button
               onClick={() => {
-                setMobileMenuOpen(false)
-                router.push("/trabajos")
+                setMobileMenuOpen(false);
+                router.push("/trabajos");
               }}
               className="bg-[#ff6b35] hover:bg-[#ff5722] text-white font-medium px-6 py-2 rounded-full flex items-center justify-center gap-2 mt-2 transition-colors"
             >
@@ -130,7 +148,7 @@ export function Header() {
         )}
       </div>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;
