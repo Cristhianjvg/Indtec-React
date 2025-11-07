@@ -24,7 +24,7 @@ export function Header() {
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center">
             <Image
-              src="img/logos/logoInDTec.webp"
+              src="/img/logos/logoInDTec.webp"
               alt="InDTec Logo"
               width={150}
               height={40}
