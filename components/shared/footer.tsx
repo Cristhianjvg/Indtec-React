@@ -35,9 +35,19 @@ export function Footer() {
                 </div>
                 <div>
                   <p className="text-sm">
-                    Mgs. Jackson Michael Quevedo – Organizador
+                    Mgs. Jackson Michael Quevedo | Coordinador General de IndTec
                   </p>
-                  <p className="text-sm">(+593) 997 235 466</p>
+                  <p className="text-sm">
+                    <a
+                      href="https://wa.me/+593992335466"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[#ff6b35] transition-colors"
+                    >
+                      (+593)997235466
+                    </a>
+                  </p>
+                  <p className="text-email">investigacion@ists.edu.ec</p>
                 </div>
               </div>
             </div>

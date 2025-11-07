@@ -24,7 +24,7 @@ export function Modalities() {
             </div>
             <p className="text-lg text-muted-foreground leading-relaxed">
               A través de plataformas digitales que permitirán la transmisión en tiempo real de las actividades
-              académicas.
+              científicas.
             </p>
           </div>
         </div>

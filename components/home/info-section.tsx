@@ -43,7 +43,7 @@ export function InfoSection() {
   const content = {
     innotec: {
       paragraphs: [
-        "El Congreso Internacional de Tecnología, Investigación, Desarrollo e Innovación (InDTec) 2025, en su tercera edición, es un evento académico de alto nivel, orientado a la divulgación científica y tecnológica, la innovación y la transferencia de conocimiento a nivel nacional e internacional. Es organizado por el Instituto Superior Tecnológico Sudamericano (ISTS) de Loja, Ecuador, institución líder en investigación en la Zona 7 del país.",
+        "El III Congreso Internacional de Investigación Científica InDTec 2025, es un evento académico de alto nivel, orientado a la divulgación científica y tecnológica, la innovación y la transferencia de conocimiento a nivel nacional e internacional. Es organizado por el Instituto Superior Tecnológico Sudamericano (ISTS) de Loja, Ecuador, institución líder en investigación en la Zona 7 del país.",
         "El evento está dirigido a universidades, institutos superiores tecnológicos, conservatorios de música y artes, así como a investigadores independientes. Sus principales objetivos son difundir resultados de investigación, fomentar publicaciones en revistas indexadas como Latindex y Scopus, fortalecer la capacidad de absorción tecnológica y promover la vinculación entre la academia, el sector productivo y la sociedad.",
         "En su edición de 2023, InDTec reunió a 900 estudiantes, contó con el aval del CACES, la participación de 4 institutos coorganizadores y recibió 67 artículos sometidos a revisión por pares. En 2024, participaron 1.500 estudiantes, se mantuvo el aval del CACES, se incorporaron 10 instituciones coorganizadoras, además de auspiciantes y ponentes provenientes de México, Colombia, Perú y Brasil. Ese año se recibieron 70 artículos, de los cuales 30 fueron publicados en revistas indexadas.",
       ],
@@ -67,7 +67,7 @@ export function InfoSection() {
   const contentFull = {
     innotec: {
       paragraphs: [
-        "El Congreso Internacional de Tecnología, Investigación, Desarrollo e Innovación (InDTec) 2025, en su tercera edición, es un evento académico de alto nivel, orientado a la divulgación científica y tecnológica, la innovación y la transferencia de conocimiento a nivel nacional e internacional. Es organizado por el Instituto Superior Tecnológico Sudamericano (ISTS) de Loja, Ecuador, institución líder en investigación en la Zona 7 del país.",
+        "El III Congreso Internacional de Investigación Científica InDTec 2025, es un evento académico de alto nivel, orientado a la divulgación científica y tecnológica, la innovación y la transferencia de conocimiento a nivel nacional e internacional. Es organizado por el Instituto Superior Tecnológico Sudamericano (ISTS) de Loja, Ecuador, institución líder en investigación en la Zona 7 del país.",
         "El evento está dirigido a universidades, institutos superiores tecnológicos, conservatorios de música y artes, así como a investigadores independientes. Sus principales objetivos son difundir resultados de investigación, fomentar publicaciones en revistas indexadas como Latindex y Scopus, fortalecer la capacidad de absorción tecnológica y promover la vinculación entre la academia, el sector productivo y la sociedad.",
         "En su edición de 2023, InDTec reunió a 900 estudiantes, contó con el aval del CACES, la participación de 4 institutos coorganizadores y recibió 67 artículos sometidos a revisión por pares. En 2024, participaron 1.500 estudiantes, se mantuvo el aval del CACES, se incorporaron 10 instituciones coorganizadoras, además de auspiciantes y ponentes provenientes de México, Colombia, Perú y Brasil. Ese año se recibieron 70 artículos, de los cuales 30 fueron publicados en revistas indexadas.",
       ],
@@ -80,8 +80,7 @@ export function InfoSection() {
     },
     caces: {
       paragraphs: [
-        "El Congreso InDTec 2025, en su presente edición, cuenta con el respaldo del Consejo de Aseguramiento de la Calidad de la Educación Superior (CACES),",
-        "amparado por la resolución GCE‑UCS‑REG‑02‑2025‑001. Este aval institucional certifica la excelencia académica del evento y garantiza su alineación con los estándares del sistema de educación superior",
+        "El III Congreso Internacional de Investigación Científica InDTec 2025, en su presente edición, cuenta con el respaldo del Consejo de Aseguramiento de la Calidad de la Educación Superior (CACES), amparado por la resolución GCE‑UCS‑REG‑02‑2025‑001. Este aval institucional certifica la excelencia académica del evento y garantiza su alineación con los estándares del sistema de educación superior",
         "Su apoyo refuerza el carácter del congreso como medio de divulgación científica y como plataforma de impulso a la investigación regional e internacional.",
       ],
     },

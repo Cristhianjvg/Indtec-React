@@ -56,14 +56,6 @@ export function SubmissionSection() {
 
             <div className="space-y-3 w-full max-w-xs">
               <a
-                href="https://forms.office.com/pages/responsepage.aspx?id=enPN6ZI69kCOtMLXsZx8amGm0MR8FXtJlqT5_dp-TjpUNzhNUFlVT1pXNDA5MTREU0VCS1dHUk1MUi4u&route=shorturl"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full px-6 py-2.5 border-2 border-[rgb(249,115,22)] rounded-md hover:bg-[rgb(249,115,22)] hover:text-white transition-colors text-[rgb(249,115,22)] font-medium"
-              >
-                Registrate Aquí
-              </a>
-              <a
                 href="https://docs.google.com/document/d/1WODgIQq1QhT1aZCvsU2aIuI9avsmBxkL/edit"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -78,10 +70,10 @@ export function SubmissionSection() {
         {/* Journal Information */}
         <div className="mt-12 max-w-3xl mx-auto text-sm text-gray-700 space-y-2 px-4">
           <p>
-            <strong>Revista Latindex:</strong> los artículos deben enviarse en español.
+            <strong>Revista Latindex:</strong> Los artículos deben enviarse en español.
           </p>
           <p>
-            <strong>Revista Scopus:</strong> los artículos deben enviarse en inglés.
+            <strong>Revista Scopus:</strong> Los artículos deben enviarse en inglés.
           </p>
         </div>
       </div>

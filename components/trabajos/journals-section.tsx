@@ -28,10 +28,12 @@ export function JournalsSection() {
               <h3 className="font-bold text-lg">
                 UNANCHAY - Revista Científica
               </h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="font-bold text-lg">
                 UNANCHAY - Revista Salud y Sociedad
-              </p>
-              <p className="text-sm text-gray-600">Caminos de Investigación</p>
+              </h3>
+              <h3 className="font-bold text-lg">
+                Caminos de Investigación
+              </h3>
             </div>
           </div>
 

@@ -79,10 +79,10 @@ export function TalleresSection() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#FF6B00] mb-4 text-balance">
+          <h2 className="text-center text-3xl font-bold text-orange-500 mb-2">
             TALLERES ESPECIALIZADOS
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto text-pretty">
+          <p className="text-center uppercase text-gray-600 mb-12 tracking-widest">
             Desarrolla nuevas habilidades con nuestros talleres prácticos
             dirigidos por expertos
           </p>

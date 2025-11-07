@@ -64,7 +64,7 @@ export default function Estadisticas() {
     },
     {
       icon: Diamond,
-      number: 20,
+      number: 24,
       label: "AUSPICIANTES",
       color: "text-[var(--color-green-bright)]",
     },

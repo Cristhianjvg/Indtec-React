@@ -153,20 +153,14 @@ export const PartnersSection = () => {
 
   const coOrganizers: LogoAsset[] = [
     {
-      src: "/img/logos/itsdab.webp",
+      src: "/img/logos/istdab.webp",
       alt: "Instituto Superior Tecnológico DAB - ISTDAB",
       width: 700,
       height: 200,
     },
     {
-      src: "/img/logos/itsup.png",
+      src: "/img/logos/itsup.webp",
       alt: "Instituto Tecnológico Superior Universitario Portoviejo - ITSUP",
-      width: 700,
-      height: 200,
-    },
-    {
-      src: "/img/logos/Caces.png",
-      alt: "Consejo de Aseguramiento de la Calidad de la Educación Superior - CACES",
       width: 700,
       height: 200,
     },

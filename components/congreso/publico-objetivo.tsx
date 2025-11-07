@@ -4,22 +4,19 @@ export default function PublicoObjetivo() {
  const audiences = [
     {
       icon: PenTool,
-      title: "Docentes y estudiantes",
-      description: "de universidades, institutos tecnológicos, conservatorios.",
+      title: "Docentes y estudiantes de universidades, institutos tecnológicos, conservatorios",
     },
     {
       icon: Presentation,
-      title: "Investigadores autónomos.",
-      description: "",
+      title: "Investigadores autónomos",
     },
     {
       icon: MousePointer,
-      title: "Profesionales del sector productivo,",
-      description: "tecnológico y social.",
+      title: "Profesionales del sector productivo tecnológico y social",
     },
     {
       icon: Users,
-      title: "Público en general.",
+      title: "Público en general",
       description: "",
     },
   ]

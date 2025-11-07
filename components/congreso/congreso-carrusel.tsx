@@ -23,7 +23,7 @@ export default function CongresoCarrusel() {
           </h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-balance">
             InDTec es un espacio académico y tecnológico que convoca a la
-            comunidad en el desarrollo y la innovación con base en el método.
+            comunidad en el desarrollo y la innovación.
           </p>
         </div>
 
