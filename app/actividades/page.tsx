@@ -5,6 +5,7 @@ import Estadisticas from "@/components/congreso/estadisticas";
 import { CarruselSection } from "@/components/home/carrusel-section";
 import { Contador } from "@/components/home/contador-section";
 import { Experiencia } from "@/components/actividades/experiencia-section";
+import { TalleresSection } from "@/components/actividades/talleres-section";
 
 export default function EventosPage() {
   return (
@@ -14,6 +15,7 @@ export default function EventosPage() {
         <CarruselSection />
         <Experiencia />
         <PonentesSection />
+        <TalleresSection />
         <Estadisticas />
       </main>
       <Footer />
