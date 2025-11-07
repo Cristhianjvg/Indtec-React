@@ -1,9 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Briefcase, GraduationCap, MapPin, ChevronLeft, ChevronRight, } from "lucide-react";
+import {
+  Briefcase,
+  GraduationCap,
+  MapPin,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
 const ponentes = [
   {
@@ -86,7 +92,7 @@ const ponentes = [
     pais: "ECUADOR",
     tema: "Certificaciones y Cultura de calidad en ILE C.A. ",
   },
-   {
+  {
     nombre: "Juan Carlos Acosta Quevedo",
     cargo: "Catedrático Investigador Fundación Universitaria Área Andina",
     institucion: "Fundación Universitaria Área Andina ",
@@ -104,13 +110,13 @@ const ponentes = [
   },
   {
     nombre: "Edgar Edurman García Silvera",
-    cargo: "Docente investigador Instituto Superior Tecnológico Tecnoecuatoriano",
+    cargo:
+      "Docente investigador Instituto Superior Tecnológico Tecnoecuatoriano",
     institucion: "Instituto Superior Tecnológico Tecnoecuatoriano",
     imagen: "/img/ponentes/edgar.png",
     pais: "ECUADOR",
     tema: "Retos y perspectivas de la Innovación: Una Mirada Global",
   },
-  
 ];
 
 export function PonentesSection() {
@@ -165,7 +171,8 @@ export function PonentesSection() {
         <div className="flex justify-center relative">
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-x-4 gap-y-20 w-full">
             {visiblePonentes.map((p, i) => {
-              const isFlipped = flippedIndex === i + currentSlide * itemsPerSlide;
+              const isFlipped =
+                flippedIndex === i + currentSlide * itemsPerSlide;
               return (
                 <div
                   key={i}
@@ -181,12 +188,16 @@ export function PonentesSection() {
                   >
                     {/* --- CARA FRONTAL --- */}
                     <div
-                      className={`absolute inset-0 [backface-visibility:hidden] ${isFlipped ? "pointer-events-none" : "pointer-events-auto"
-                        }`}
+                      className={`absolute inset-0 [backface-visibility:hidden] ${
+                        isFlipped
+                          ? "pointer-events-none"
+                          : "pointer-events-auto"
+                      }`}
                     >
                       <div
-                        className={`relative h-full overflow-hidden rounded-[28px] shadow-[0_14px_40px_rgba(0,0,0,.35)] ${isFlipped ? "" : "group"
-                          }`}
+                        className={`relative h-full overflow-hidden rounded-[28px] shadow-[0_14px_40px_rgba(0,0,0,.35)] ${
+                          isFlipped ? "" : "group"
+                        }`}
                       >
                         <Image
                           src={p.imagen}
@@ -196,8 +207,9 @@ export function PonentesSection() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0b2431]/70 via-[#0b2431]/20 to-transparent" />
                         <div
-                          className={`absolute bottom-0 z-20 w-full bg-[#b55e2b]/35 backdrop-blur-md border-t border-[#b55e2b]/40 rounded-b-[28px] px-7 pt-5 pb-[90px] h-[210px] transition-transform duration-500 ease-out ${isFlipped ? "" : "group-hover:translate-y-[50px]"
-                            }`}
+                          className={`absolute bottom-0 z-20 w-full bg-[#b55e2b]/35 backdrop-blur-md border-t border-[#b55e2b]/40 rounded-b-[28px] px-7 pt-5 pb-[90px] h-[210px] transition-transform duration-500 ease-out ${
+                            isFlipped ? "" : "group-hover:translate-y-[50px]"
+                          }`}
                         >
                           <h3 className="text-[20px] pb-2 font-semibold border-b border-[#1c1c1c] leading-tight">
                             {p.nombre}

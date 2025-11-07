@@ -48,7 +48,7 @@ function buildRequestBody(
       search_limit: 7,
       min_similarity: 0.7,
       keyword_weight: 0.3,
-	  event_filter: ["DOC_INDTEC"]
+      event_filter: ["DOC_INDTEC"],
     },
     idSession: "session-chatbot-indtec",
     idRequest: crypto.randomUUID(),
@@ -61,7 +61,7 @@ function buildRequestBody(
 
 const Chatbot = () => {
   const pathname = usePathname();
-  const eventFilter = getEventFilterFromPath(pathname);
+  // const eventFilter = getEventFilterFromPath(pathname);
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
   const [showChatbot, setShowChatbot] = useState(false);
   const chatBodyRef = useRef<HTMLDivElement>(null);
