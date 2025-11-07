@@ -84,7 +84,16 @@ export default function Auspiciantes() {
         {/* BRONCE */}
         <div className="space-y-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-[#22c55e]">BRONCE</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center justify-items-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center justify-items-center">
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center">
+              <Image
+                src="img/auspiciantes/nodo.webp"
+                alt="Nodo"
+                width={120}
+                height={80}
+                className="object-contain"
+              />
+            </div>
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center">
               <Image
                 src="img/auspiciantes/elemental.webp"
@@ -112,10 +121,28 @@ export default function Auspiciantes() {
                 className="object-contain"
               />
             </div>
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-37 flex items-center justify-center">
+              <Image
+                src="img/auspiciantes/hotelzamorano.webp"
+                alt="Zamorano Real"
+                width={120}
+                height={80}
+                className="object-contain"
+              />
+            </div>
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center col-span-2 md:col-span-1">
               <Image
                 src="img/auspiciantes/pcenter.webp"
                 alt="pcenter"
+                width={120}
+                height={80}
+                className="object-contain"
+              />
+            </div>
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow w-full h-32 flex items-center justify-center col-span-2 md:col-span-1">
+              <Image
+                src="img/auspiciantes/oroverde.webp"
+                alt="Hotel Oro Verde"
                 width={120}
                 height={80}
                 className="object-contain"
