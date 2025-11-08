@@ -6,7 +6,7 @@ export default function Auspiciantes() {
       {/* Header Section */}
       <div className="bg-white py-12">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-center text-[#ff6b35] mb-6">Nuestros auspiciantes</h1>
+          <h1 className="text-center text-3xl font-bold text-orange-500 mb-2">NUESTROS AUSPICIANTES</h1>
           <p className="text-center text-gray-700 max-w-5xl mx-auto leading-relaxed">
             Agradecemos el invaluable apoyo de empresas e instituciones que se suman a nuestro congreso como
             auspiciantes oficiales. Cada alianza estratégica es clave para hacer posible este encuentro de excelencia.

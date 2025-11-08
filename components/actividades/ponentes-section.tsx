@@ -109,6 +109,15 @@ const ponentes = [
     tema: "Entrenar para vivir mejor, el ejercicio en la salud y la logevidad",
   },
   {
+    nombre: "Roberth Olmedo Zambrano Santos",
+    cargo:
+      "Canciller del Instituto Superior Tecnológico Portoviejo",
+    institucion: "Instituto Superior Tecnológico Portoviejo",
+    imagen: "/img/ponentes/roberth.jpg",
+    pais: "ECUADOR",
+    tema: "Simulación Clínica como Estrategia Metodológica de aprendizajes en el Área de la Salud.",
+  },
+  {
     nombre: "Edgar Edurman García Silvera",
     cargo:
       "Docente investigador Instituto Superior Tecnológico Tecnoecuatoriano",

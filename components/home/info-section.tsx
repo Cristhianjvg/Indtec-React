@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+//import Link from "next/link";
 
 export function InfoSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -80,30 +80,10 @@ export function InfoSection() {
     },
     caces: {
       paragraphs: [
-        "El III Congreso Internacional de Investigación Científica InDTec 2025, en su presente edición, cuenta con el respaldo del Consejo de Aseguramiento de la Calidad de la Educación Superior (CACES), amparado por la resolución GCE‑UCS‑REG‑02‑2025‑001. Este aval institucional certifica la excelencia académica del evento y garantiza su alineación con los estándares del sistema de educación superior",
+        "El III Congreso Internacional de Investigación Científica InDTec 2025, en su presente edición, cuenta con el respaldo del Consejo de Aseguramiento de la Calidad de la Educación Superior (CACES), amparado por la resolución GCE-UCS-REG-02-2025-001. Este aval institucional certifica la excelencia académica del evento y garantiza su alineación con los estándares del sistema de educación superior",
         "Su apoyo refuerza el carácter del congreso como medio de divulgación científica y como plataforma de impulso a la investigación regional e internacional.",
       ],
     },
-  };
-
-  const getButtonLink = () => {
-    switch (activeTab) {
-      case "innotec":
-        return "/congreso";
-      case "congreso":
-        return "/congreso";
-      default:
-        return "/congreso";
-    }
-  };
-
-  const isExternalLink = () => {
-    return activeTab === "caces";
-  };
-
-  // Función para determinar si mostrar el botón
-  const shouldShowButton = () => {
-    return activeTab !== "caces"; // Solo mostrar en "congreso" y "caces"
   };
 
   return (
@@ -112,7 +92,7 @@ export function InfoSection() {
       className="relative bg-[#0a2540] text-white"
       style={{ height: "2100px" }}
     >
-      <div className="sticky top-0  h-screen overflow-hidden">
+      <div className="sticky top-0 h-screen overflow-hidden">
         <div className="flex flex-col lg:flex-row h-full">
           {/* Imagen con scroll interno */}
           <div
@@ -207,55 +187,6 @@ export function InfoSection() {
                   </p>
                 ))}
               </div>
-
-              {/* Botón condicional - Solo se muestra en "congreso" y "caces" */}
-              {shouldShowButton() && (
-                <div className="mt-5 lg:mt-10">
-                  {isExternalLink() ? (
-                    <a
-                      href={getButtonLink()}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-transparent border-2 border-[#ff6b35] text-[#ff6b35] hover:bg-[#ff6b35] hover:text-white px-5 sm:px-8 py-2 sm:py-2.5 rounded-md transition-colors font-semibold text-xs sm:text-sm lg:text-base inline-flex items-center gap-2"
-                    >
-                      Saber más
-                      <svg
-                        className="w-3 h-3 sm:w-4 sm:h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2.5}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </a>
-                  ) : (
-                    <Link
-                      href={getButtonLink()}
-                      className="bg-transparent border-2 border-[#ff6b35] text-[#ff6b35] hover:bg-[#ff6b35] hover:text-white px-5 sm:px-8 py-2 sm:py-2.5 rounded-md transition-colors font-semibold text-xs sm:text-sm lg:text-base inline-flex items-center gap-2"
-                    >
-                      Saber más
-                      <svg
-                        className="w-3 h-3 sm:w-4 sm:h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2.5}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </Link>
-                  )}
-                </div>
-              )}
             </div>
           </div>
         </div>
