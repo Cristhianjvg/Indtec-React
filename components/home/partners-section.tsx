@@ -155,38 +155,14 @@ export const PartnersSection = () => {
 
   const coOrganizers: LogoAsset[] = [
     {
-      src: "/img/logos/istdab.webp",
-      alt: "Instituto Superior Tecnológico DAB - ISTDAB",
-      width: 700,
-      height: 200,
-    },
-    {
-      src: "/img/logos/itsup.webp",
-      alt: "Instituto Tecnológico Superior Universitario Portoviejo - ITSUP",
-      width: 700,
-      height: 200,
-    },
-    {
-      src: "/img/logos/apsybi.webp",
-      alt: "apsybi",
+      src: "/img/logos/tecnoecuatoriano.webp",
+      alt: "Tecnoecuatoriano",
       width: 700,
       height: 200,
     },
     {
       src: "/img/logos/unl.webp",
-      alt: "UNL",
-      width: 700,
-      height: 200,
-    },
-    {
-      src: "/img/logos/conservatorio.webp",
-      alt: "Conservatorio",
-      width: 700,
-      height: 200,
-    },
-    {
-      src: "/img/logos/tecnoecuatoriano.webp",
-      alt: "Tecnoecuatoriano",
+      alt: "Universidad Nacional de Loja",
       width: 700,
       height: 200,
     },
@@ -197,8 +173,44 @@ export const PartnersSection = () => {
       height: 200,
     },
     {
+      src: "/img/logos/apsybi.webp",
+      alt: "apsybi",
+      width: 700,
+      height: 200,
+    },
+    {
+      src: "/img/logos/REDISUR.webp",
+      alt: "Reditsur",
+      width: 700,
+      height: 200,
+    },
+    {
+      src: "/img/logos/conservatorio.webp",
+      alt: "Conservatorio",
+      width: 700,
+      height: 200,
+    },
+    {
+      src: "/img/logos/UTPL.webp",
+      alt: "Universidad Tecnica Particular de Loja",
+      width: 700,
+      height: 200,
+    },
+    {
+      src: "/img/logos/itsup.webp",
+      alt: "Instituto Tecnológico Superior Universitario Portoviejo - ITSUP",
+      width: 700,
+      height: 200,
+    },
+    {
       src: "/img/logos/tecnopichincha.webp",
       alt: "Tecnologico Universitario Pichincha",
+      width: 700,
+      height: 200,
+    },
+    {
+      src: "/img/logos/istdab.webp",
+      alt: "Instituto Superior Tecnológico DAB - ISTDAB",
       width: 700,
       height: 200,
     },

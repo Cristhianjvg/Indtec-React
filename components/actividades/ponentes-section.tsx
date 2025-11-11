@@ -58,7 +58,7 @@ const ponentes = [
     institucion: "Universidad de la Costa",
     imagen: "/img/ponentes/milena.png",
     pais: "COLOMBIA",
-    tema: "Gestión educativa sostenible: Perspectivas teórico-prácticas para contribuir con estados deseables del medio socioambiental.",
+    tema: "Gestión educativa sostenible: Perspectivas teórico-prácticas para contribuir con estados deseables del medio socioambiental",
   },
   {
     nombre: "Bruno Valarezo Correa",
@@ -72,7 +72,7 @@ const ponentes = [
     nombre: "Ingrid Weingärtner Reis",
     cargo: "Profesora investigadora",
     institucion: "Universidad Técnica Particular de Loja - UTPL",
-    imagen: "img/ponentes/ingrid.png",
+    imagen: "/img/ponentes/ingrid.png",
     pais: "ECUADOR",
     tema: "Sociedad 5.0 y el reencantamiento del ser humano: educación e investigación desde América Latina",
   },
@@ -82,7 +82,7 @@ const ponentes = [
     institucion: "Pontificia Universidad Católica del Ecuador",
     imagen: "/img/ponentes/marvi.png",
     pais: "ECUADOR",
-    tema: "Autocuidado en la vulnerabilidad: Una perspectiva innovadora desde la investigación formativa.",
+    tema: "Autocuidado en la vulnerabilidad: Una perspectiva innovadora desde la investigación formativa",
   },
   {
     nombre: "María José Martínez Granda",
@@ -98,7 +98,7 @@ const ponentes = [
     institucion: "Fundación Universitaria Área Andina ",
     imagen: "/img/ponentes/juanacosta.png",
     pais: "COLOMBIA",
-    tema: "Revisión bibliográfica de tendencias tecnológicas adoptadas por empresas de transporte para reducir contaminación en Bogotá.",
+    tema: "Revisión bibliográfica de tendencias tecnológicas adoptadas por empresas de transporte para reducir contaminación en Bogotá",
   },
   {
     nombre: "María del Cisne Merino Vivanco",
@@ -113,9 +113,18 @@ const ponentes = [
     cargo:
       "Canciller del Instituto Superior Tecnológico Portoviejo",
     institucion: "Instituto Superior Tecnológico Portoviejo",
-    imagen: "/img/ponentes/roberth.jpg",
+    imagen: "/img/ponentes/roberth.png",
     pais: "ECUADOR",
-    tema: "Simulación Clínica como Estrategia Metodológica de aprendizajes en el Área de la Salud.",
+    tema: "Simulación Clínica como Estrategia Metodológica de aprendizajes en el Área de la Salud",
+  },
+  {
+    nombre: "Mayra Jeaneth Jiménez Jiménez",
+    cargo:
+      "Docente de la carrera de Enfermería de la Universidad Técnica Particular de Loja",
+    institucion: "Universidad Técnica Particular de Loja",
+    imagen: "/img/ponentes/jimenez.png",
+    pais: "ECUADOR",
+    tema: "El Proceso enfermero como estrategia de salud integral: vinculando nutrición, prevención y cuidado",
   },
   {
     nombre: "Edgar Edurman García Silvera",
