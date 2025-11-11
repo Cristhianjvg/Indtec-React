@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function Footer() {
   return (
     <footer className="bg-[#0a2540] text-white pt-12 pb-4 relative overflow-hidden">
@@ -149,7 +151,7 @@ export function Footer() {
 
         {/* Bloque del logo con fondo rojo */}
         <div className="w-full flex justify-center items-center  py-4">
-          <img
+          <Image
             src="/img/indtecFooter.png" // ⬅️ Ajusta la ruta si tu logo está en otra carpeta
             alt="InDTec Logo"
             className="w-[90%] object-contain"

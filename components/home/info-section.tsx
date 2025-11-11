@@ -1,56 +1,77 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 export function InfoSection() {
-  const [activeTab, setActiveTab] = useState("innotec");
+  const [activeTab, setActiveTab] = useState<"innotec" | "congreso" | "caces">(
+    "innotec"
+  );
+
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const imgRef = useRef<HTMLImageElement | null>(null);
+
+  const sectionTop = useRef(0);
+  const sectionHeight = useRef(0);
+  const viewportH = useRef(0);
+  const ticking = useRef(false);
+  const lastY = useRef(0);
+
+  const recalc = () => {
+    if (!sectionRef.current) return;
+    const rect = sectionRef.current.getBoundingClientRect();
+    sectionTop.current = window.scrollY + rect.top;
+    sectionHeight.current = sectionRef.current.offsetHeight;
+    viewportH.current = window.innerHeight;
+  };
+
+  const paint = () => {
+    ticking.current = false;
+    if (!imgRef.current) return;
+    if (window.innerWidth < 1024) {
+      imgRef.current.style.transform = "translate3d(0,0,0)";
+      return;
+    }
+
+    const start = sectionTop.current;
+    const end = start + sectionHeight.current - viewportH.current;
+    const y = lastY.current;
+
+    let p = 0;
+    if (y <= start) p = 0;
+    else if (y >= end) p = 1;
+    else p = (y - start) / (end - start);
+
+    const offset = -p * viewportH.current;
+    imgRef.current.style.transform = `translate3d(0, ${offset}px, 0)`;
+  };
+
+  const onScroll = () => {
+    lastY.current = window.scrollY;
+    if (!ticking.current) {
+      ticking.current = true;
+      requestAnimationFrame(paint);
+    }
+  };
+
+  const onResize = () => {
+    recalc();
+    requestAnimationFrame(() => {
+      lastY.current = window.scrollY;
+      paint();
+    });
+  };
 
   useEffect(() => {
-    const applyParallax = () => {
-      if (window.innerWidth < 1024) return;
+    recalc();
+    lastY.current = window.scrollY;
+    paint();
 
-      const section = document.getElementById("info-section");
-      if (!section) return;
-
-      const rect = section.getBoundingClientRect();
-      const sectionHeight = section.offsetHeight;
-      const viewportHeight = window.innerHeight;
-
-      let progress = 0;
-      if (rect.top <= 0 && rect.bottom >= viewportHeight) {
-        progress = Math.abs(rect.top) / (sectionHeight - viewportHeight);
-        progress = Math.max(0, Math.min(1, progress));
-      } else if (rect.bottom < viewportHeight) {
-        progress = 1;
-      }
-
-      const img = document.getElementById("parallax-image");
-      if (img) {
-        img.style.transform = `translateY(${progress * -100}vh)`;
-      }
-    };
-
-    const handleScroll = () => {
-      applyParallax();
-    };
-
-    const handleResize = () => {
-      if (window.innerWidth < 1024) {
-        const img = document.getElementById("parallax-image");
-        if (img) {
-          img.style.transform = "none";
-        }
-      } else {
-        applyParallax();
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleResize);
-    handleScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onResize, { passive: true });
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
     };
   }, []);
 
@@ -94,7 +115,7 @@ export function InfoSection() {
     },
     caces: {
       paragraphs: [
-        "El III Congreso Internacional de Investigación Científica InDTec 2025, en su presente edición, cuenta con el respaldo del Consejo de Aseguramiento de la Calidad de la Educación Superior (CACES), amparado por la resolución GCE-UCS-REG-02-2025-001. Este aval institucional certifica la excelencia académica del evento y garantiza su alineación con los estándares del sistema de educación superior",
+        "El III Congreso Internacional de Investigación Científica InDTec 2025, en su presente edición, cuenta con el respaldo del Consejo de Aseguramiento de la Calidad de la Educación Superior (CACES), amparado por la resolución GCE-UCS-REG-02-2025-001. Este aval institucional certifica la excelencia académica del evento y garantiza su alineación con los estándares del sistema de educación superior.",
         "Su apoyo refuerza el carácter del congreso como medio de divulgación científica y como plataforma de impulso a la investigación regional e internacional.",
       ],
     },
@@ -103,23 +124,33 @@ export function InfoSection() {
   return (
     <section
       id="info-section"
+      ref={sectionRef}
       className="relative lg:h-[200vh] h-auto bg-[#0a2540] text-white"
+      style={{ contain: "paint" }}
     >
       <div className="lg:sticky lg:top-0 lg:h-screen lg:flex">
-        {/* Imagen - arriba en móvil, izquierda en desktop */}
+        {/* Imagen */}
         <div className="lg:w-1/2 w-full lg:h-screen h-[50vh] overflow-hidden">
-          <img
+          {/* <img
             id="parallax-image"
+            ref={imgRef}
             src="/img/inDTecCollage.webp"
             alt="Congreso InnoTec"
-            className="w-full lg:h-[200vh] h-full object-cover transition-transform duration-100 ease-out"
+            className="w-full lg:h-[200vh] h-full object-cover transition-transform ease-out"
+            style={{ willChange: "transform" }}
+          /> */}
+          <Image
+            src="/img/inDTecCollage.webp"
+            alt="Congreso InnoTec"
+            className="w-full lg:h-[200vh] h-full object-cover transition-transform ease-out"
+            style={{ willChange: "transform" }}
           />
         </div>
 
-        {/* Contenido derecho - abajo en móvil, derecha en desktop */}
+        {/* Contenido */}
         <div className="lg:w-1/2 w-full lg:h-screen min-h-[50vh] flex items-center justify-center px-5 sm:px-8 md:px-12 py-12">
           <div className="w-full max-w-xl">
-            {/* Pestañas con separadores */}
+            {/* Tabs */}
             <div className="flex flex-wrap items-center gap-2 sm:gap-2 mb-5 lg:mb-12">
               <button
                 onClick={() => setActiveTab("innotec")}
@@ -132,7 +163,7 @@ export function InfoSection() {
                 ¿Qué es InDTec?
               </button>
 
-              <div className="w-px h-6 bg-[#4a9fd8]"></div>
+              <div className="w-px h-6 bg-[#4a9fd8]" />
 
               <button
                 onClick={() => setActiveTab("congreso")}
@@ -145,7 +176,7 @@ export function InfoSection() {
                 Sobre el Congreso
               </button>
 
-              <div className="w-px h-6 bg-[#4a9fd8]"></div>
+              <div className="w-px h-6 bg-[#4a9fd8]" />
 
               <button
                 onClick={() => setActiveTab("caces")}
@@ -159,29 +190,22 @@ export function InfoSection() {
               </button>
             </div>
 
-            {/* Contenido - Versión móvil (resumida) */}
+            {/* Contenido móvil */}
             <div className="space-y-3 lg:hidden">
-              {content[activeTab as keyof typeof content].paragraphs.map(
-                (paragraph, index) => (
-                  <p
-                    key={index}
-                    className="text-gray-300 leading-relaxed text-xs sm:text-sm"
-                  >
-                    {paragraph}
-                  </p>
-                )
-              )}
+              {content[activeTab].paragraphs.map((paragraph, i) => (
+                <p
+                  key={i}
+                  className="text-gray-300 leading-relaxed text-xs sm:text-sm"
+                >
+                  {paragraph}
+                </p>
+              ))}
             </div>
 
-            {/* Contenido - Versión desktop (completa) */}
-            <div className="hidden lg:block space-y-6">
-              {contentFull[
-                activeTab as keyof typeof contentFull
-              ].paragraphs.map((paragraph, index) => (
-                <p
-                  key={index}
-                  className="text-gray-300 leading-relaxed text-base"
-                >
+            {/* Contenido escritorio */}
+            <div className="hidden lg:block space-y-6 min-h-[22rem]">
+              {contentFull[activeTab].paragraphs.map((paragraph, i) => (
+                <p key={i} className="text-gray-300 leading-relaxed text-base">
                   {paragraph}
                 </p>
               ))}

@@ -2,7 +2,6 @@
 
 import UID from "@/lib/uid";
 import { useEffect, useState, useRef } from "react";
-import { usePathname } from "next/navigation";
 import ChatMessage from "./chat-message";
 import ChatForm from "./chat-form";
 import { Bot } from "lucide-react";
@@ -26,14 +25,14 @@ interface ChatMessage {
 }
 
 // Helper function to detect event from pathname
-function getEventFilterFromPath(pathname: string): string[] {
-  if (pathname.includes("/indtec")) return ["INDTEC"];
-  if (pathname.includes("/congreso")) return ["CONGRESO"];
-  if (pathname.includes("/tarifa")) return ["TARIFA"];
-  if (pathname.includes("/trabajos")) return ["TRABAJOS"];
-  if (pathname.includes("/eventos")) return ["EVENTOS"];
-  return []; // No filter for home page
-}
+// function getEventFilterFromPath(pathname: string): string[] {
+//   if (pathname.includes("/indtec")) return ["INDTEC"];
+//   if (pathname.includes("/congreso")) return ["CONGRESO"];
+//   if (pathname.includes("/tarifa")) return ["TARIFA"];
+//   if (pathname.includes("/trabajos")) return ["TRABAJOS"];
+//   if (pathname.includes("/eventos")) return ["EVENTOS"];
+//   return []; // No filter for home page
+// }
 
 function buildRequestBody(
   message: string,
@@ -60,7 +59,7 @@ function buildRequestBody(
 }
 
 const Chatbot = () => {
-  const pathname = usePathname();
+  // const pathname = usePathname();
   // const eventFilter = getEventFilterFromPath(pathname);
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
   const [showChatbot, setShowChatbot] = useState(false);

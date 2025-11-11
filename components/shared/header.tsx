@@ -23,14 +23,16 @@ export function Header() {
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center">
-            <Image
-              src="/img/logos/logoInDTec.webp"
-              alt="InDTec Logo"
-              width={150}
-              height={40}
-              className="h-10 w-auto"
-              priority
-            />
+            <div className="relative h-10 w-[150px]">
+              <Image
+                src="/img/logos/logoInDTec.webp"
+                alt="InDTec Logo"
+                fill
+                className="object-contain"
+                priority
+                sizes="150px"
+              />
+            </div>
           </Link>
 
           {/* Navegación desktop */}
@@ -43,7 +45,7 @@ export function Header() {
               INICIO
             </Link>
             <Link
-              href="/congreso"
+              href="/congresao"
               className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
             >
               <Presentation className="h-4 w-4" />

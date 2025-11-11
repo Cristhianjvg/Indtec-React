@@ -2,8 +2,7 @@
 
 import { useEffect, useState, type CSSProperties } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Users, Crown, Award } from "lucide-react";
-import CarruselSponsor from "./carrusel-sponsor";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface LogoAsset {
   src: string;
@@ -12,7 +11,7 @@ interface LogoAsset {
   height?: number;
 }
 
-interface CarouselMultiProps {
+interface CarruselMultiProps {
   title: string;
   // icon: React.ReactNode;
   logos: LogoAsset[];
@@ -21,14 +20,14 @@ interface CarouselMultiProps {
   autoplayInterval?: number | null;
 }
 
-const CarouselMulti = ({
+const CarruselMulti = ({
   title,
   // icon,
   logos,
   itemsPerView = 3,
   gap = 32,
   autoplayInterval = 3000,
-}: CarouselMultiProps) => {
+}: CarruselMultiProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const totalItems = logos.length;
   const maxIndex = Math.max(0, totalItems - itemsPerView);
@@ -231,14 +230,16 @@ export const PartnersSection = () => {
               {/* <Crown className="h-6 w-6 text-[#0a7ea4]" /> */}
             </div>
             <div className="flex justify-start">
-              <Image
-                src={organizer.src}
-                alt={organizer.alt}
-                width={organizer.width}
-                height={organizer.height}
-                className="h-20 sm:h-24 md:h-28 object-contain"
-                priority
-              />
+              <div className="relative h-20 sm:h-24 md:h-28 w-[320px] sm:w-[420px] md:w-[520px]">
+                <Image
+                  src={organizer.src}
+                  alt={organizer.alt}
+                  fill
+                  className="object-contain"
+                  priority
+                  sizes="(max-width:640px) 320px, (max-width:1024px) 420px, 520px"
+                />
+              </div>
             </div>
           </div>
 
@@ -253,15 +254,19 @@ export const PartnersSection = () => {
             </div>
             <div className="flex justify-start">
               {sponsors.map((sponsor) => (
-                <Image
+                <div
                   key={sponsor.alt}
-                  src={sponsor.src}
-                  alt={sponsor.alt}
-                  width={sponsor.width}
-                  height={sponsor.height}
-                  className="h-20 sm:h-24 md:h-28 object-contain" // Mismas clases de tamaño
-                  priority
-                />
+                  className="relative h-20 sm:h-24 md:h-28 w-[320px] sm:w-[420px] md:w-[520px]"
+                >
+                  <Image
+                    src={sponsor.src}
+                    alt={sponsor.alt}
+                    fill
+                    className="object-contain"
+                    priority
+                    sizes="(max-width:640px) 320px, (max-width:1024px) 420px, 520px"
+                  />
+                </div>
               ))}
             </div>
           </div>
@@ -273,7 +278,7 @@ export const PartnersSection = () => {
         </div>
 
         {/* Co-organizers Carousel */}
-        <CarruselSponsor
+        <CarruselMulti
           title="COORGANIZADORES"
           // icon={<Users className="h-6 w-6 text-[#0a7ea4]" />}
           logos={coOrganizers}
