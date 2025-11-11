@@ -1,15 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import {
-  Briefcase,
-  GraduationCap,
-  MapPin,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { Briefcase, GraduationCap, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 
 const ponentes = [
   {
@@ -110,8 +104,7 @@ const ponentes = [
   },
   {
     nombre: "Roberth Olmedo Zambrano Santos",
-    cargo:
-      "Canciller del Instituto Superior Tecnológico Portoviejo",
+    cargo: "Canciller del Instituto Superior Tecnológico Portoviejo",
     institucion: "Instituto Superior Tecnológico Portoviejo",
     imagen: "/img/ponentes/roberth.png",
     pais: "ECUADOR",
@@ -140,35 +133,43 @@ const ponentes = [
 export function PonentesSection() {
   const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [hasHover, setHasHover] = useState(true);
+
+  // Detecta táctil y corrige el falso “hover” en tablets
+  useEffect(() => {
+    const touchCapable =
+      (typeof navigator !== "undefined" && navigator.maxTouchPoints > 0) ||
+      // @ts-ignore
+      (typeof navigator !== "undefined" && navigator.msMaxTouchPoints > 0) ||
+      "ontouchstart" in window;
+
+    const hoverMQ = window.matchMedia("(any-hover: hover)");
+    const fineMQ = window.matchMedia("(any-pointer: fine)");
+
+    const compute = () => {
+      const supportsHover = hoverMQ.matches && fineMQ.matches;
+      setHasHover(supportsHover && !touchCapable);
+    };
+    compute();
+
+    const onChange = () => compute();
+    hoverMQ.addEventListener?.("change", onChange);
+    fineMQ.addEventListener?.("change", onChange);
+    return () => {
+      hoverMQ.removeEventListener?.("change", onChange);
+      fineMQ.removeEventListener?.("change", onChange);
+    };
+  }, []);
 
   const itemsPerSlide = 4;
   const totalSlides = Math.ceil(ponentes.length / itemsPerSlide);
 
-  // slide cada 5 segundos
-  /*useEffect(() => {
-    const intervalo = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % totalSlides);
-    }, 5000); // Puedes ajustar el tiempo (milisegundos)
-    return () => clearInterval(intervalo);
-  }, [totalSlides]);*/
+  const flipAt = (absIndex: number) =>
+    setFlippedIndex((prev) => (prev === absIndex ? null : absIndex));
 
-  const handleFlip = (index: number) => {
-    setFlippedIndex(flippedIndex === index ? null : index);
-  };
-
-  const handleMouseLeave = (index: number) => {
-    if (flippedIndex === index) {
-      setFlippedIndex(null);
-    }
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % totalSlides);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
-  };
+  const nextSlide = () => setCurrentSlide((p) => (p + 1) % totalSlides);
+  const prevSlide = () =>
+    setCurrentSlide((p) => (p - 1 + totalSlides) % totalSlides);
 
   const visiblePonentes = ponentes.slice(
     currentSlide * itemsPerSlide,
@@ -185,26 +186,31 @@ export function PonentesSection() {
           Invitados Especiales
         </p>
 
-        {/* --- Grid de tarjetas (slide) --- */}
         <div className="flex justify-center relative">
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-x-4 gap-y-20 w-full">
             {visiblePonentes.map((p, i) => {
-              const isFlipped =
-                flippedIndex === i + currentSlide * itemsPerSlide;
+              const absIndex = i + currentSlide * itemsPerSlide;
+              const isFlipped = flippedIndex === absIndex;
+
               return (
                 <div
-                  key={i}
+                  key={p.nombre}
                   className="relative h-[460px] perspective-[1000px]"
                   onMouseLeave={() =>
-                    handleMouseLeave(i + currentSlide * itemsPerSlide)
+                    hasHover &&
+                    setFlippedIndex((v) => (v === absIndex ? null : v))
                   }
+                  onClick={() => !hasHover && flipAt(absIndex)} // tap-to-flip en táctil
+                  role={!hasHover ? "button" : undefined}
+                  tabIndex={!hasHover ? 0 : -1}
+                  aria-pressed={!hasHover ? isFlipped : undefined}
                 >
                   <motion.div
                     animate={{ rotateY: isFlipped ? 180 : 0 }}
                     transition={{ duration: 0.7, ease: "linear" }}
                     className="relative w-full h-full transition-transform [transform-style:preserve-3d]"
                   >
-                    {/* --- CARA FRONTAL --- */}
+                    {/* FRONT */}
                     <div
                       className={`absolute inset-0 [backface-visibility:hidden] ${
                         isFlipped
@@ -222,12 +228,17 @@ export function PonentesSection() {
                           alt={p.nombre}
                           fill
                           className="object-cover"
+                          sizes="(max-width: 640px) 90vw, (max-width: 1280px) 45vw, 320px"
+                          priority={false}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0b2431]/70 via-[#0b2431]/20 to-transparent" />
+
+                        {/* Panel inferior: solo se mueve en desktop/hover */}
                         <div
-                          className={`absolute bottom-0 z-20 w-full bg-[#b55e2b]/35 backdrop-blur-md border-t border-[#b55e2b]/40 rounded-b-[28px] px-7 pt-5 pb-[90px] h-[210px] transition-transform duration-500 ease-out ${
-                            isFlipped ? "" : "group-hover:translate-y-[50px]"
-                          }`}
+                          className={[
+                            "absolute bottom-0 z-20 w-full bg-[#b55e2b]/35 backdrop-blur-md border-t border-[#b55e2b]/40 rounded-b-[28px] px-7 pt-5 pb-[90px] h-[210px] transition-transform duration-500 ease-out",
+                            hasHover ? "md:group-hover:translate-y-[50px]" : "",
+                          ].join(" ")}
                         >
                           <h3 className="text-[20px] pb-2 font-semibold border-b border-[#1c1c1c] leading-tight">
                             {p.nombre}
@@ -240,8 +251,6 @@ export function PonentesSection() {
                               <GraduationCap className="w-4 h-4" />{" "}
                               {p.institucion}
                             </p>
-
-                            {/* --- País con bandera --- */}
                             <p className="flex items-center gap-2">
                               <MapPin className="w-4 h-4" />
                               <Image
@@ -257,12 +266,35 @@ export function PonentesSection() {
                             </p>
                           </div>
                         </div>
-                        <div className="absolute left-1/2 -translate-x-1/2 z-30 bottom-3 group-hover:top-1/2 group-hover:bottom-auto group-hover:-translate-y-1/2 transition-all duration-1000 ease-out">
+
+                        {/* BOTÓN */}
+                        <div
+                          className={[
+                            "absolute z-30 transition-all duration-300 ease-out",
+                            hasHover
+                              ? // Desktop/hover: escondido hasta hover
+                                [
+                                  "left-1/2 -translate-x-1/2 bottom-3",
+                                  "opacity-0 pointer-events-none",
+                                  "md:group-hover:opacity-100 md:group-hover:pointer-events-auto",
+                                  "md:group-hover:top-1/2 md:group-hover:bottom-auto md:group-hover:-translate-y-1/2",
+                                ].join(" ")
+                              : // Táctil: siempre visible y centrado
+                                "left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 opacity-100",
+                          ].join(" ")}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            flipAt(absIndex);
+                          }}
+                          aria-hidden={hasHover ? undefined : false}
+                        >
                           <button
-                            onClick={() =>
-                              handleFlip(i + currentSlide * itemsPerSlide)
-                            }
-                            className="rounded-xl px-2 py-3 text-[14px] bg-transparent group-hover:bg-[#15384a] border border-[#15384a] backdrop-blur-sm shadow-lg cursor-pointer text-[#15384a] group-hover:text-white transition-colors duration-1000 ease-in-out w-full"
+                            className={[
+                              "rounded-xl px-3 py-3 text-[14px] border border-[#15384a] backdrop-blur-sm shadow-lg cursor-pointer transition-colors duration-300 w-full",
+                              hasHover
+                                ? "md:bg-transparent md:text-[#15384a] md:group-hover:bg-[#15384a] md:group-hover:text-white"
+                                : "bg-[#15384a] text-white",
+                            ].join(" ")}
                           >
                             Tema de Conferencia
                           </button>
@@ -270,11 +302,22 @@ export function PonentesSection() {
                       </div>
                     </div>
 
-                    {/* --- CARA TRASERA --- */}
+                    {/* BACK */}
                     <div className="absolute inset-0 [transform:rotateY(180deg)] [backface-visibility:hidden] bg-[#0b2431] rounded-[28px] border border-[#1f3d4b] flex flex-col justify-center items-center p-6">
-                      <h3 className="text-xl font-semibold text-white-400 mb-2 text-center">
+                      <h3 className="text-xl font-semibold text-white mb-2 text-center">
                         {p.tema}
                       </h3>
+                      {!hasHover && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            flipAt(absIndex);
+                          }}
+                          className="mt-4 rounded-lg px-4 py-2 bg-white/10 hover:bg-white/20 transition"
+                        >
+                          Volver
+                        </button>
+                      )}
                     </div>
                   </motion.div>
                 </div>
@@ -283,23 +326,20 @@ export function PonentesSection() {
           </div>
         </div>
 
-        {/* --- Botones fuera del grid --- */}
+        {/* Navegación */}
         <button
           onClick={prevSlide}
-          className="absolute left-[-40px] md:left-[-60px] top-1/2 -translate-y-1/2 
-                     bg-transparent hover:bg-white/10 text-white rounded-full 
-                     p-3 transition-all duration-300"
+          className="absolute left-[-28px] md:left-[-60px] top-1/2 -translate-y-1/2 bg-transparent hover:bg-white/10 text-white rounded-full p-3 transition"
+          aria-label="Anterior"
         >
-          <ChevronLeft size={40} />
+          <ChevronLeft size={34} className="md:size-[40px]" />
         </button>
-
         <button
           onClick={nextSlide}
-          className="absolute right-[-40px] md:right-[-60px] top-1/2 -translate-y-1/2 
-                     bg-transparent hover:bg-white/10 text-white rounded-full 
-                     p-3 transition-all duration-300"
+          className="absolute right-[-28px] md:right-[-60px] top-1/2 -translate-y-1/2 bg-transparent hover:bg-white/10 text-white rounded-full p-3 transition"
+          aria-label="Siguiente"
         >
-          <ChevronRight size={40} />
+          <ChevronRight size={34} className="md:size-[40px]" />
         </button>
       </div>
     </section>

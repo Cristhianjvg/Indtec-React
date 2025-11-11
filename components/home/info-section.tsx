@@ -131,15 +131,9 @@ export function InfoSection() {
       <div className="lg:sticky lg:top-0 lg:h-screen lg:flex">
         {/* Imagen */}
         <div className="lg:w-1/2 w-full lg:h-screen h-[50vh] overflow-hidden">
-          {/* <img
+          <img
             id="parallax-image"
             ref={imgRef}
-            src="/img/inDTecCollage.webp"
-            alt="Congreso InnoTec"
-            className="w-full lg:h-[200vh] h-full object-cover transition-transform ease-out"
-            style={{ willChange: "transform" }}
-          /> */}
-          <Image
             src="/img/inDTecCollage.webp"
             alt="Congreso InnoTec"
             className="w-full lg:h-[200vh] h-full object-cover transition-transform ease-out"

@@ -155,6 +155,8 @@ export function Footer() {
             src="/img/indtecFooter.png" // ⬅️ Ajusta la ruta si tu logo está en otra carpeta
             alt="InDTec Logo"
             className="w-[90%] object-contain"
+            width={500}
+            height={500}
           />
         </div>
 
