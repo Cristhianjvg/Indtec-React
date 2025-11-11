@@ -153,14 +153,20 @@ export const PartnersSection = () => {
 
   const coOrganizers: LogoAsset[] = [
     {
-      src: "/img/logos/istdab.webp",
-      alt: "Instituto Superior Tecnológico DAB - ISTDAB",
+      src: "/img/logos/tecnoecuatoriano.webp",
+      alt: "Tecnoecuatoriano",
       width: 700,
       height: 200,
     },
     {
-      src: "/img/logos/itsup.webp",
-      alt: "Instituto Tecnológico Superior Universitario Portoviejo - ITSUP",
+      src: "/img/logos/unl.webp",
+      alt: "Universidad Nacional de Loja",
+      width: 700,
+      height: 200,
+    },
+    {
+      src: "/img/logos/istamazonico.webp",
+      alt: "Instituto Amazonico",
       width: 700,
       height: 200,
     },
@@ -171,8 +177,8 @@ export const PartnersSection = () => {
       height: 200,
     },
     {
-      src: "/img/logos/unl.webp",
-      alt: "UNL",
+      src: "/img/logos/REDISUR.webp",
+      alt: "Reditsur",
       width: 700,
       height: 200,
     },
@@ -183,20 +189,26 @@ export const PartnersSection = () => {
       height: 200,
     },
     {
-      src: "/img/logos/tecnoecuatoriano.webp",
-      alt: "Tecnoecuatoriano",
+      src: "/img/logos/UTPL.webp",
+      alt: "Universidad Tecnica Particular de Loja",
       width: 700,
       height: 200,
     },
     {
-      src: "/img/logos/istamazonico.webp",
-      alt: "Instituto Amazonico",
+      src: "/img/logos/itsup.webp",
+      alt: "Instituto Tecnológico Superior Universitario Portoviejo - ITSUP",
       width: 700,
       height: 200,
     },
-     {
+    {
       src: "/img/logos/tecnopichincha.webp",
       alt: "Tecnologico Universitario Pichincha",
+      width: 700,
+      height: 200,
+    },
+    {
+      src: "/img/logos/istdab.webp",
+      alt: "Instituto Superior Tecnológico DAB - ISTDAB",
       width: 700,
       height: 200,
     },

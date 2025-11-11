@@ -60,7 +60,7 @@ export function VeladaSection() {
         {/* Imagen a la derecha */}
         <div className="relative w-full md:w-1/2 h-[300px] md:h-auto flex-shrink-0">
           <Image
-            src="/img/general/velada.webp"
+            src="/img/general/baile.jpg"
             alt="Velada Cultural y de Confraternidad"
             fill
             className="object-cover object-center"

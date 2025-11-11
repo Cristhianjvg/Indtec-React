@@ -8,18 +8,20 @@ interface Taller {
   registrationUrl: string;
   instructor?: string;
   duration?: string;
+  cupo?: number;
 }
 
 const talleres: Taller[] = [
   {
     id: "1",
-    title: "Introducción a la Inteligencia Artificial",
+    title: "Bienestar emocional y proyección 2026",
     description:
-      "Aprende los fundamentos de la IA y sus aplicaciones prácticas en el mundo moderno. Exploraremos machine learning, redes neuronales y casos de uso reales.",
-    image: "/img/taller1.jpg",
+      "Este taller práctico invita a los participantes a reflexionar sobre su bienestar emocional y a desarrollar estrategias de autocuidado que favorezcan un cierre de año consciente",
+    image: "/img/talleres/bienestar.jpg",
     registrationUrl: "https://example.com/register/ai-workshop",
-    instructor: "Dr. Ana García",
-    duration: "4 horas",
+    instructor: "Mgtr. Sofia Faggioni",
+    duration: "1 hora ",
+    cupo: 15,
   },
   {
     id: "2",
@@ -130,6 +132,14 @@ export function TalleresSection() {
                           Duración:
                         </span>
                         <span>{taller.duration}</span>
+                      </p>
+                    )}
+                    {taller.cupo && (
+                      <p className="flex items-center gap-2">
+                        <span className="font-bold text-gray-600">
+                          Cupo Ilimitado:
+                        </span>
+                        <span>{taller.cupo}</span>
                       </p>
                     )}
                   </div>
