@@ -3,6 +3,7 @@
 import { useEffect, useState, type CSSProperties } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Users, Crown, Award } from "lucide-react";
+import CarruselSponsor from "./carrusel-sponsor";
 
 interface LogoAsset {
   src: string;
@@ -13,7 +14,7 @@ interface LogoAsset {
 
 interface CarouselMultiProps {
   title: string;
-  icon: React.ReactNode;
+  // icon: React.ReactNode;
   logos: LogoAsset[];
   itemsPerView?: number;
   gap?: number;
@@ -22,7 +23,7 @@ interface CarouselMultiProps {
 
 const CarouselMulti = ({
   title,
-  icon,
+  // icon,
   logos,
   itemsPerView = 3,
   gap = 32,
@@ -51,8 +52,9 @@ const CarouselMulti = ({
     setCurrentIndex((current) => (current >= maxIndex ? 0 : current + 1));
 
   // Calculate responsive dimensions
-  const itemBasis = `calc((100% - ${(itemsPerView - 1) * gap
-    }px) / ${itemsPerView})`;
+  const itemBasis = `calc((100% - ${
+    (itemsPerView - 1) * gap
+  }px) / ${itemsPerView})`;
   const translateValue = `translateX(calc(-${currentIndex} * (${itemBasis} + ${gap}px)))`;
 
   const trackStyle: CSSProperties = {
@@ -67,7 +69,7 @@ const CarouselMulti = ({
     <div className="relative px-4 py-8">
       {/* Section Header */}
       <div className="flex items-center justify-center gap-3 mb-10">
-        {icon}
+        {/* {icon} */}
         <h2 className="text-2xl md:text-3xl font-bold text-center text-[#0a7ea4]">
           {title}
         </h2>
@@ -194,7 +196,7 @@ export const PartnersSection = () => {
       width: 700,
       height: 200,
     },
-     {
+    {
       src: "/img/logos/tecnopichincha.webp",
       alt: "Tecnologico Universitario Pichincha",
       width: 700,
@@ -210,9 +212,9 @@ export const PartnersSection = () => {
           {/* Organizer Section */}
           <div className="space-y-6">
             <div className="flex items-center justify-center gap-3">
-              <Crown className="h-6 w-6 text-[#0a7ea4]" />
+              {/* <Crown className="h-6 w-6 text-[#0a7ea4]" /> */}
               <h3 className="text-2xl md:text-3xl font-bold text-[#0a7ea4]">
-                Organizador
+                ORGANIZADOR
               </h3>
               {/* <Crown className="h-6 w-6 text-[#0a7ea4]" /> */}
             </div>
@@ -231,9 +233,9 @@ export const PartnersSection = () => {
           {/* Sponsors Section */}
           <div className="space-y-6">
             <div className="flex items-center justify-center gap-3">
-              <Award className="h-6 w-6 text-[#0a7ea4]" />
+              {/* <Award className="h-6 w-6 text-[#0a7ea4]" /> */}
               <h3 className="text-2xl md:text-3xl font-bold text-[#0a7ea4]">
-                Sponsoring
+                SPONSORING
               </h3>
               {/* <Award className="h-6 w-6 text-[#0a7ea4]" /> */}
             </div>
@@ -259,9 +261,9 @@ export const PartnersSection = () => {
         </div>
 
         {/* Co-organizers Carousel */}
-        <CarouselMulti
-          title="Coorganizadores"
-          icon={<Users className="h-6 w-6 text-[#0a7ea4]" />}
+        <CarruselSponsor
+          title="COORGANIZADORES"
+          // icon={<Users className="h-6 w-6 text-[#0a7ea4]" />}
           logos={coOrganizers}
           itemsPerView={3}
           gap={40}

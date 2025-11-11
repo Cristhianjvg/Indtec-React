@@ -1,44 +1,58 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-//import Link from "next/link";
 
 export function InfoSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [activeTab, setActiveTab] = useState("innotec");
-  const [vh, setVh] = useState(0);
 
   useEffect(() => {
-    const updateVh = () => setVh(window.innerHeight);
-    updateVh();
-    window.addEventListener("resize", updateVh);
-    return () => window.removeEventListener("resize", updateVh);
-  }, []);
+    const applyParallax = () => {
+      if (window.innerWidth < 1024) return;
 
-  useEffect(() => {
+      const section = document.getElementById("info-section");
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      const sectionHeight = section.offsetHeight;
+      const viewportHeight = window.innerHeight;
+
+      let progress = 0;
+      if (rect.top <= 0 && rect.bottom >= viewportHeight) {
+        progress = Math.abs(rect.top) / (sectionHeight - viewportHeight);
+        progress = Math.max(0, Math.min(1, progress));
+      } else if (rect.bottom < viewportHeight) {
+        progress = 1;
+      }
+
+      const img = document.getElementById("parallax-image");
+      if (img) {
+        img.style.transform = `translateY(${progress * -100}vh)`;
+      }
+    };
+
     const handleScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const containerTop = rect.top;
-      const containerHeight = rect.height;
+      applyParallax();
+    };
 
-      if (vh === 0) return;
-
-      if (containerTop <= 0 && containerTop > -(containerHeight - vh)) {
-        const progress = Math.abs(containerTop) / (containerHeight - vh);
-        setScrollProgress(Math.min(Math.max(progress, 0), 1));
-      } else if (containerTop > 0) {
-        setScrollProgress(0);
+    const handleResize = () => {
+      if (window.innerWidth < 1024) {
+        const img = document.getElementById("parallax-image");
+        if (img) {
+          img.style.transform = "none";
+        }
       } else {
-        setScrollProgress(1);
+        applyParallax();
       }
     };
 
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [vh]);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const content = {
     innotec: {
@@ -88,105 +102,89 @@ export function InfoSection() {
 
   return (
     <section
-      ref={containerRef}
-      className="relative bg-[#0a2540] text-white"
-      style={{ height: "2100px" }}
+      id="info-section"
+      className="relative lg:h-[200vh] h-auto bg-[#0a2540] text-white"
     >
-      <div className="sticky top-0 h-screen overflow-hidden">
-        <div className="flex flex-col lg:flex-row h-full">
-          {/* Imagen con scroll interno */}
-          <div
-            ref={imageRef}
-            className="w-full lg:w-[50%] h-[40vh] lg:h-full relative overflow-hidden order-1 lg:order-1"
-          >
-            <div
-              className="absolute top-0 left-0 w-full transition-transform duration-100 ease-out"
-              style={{
-                transform:
-                  vh > 0
-                    ? `translateY(-${scrollProgress * (2400 - vh)}px)`
-                    : undefined,
-              }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/img/inDTecCollage.webp"
-                alt="Congreso InnoTec"
-                className="w-full h-[2400px] object-cover"
-              />
+      <div className="lg:sticky lg:top-0 lg:h-screen lg:flex">
+        {/* Imagen - arriba en móvil, izquierda en desktop */}
+        <div className="lg:w-1/2 w-full lg:h-screen h-[50vh] overflow-hidden">
+          <img
+            id="parallax-image"
+            src="/img/inDTecCollage.webp"
+            alt="Congreso InnoTec"
+            className="w-full lg:h-[200vh] h-full object-cover transition-transform duration-100 ease-out"
+          />
+        </div>
+
+        {/* Contenido derecho - abajo en móvil, derecha en desktop */}
+        <div className="lg:w-1/2 w-full lg:h-screen min-h-[50vh] flex items-center justify-center px-5 sm:px-8 md:px-12 py-12">
+          <div className="w-full max-w-xl">
+            {/* Pestañas con separadores */}
+            <div className="flex flex-wrap items-center gap-2 sm:gap-2 mb-5 lg:mb-12">
+              <button
+                onClick={() => setActiveTab("innotec")}
+                className={`text-sm sm:text-base lg:text-lg font-semibold transition-colors whitespace-nowrap ${
+                  activeTab === "innotec"
+                    ? "text-[#ff6b35]"
+                    : "text-[#4a9fd8] hover:text-[#ff6b35]"
+                }`}
+              >
+                ¿Qué es InDTec?
+              </button>
+
+              <div className="w-px h-6 bg-[#4a9fd8]"></div>
+
+              <button
+                onClick={() => setActiveTab("congreso")}
+                className={`text-sm sm:text-base lg:text-lg font-semibold transition-colors whitespace-nowrap ${
+                  activeTab === "congreso"
+                    ? "text-[#ff6b35]"
+                    : "text-[#4a9fd8] hover:text-[#ff6b35]"
+                }`}
+              >
+                Sobre el Congreso
+              </button>
+
+              <div className="w-px h-6 bg-[#4a9fd8]"></div>
+
+              <button
+                onClick={() => setActiveTab("caces")}
+                className={`text-sm sm:text-base lg:text-lg font-semibold transition-colors whitespace-nowrap ${
+                  activeTab === "caces"
+                    ? "text-[#ff6b35]"
+                    : "text-[#4a9fd8] hover:text-[#ff6b35]"
+                }`}
+              >
+                CACES
+              </button>
             </div>
-          </div>
 
-          {/* Contenido derecho */}
-          <div className="w-full lg:w-[50%] flex items-center justify-center px-5 sm:px-8 md:px-12 py-12 lg:py-12 order-2 lg:order-2">
-            <div className="w-full max-w-xl">
-              {/* Pestañas con separadores */}
-              <div className="flex flex-wrap items-center gap-2 sm:gap-2 mb-5 lg:mb-12">
-                <button
-                  onClick={() => setActiveTab("innotec")}
-                  className={`text-sm sm:text-base lg:text-lg font-semibold transition-colors whitespace-nowrap ${
-                    activeTab === "innotec"
-                      ? "text-[#ff6b35]"
-                      : "text-[#4a9fd8] hover:text-[#ff6b35]"
-                  }`}
-                >
-                  ¿Qué es InDTec?
-                </button>
-
-                <div className="w-px h-6 bg-[#4a9fd8]"></div>
-
-                <button
-                  onClick={() => setActiveTab("congreso")}
-                  className={`text-sm sm:text-base lg:text-lg font-semibold transition-colors whitespace-nowrap ${
-                    activeTab === "congreso"
-                      ? "text-[#ff6b35]"
-                      : "text-[#4a9fd8] hover:text-[#ff6b35]"
-                  }`}
-                >
-                  Sobre el Congreso
-                </button>
-
-                <div className="w-px h-6 bg-[#4a9fd8]"></div>
-
-                <button
-                  onClick={() => setActiveTab("caces")}
-                  className={`text-sm sm:text-base lg:text-lg font-semibold transition-colors whitespace-nowrap ${
-                    activeTab === "caces"
-                      ? "text-[#ff6b35]"
-                      : "text-[#4a9fd8] hover:text-[#ff6b35]"
-                  }`}
-                >
-                  CACES
-                </button>
-              </div>
-
-              {/* Contenido - Versión móvil (resumida) */}
-              <div className="space-y-3 lg:hidden">
-                {content[activeTab as keyof typeof content].paragraphs.map(
-                  (paragraph, index) => (
-                    <p
-                      key={index}
-                      className="text-gray-300 leading-relaxed text-xs sm:text-sm"
-                    >
-                      {paragraph}
-                    </p>
-                  )
-                )}
-              </div>
-
-              {/* Contenido - Versión desktop (completa) */}
-              <div className="hidden lg:block space-y-6">
-                {contentFull[
-                  activeTab as keyof typeof contentFull
-                ].paragraphs.map((paragraph, index) => (
+            {/* Contenido - Versión móvil (resumida) */}
+            <div className="space-y-3 lg:hidden">
+              {content[activeTab as keyof typeof content].paragraphs.map(
+                (paragraph, index) => (
                   <p
                     key={index}
-                    className="text-gray-300 leading-relaxed text-base"
+                    className="text-gray-300 leading-relaxed text-xs sm:text-sm"
                   >
                     {paragraph}
                   </p>
-                ))}
-              </div>
+                )
+              )}
+            </div>
+
+            {/* Contenido - Versión desktop (completa) */}
+            <div className="hidden lg:block space-y-6">
+              {contentFull[
+                activeTab as keyof typeof contentFull
+              ].paragraphs.map((paragraph, index) => (
+                <p
+                  key={index}
+                  className="text-gray-300 leading-relaxed text-base"
+                >
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </div>
         </div>
