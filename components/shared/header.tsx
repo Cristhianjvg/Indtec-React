@@ -14,15 +14,37 @@ import {
 import { useState } from "react";
 import Image from "next/image";
 
+type NavItem = {
+  href: string;
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+};
+
+const NAV_ITEMS: NavItem[] = [
+  { href: "/", label: "INICIO", icon: Home },
+  { href: "/congreso", label: "EL CONGRESO", icon: Presentation },
+  { href: "/actividades", label: "ACTIVIDADES", icon: Calendar },
+  { href: "/tarifa", label: "TARIFAS", icon: DollarSign },
+];
+
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
+
+  const goTrabajos = () => {
+    setMobileMenuOpen(false);
+    router.push("/trabajos");
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/10">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center">
+          <Link
+            href="/"
+            className="flex items-center"
+            onClick={() => setMobileMenuOpen(false)}
+          >
             <div className="relative h-10 w-[150px]">
               <Image
                 src="/img/logos/logoInDTec.webp"
@@ -37,40 +59,22 @@ export function Header() {
 
           {/* Navegación desktop */}
           <nav className="hidden lg:flex items-center gap-8">
-            <Link
-              href="/"
-              className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
-            >
-              <Home className="h-4 w-4" />
-              INICIO
-            </Link>
-            <Link
-              href="/congreso"
-              className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
-            >
-              <Presentation className="h-4 w-4" />
-              EL CONGRESO
-            </Link>
-            <Link
-              href="/actividades"
-              className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
-            >
-              <Calendar className="h-4 w-4" />
-              ACTIVIDADES
-            </Link>
-            <Link
-              href="/tarifa"
-              className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
-            >
-              <DollarSign className="h-4 w-4" />
-              TARIFAS
-            </Link>
+            {NAV_ITEMS.map(({ href, label, icon: Icon }) => (
+              <Link
+                key={href}
+                href={href}
+                className="flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-lg font-medium"
+              >
+                <Icon className="h-4 w-4" />
+                {label}
+              </Link>
+            ))}
           </nav>
 
           {/* Botón escritorio y menú móvil */}
           <div className="flex items-center gap-4">
             <button
-              onClick={() => router.push("/trabajos")}
+              onClick={goTrabajos}
               className="hidden lg:flex bg-[#ff6b35] hover:bg-[#ff5722] text-white font-medium px-6 py-2 rounded-full items-center gap-2 transition-colors"
             >
               Enviar trabajos
@@ -80,8 +84,10 @@ export function Header() {
             {/* Botón menú móvil */}
             <button
               className="lg:hidden p-2 text-cyan-400"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
+              onClick={() => setMobileMenuOpen((o) => !o)}
+              aria-label="Abrir menú"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav"
             >
               {mobileMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -92,55 +98,26 @@ export function Header() {
           </div>
         </div>
 
-        {/* Menú móvil */}
+        {/* Menú móvil (mismas opciones que desktop) */}
         {mobileMenuOpen && (
-          <nav className="lg:hidden mt-4 pb-4 flex flex-col gap-4 border-t border-white/10 pt-4">
-            <Link
-              href="/"
-              className="flex items-center gap-3 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <Home className="h-4 w-4" />
-              INICIO
-            </Link>
-            <Link
-              href="/congreso"
-              className="flex items-center gap-3 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <Presentation className="h-4 w-4" />
-              EL CONGRESO
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-3 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <Calendar className="h-4 w-4" />
-              EVENTO
-            </Link>
-            <Link
-              href="/tarifa"
-              className="flex items-center gap-3 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <DollarSign className="h-4 w-4" />
-              TARIFAS
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-3 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <BookOpen className="h-4 w-4" />
-              MEMORIAS
-            </Link>
+          <nav
+            id="mobile-nav"
+            className="lg:hidden mt-4 pb-4 flex flex-col gap-4 border-t border-white/10 pt-4"
+          >
+            {NAV_ITEMS.map(({ href, label, icon: Icon }) => (
+              <Link
+                key={href}
+                href={href}
+                className="flex items-center gap-3 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <Icon className="h-4 w-4" />
+                {label}
+              </Link>
+            ))}
 
             <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                router.push("/trabajos");
-              }}
+              onClick={goTrabajos}
               className="bg-[#ff6b35] hover:bg-[#ff5722] text-white font-medium px-6 py-2 rounded-full flex items-center justify-center gap-2 mt-2 transition-colors"
             >
               Enviar trabajos

@@ -62,7 +62,7 @@ const Chatbot = () => {
   // const pathname = usePathname();
   // const eventFilter = getEventFilterFromPath(pathname);
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
-  const [showChatbot, setShowChatbot] = useState(false);
+  const [showChatbot, setShowChatbot] = useState(true);
   const chatBodyRef = useRef<HTMLDivElement>(null);
   const generateBotResponse = async (history: ChatMessage[]) => {
     const updateHistory = (text: string) => {
@@ -161,7 +161,7 @@ const Chatbot = () => {
       {/* Chatbot Toggle Button */}
       <button
         onClick={() => setShowChatbot(!showChatbot)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#ff6b35] hover:bg-[#e55a2a] text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 bg-[#ff6b35] hover:bg-[#e55a2a] text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
       >
         {showChatbot ? (
           <svg
@@ -198,22 +198,48 @@ const Chatbot = () => {
 
       {/* Chatbot Popup */}
       {showChatbot && (
-        <div className="fixed bottom-24 right-6 z-50 w-96 h-[600px] bg-white rounded-lg shadow-2xl flex flex-col border border-gray-200 animate-in slide-in-from-bottom-4 duration-300">
-          {/* Chatbot Header */}
-          <div className="bg-[#0d475b] text-white p-4 rounded-t-lg flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#0a3845] rounded-full flex items-center justify-center">
+        <div
+          className="
+            fixed z-50
+            right-3 bottom-20 sm:right-6 sm:bottom-24
+
+            /* ancho base y por breakpoints */
+            w-[85vw] sm:w-[50vw] md:w-[325px] lg:w-[350px] max-w-[350px]
+
+            /* altura base + límite por viewport para que no se salga */
+            h-[65vh] sm:h-[62vh] max-h-[calc(88vh-3rem)]
+
+            /* micro-ajustes para pantallas ≤ 360px (p. ej. 320x698) */
+            max-[360px]:right-2
+            max-[360px]:bottom-16
+            max-[360px]:w-[94vw]
+            max-[360px]:h-[65vh]
+            max-[360px]:max-h-[calc(100vh-4rem)]
+
+            bg-white rounded-lg shadow-2xl flex flex-col border border-gray-200
+            overflow-hidden
+            animate-in slide-in-from-bottom-4 duration-300
+          "
+        >
+          {/* Header */}
+          <div className="bg-[#0d475b] text-white p-3 sm:p-4 rounded-t-lg flex items-center justify-between">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#0a3845] rounded-full flex items-center justify-center">
                 <ChatbotIcon />
               </div>
               <div>
-                <h3 className="font-semibold text-lg">CHATBOT INDTEC</h3>
-                <p className="text-xs text-blue-100">En línea</p>
+                <h3 className="font-semibold text-base sm:text-lg leading-tight">
+                  CHATBOT INDTEC
+                </h3>
+                <p className="text-[10px] sm:text-xs text-blue-100">En línea</p>
               </div>
             </div>
             <button
               onClick={() => setShowChatbot(false)}
               className="text-white hover:bg-[#0a3845] rounded-full p-1 transition-colors"
+              aria-label="Cerrar chatbot"
             >
+              {/* ícono X */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -231,31 +257,30 @@ const Chatbot = () => {
             </button>
           </div>
 
-          {/* Chatbot Body */}
+          {/* Body */}
           <div
             ref={chatBodyRef}
-            className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50"
+            className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4 bg-gray-50"
           >
-            {/* Welcome Message */}
-            <div className="flex gap-3 items-start">
-              <div className="w-8 h-8 bg-[#0d475b] rounded-full flex items-center justify-center flex-shrink-0">
+            {/* Mensaje de bienvenida */}
+            <div className="flex gap sm:gap-2 items-start">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#0d475b] rounded-full flex items-center justify-center flex-shrink-0">
                 <Bot className="w-4 h-4 text-white" />
               </div>
-              <div className="bg-white rounded-lg rounded-tl-none p-3 shadow-sm max-w-[80%]">
-                <p className="text-sm text-gray-800">
+              <div className="bg-white rounded-lg rounded-tl-none p-2 sm:p-3 shadow-sm max-w-[90%] sm:max-w-[80%]">
+                <p className="text-xs sm:text-sm text-gray-800">
                   ¡Hola! 👋 <br /> ¿En qué puedo ayudarte hoy?
                 </p>
               </div>
             </div>
 
-            {/* Chat History */}
             {chatHistory.map((chat, index) => (
               <ChatMessage key={index} chat={chat} />
             ))}
           </div>
 
-          {/* Chatbot Footer */}
-          <div className="p-4 border-t border-gray-200 bg-white rounded-b-lg">
+          {/* Footer */}
+          <div className="p-3 sm:p-4 border-t border-gray-200 bg-white rounded-b-lg  max-[360px]:right-2">
             <ChatForm
               chatHistory={chatHistory}
               setChatHistory={setChatHistory}

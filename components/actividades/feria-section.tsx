@@ -20,23 +20,26 @@ export function FeriaSection() {
         {/* Contenido a la derecha */}
         <div className="flex flex-col justify-center text-white px-8 md:px-12 lg:px-20 py-12 w-full md:w-1/2 bg-[#01385B]">
           <h2 className="text-[#FF6B35] text-2xl md:text-3xl font-semibold mb-4">
-            Exhibición de Proyectos de Innovación, Investigación y Emprendimiento
+            Exhibición de Proyectos de Innovación, Investigación y
+            Emprendimiento
           </h2>
 
           <p className="text-gray-200 text-sm md:text-base mb-6 leading-relaxed">
-            Un espacio para conocer las iniciativas que están marcando la diferencia
-            en el ámbito académico y social. Estudiantes y docentes de Instituciones
-            de Educación Superior presentan proyectos que impulsan el desarrollo
-            desde la ciencia, la tecnología, la cultura y el emprendimiento.
+            Un espacio para conocer las iniciativas que están marcando la
+            diferencia en el ámbito académico y social. Estudiantes y docentes
+            de Instituciones de Educación Superior presentan proyectos que
+            impulsan el desarrollo desde la ciencia, la tecnología, la cultura y
+            el emprendimiento.
           </p>
 
-          <h3 className="text-[#FF6B35] font-semibold mb-2">Áreas de enfoque:</h3>
+          <h3 className="text-[#FF6B35] font-semibold mb-2">
+            Áreas de enfoque:
+          </h3>
 
           <ul className="text-sm md:text-base font-light space-y-2 list-disc list-inside text-left mb-6">
-            <li>Innovación</li>
+            <li>Innovación y Tecnología</li>
             <li>Emprendimiento</li>
-            <li>Tecnología</li>
-            <li>Cultura</li>
+            <li>Cultura y Gastronomía</li>
           </ul>
 
           {/* Datos con íconos */}
@@ -57,8 +60,8 @@ export function FeriaSection() {
           </div>
 
           <p className="italic text-gray-300 text-sm md:text-base">
-            Te invitamos a inspirarte con nuevas ideas, experiencias y soluciones
-            para el futuro.
+            Te invitamos a inspirarte con nuevas ideas, experiencias y
+            soluciones para el futuro.
           </p>
         </div>
       </div>
