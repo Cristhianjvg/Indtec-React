@@ -8,7 +8,7 @@ export function FeriaSection() {
         {/* Imagen a la izquierda */}
         <div className="relative w-full md:w-1/2 h-[300px] md:h-auto flex-shrink-0">
           <Image
-            src="/img/general/proyecto.jpg"
+            src="/img/general/proyectos.png"
             alt="Exhibición de Proyectos de Innovación, Investigación y Emprendimiento"
             fill
             className="object-cover object-center"

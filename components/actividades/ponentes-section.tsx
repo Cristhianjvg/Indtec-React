@@ -12,7 +12,7 @@ const ponentes = [
     institucion: "CES Ecuador",
     imagen: "/img/ponentes/fidel.png",
     pais: "ECUADOR",
-    tema: "Tema a definir",
+    tema: "Aporte de la formación técnica y tecnológica",
   },
   {
     nombre: "Alexandra Monserrate Jara Minga",
@@ -60,7 +60,7 @@ const ponentes = [
     institucion: "Clipp Ecuador SAS",
     imagen: "/img/ponentes/bruno.png",
     pais: "ECUADOR",
-    tema: "Tema a definir",
+    tema: "Transformación digital del transporte en taxi y buses para Loja Ecuador",
   },
   {
     nombre: "Ingrid Weingärtner Reis",
@@ -118,6 +118,15 @@ const ponentes = [
     imagen: "/img/ponentes/jimenez.png",
     pais: "ECUADOR",
     tema: "El Proceso enfermero como estrategia de salud integral: vinculando nutrición, prevención y cuidado",
+  },
+  {
+    nombre: "Jorge Antonio Barba Guamán",
+    cargo:
+      "Presidente de Nodo Cía. Ltda",
+    institucion: "Nodo Cía. Ltda",
+    imagen: "/img/ponentes/barba.jpg",
+    pais: "ECUADOR",
+    tema: "Ciudades inteligentes",
   },
   {
     nombre: "Edgar Edurman García Silvera",
