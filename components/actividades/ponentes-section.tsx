@@ -3,7 +3,13 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Briefcase, GraduationCap, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Briefcase,
+  GraduationCap,
+  MapPin,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
 const ponentes = [
   {
@@ -144,13 +150,25 @@ export function PonentesSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [hasHover, setHasHover] = useState(true);
 
+  const isTouchCapable = () => {
+    if (typeof window === "undefined") return false;
+
+    const nav = typeof navigator !== "undefined" ? navigator : undefined;
+    const hasMax =
+      !!nav && "maxTouchPoints" in nav && (nav.maxTouchPoints ?? 0) > 0;
+    const hasMs =
+      !!nav &&
+      "msMaxTouchPoints" in nav &&
+      // type narrowing seguro
+      (nav as Navigator & { msMaxTouchPoints?: number }).msMaxTouchPoints! > 0;
+    const hasOntouch = "ontouchstart" in window;
+
+    return hasMax || hasMs || hasOntouch;
+  };
+
   // Detecta táctil y corrige el falso “hover” en tablets
   useEffect(() => {
-    const touchCapable =
-      (typeof navigator !== "undefined" && navigator.maxTouchPoints > 0) ||
-      // @ts-ignore
-      (typeof navigator !== "undefined" && navigator.msMaxTouchPoints > 0) ||
-      "ontouchstart" in window;
+    const touchCapable = isTouchCapable();
 
     const hoverMQ = window.matchMedia("(any-hover: hover)");
     const fineMQ = window.matchMedia("(any-pointer: fine)");
