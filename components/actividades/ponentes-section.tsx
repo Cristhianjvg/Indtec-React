@@ -130,7 +130,7 @@ const ponentes = [
     cargo:
       "Presidente de Nodo Cía. Ltda",
     institucion: "Nodo Cía. Ltda",
-    imagen: "/img/ponentes/barba.jpg",
+    imagen: "/img/ponentes/barba.png",
     pais: "ECUADOR",
     tema: "Ciudades inteligentes",
   },
