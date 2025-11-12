@@ -42,7 +42,7 @@ export default function DivulgacionCientifica({ onClose }: DivulgacionCientifica
           <div className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden">
             <div className="relative h-48 md:h-56">
               <Image
-                src="/img/general/ponente.webp"
+                src="/img/ponente1.png"
                 alt="Ponencia General"
                 fill
                 className="object-cover"
@@ -74,7 +74,7 @@ export default function DivulgacionCientifica({ onClose }: DivulgacionCientifica
           <div className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden">
             <div className="relative h-48 md:h-56">
               <Image
-                src="/img/general/latindex.webp"
+                src="/img/general/objetivos.webp"
                 alt="Ponencia y Publicación en Revista Latindex"
                 fill
                 className="object-cover"
@@ -112,7 +112,7 @@ export default function DivulgacionCientifica({ onClose }: DivulgacionCientifica
           <div className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden">
             <div className="relative h-48 md:h-56">
               <Image
-                src="/img/scopus.webp"
+                src="/img/ponente3.jpg"
                 alt="Ponencia y Publicación en Revista Scopus"
                 fill
                 className="object-cover"
