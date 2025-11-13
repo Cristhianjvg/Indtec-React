@@ -30,7 +30,7 @@ const ponentes = [
   },
   {
     nombre: "Pablo Jose Ruíz Aguirre",
-    cargo: "Profesor de pregrado en la UIDE y de postgrado en la UNL",
+    cargo: "Prorrector UIDE Loja",
     institucion: "UIDE",
     imagen: "/img/ponentes/pabloruiz.png",
     pais: "ECUADOR",
@@ -39,7 +39,7 @@ const ponentes = [
   {
     nombre: "Rosa Paola Flores Loaiza",
     cargo: "Docente investigadora en la Universidad Nacional de Loja",
-    institucion: " Universidad Nacional de Loja",
+    institucion: "Universidad Nacional de Loja",
     imagen: "/img/ponentes/rosa.png",
     pais: "ECUADOR",
     tema: "Emprendimiento en Ingeniería: Construyendo el Futuro a Través de la Innovación Aplicada",

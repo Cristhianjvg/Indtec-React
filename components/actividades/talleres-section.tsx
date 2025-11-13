@@ -45,36 +45,50 @@ const talleres: Taller[] = [
     duration: "1 hora",
     cupo: 15,
   },
-  // {
-  //   id: "4",
-  //   title: "Análisis de Datos con Python",
-  //   description:
-  //     "Descubre cómo analizar y visualizar datos usando Python, pandas y bibliotecas de visualización para tomar decisiones basadas en datos.",
-  //   image: "/data-analysis-python-workshop.jpg",
-  //   registrationUrl: "https://example.com/register/python-workshop",
-  //   instructor: "Dr. Roberto Silva",
-  //   duration: "8 horas",
-  // },
-  // {
-  //   id: "5",
-  //   title: "Marketing Digital y Redes Sociales",
-  //   description:
-  //     "Estrategias efectivas para promocionar tu marca en el mundo digital. Aprende sobre SEO, SEM, content marketing y gestión de redes sociales.",
-  //   image: "/digital-marketing-social-media-workshop.jpg",
-  //   registrationUrl: "https://example.com/register/marketing-workshop",
-  //   instructor: "Lic. Laura Fernández",
-  //   duration: "4 horas",
-  // },
-  // {
-  //   id: "6",
-  //   title: "Ciberseguridad Empresarial",
-  //   description:
-  //     "Protege tu organización de amenazas digitales. Conoce las mejores prácticas de seguridad, gestión de riesgos y respuesta a incidentes.",
-  //   image: "/cybersecurity-workshop.png",
-  //   registrationUrl: "https://example.com/register/security-workshop",
-  //   instructor: "Ing. Miguel Torres",
-  //   duration: "6 horas",
-  // },
+  {
+    id: "4",
+    title: "Educación Financiera",
+    description:
+      "Taller para fomentar el conocimiento financiero básico para administrar ingresos",
+    image: "/img/talleres/finanzas.png",
+    registrationUrl: "https://example.com/register/ux-workshop",
+    instructor: "Ing. María del Carmen Vásquez",
+    duration: "40 minutos",
+    cupo: 20,
+  },
+  {
+     id: "5",
+     title: "Sabores del Litoral: El Arte del Encebollado Maestro",
+     description:
+       "Descubre técnicas tradicionales y contemporáneas para preparar un encebollado auténtico, explorando sabores costeros, equilibrio sensorial y patrimonio culinario ecuatoriano",
+     image: "/img/talleres/gastronomia.jpg",
+     registrationUrl: "https://example.com/register/python-workshop",
+     instructor: "Chef Leonardo Acaro (ILE)",
+     duration: "40 minutos",
+     cupo: 15,
+   },
+  {
+     id: "6",
+     title: "Fuego Ancestral: Técnicas Tradicionales para una Cecina Perfecta",
+     description:
+       "Aprende procesos ancestrales de marinado, secado y cocción para elaborar cecina tradicional, integrando técnicas modernas y saberes patrimoniales de la cocina ecuatoriana",
+     image: "/img/talleres/gastronomia.jpg",
+     registrationUrl: "https://example.com/register/marketing-workshop",
+     instructor: "Chef Leonardo Acaro (ILE)",
+     duration: "40 minutos",
+     cupo: 15,
+  },
+  {
+     id: "7",
+     title: "Raíces Andinas: Llapingachos entre Tradición y Territorio",
+     description:
+       "Domina la preparación del llapingacho patrimonial, desde su base ancestral hasta técnicas actuales, explorando texturas, rellenos y acompañamientos emblemáticos del país",
+     image: "/img/talleres/gastronomia.jpg",
+     registrationUrl: "https://example.com/register/security-workshop",
+     instructor: "Chef Leonardo Acaro (ILE)",
+     duration: "40 minutos",
+     cupo: 15,
+  },
 ];
 
 export function TalleresSection() {
