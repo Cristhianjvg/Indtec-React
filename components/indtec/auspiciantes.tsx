@@ -47,17 +47,26 @@ export default function Auspiciantes() {
           <h2 className="text-3xl md:text-4xl font-bold text-center text-[#22c55e]">
             ORO
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 items-center justify-items-center">
+
+            <LogoCard
+              src="/img/auspiciantes/plorente.webp"
+              alt="Padre Julian Lorente"
+            />
             <LogoCard
               src="/img/auspiciantes/visioonart.webp"
               alt="Visioonart"
             />
             <LogoCard
-              src="/img/auspiciantes/plorente.webp"
-              alt="Padre Julian Lorente"
+              src="/img/auspiciantes/sencillito.webp"
+              alt="Sencillito Cacpe"
             />
             <LogoCard src="/img/auspiciantes/tikee.webp" alt="tikee" />
             <LogoCard src="/img/auspiciantes/ile.webp" alt="ILE" />
+            <LogoCard
+              src="/img/auspiciantes/velocity.webp"
+              alt="Velocity"
+            />
           </div>
         </div>
 
