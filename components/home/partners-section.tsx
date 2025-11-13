@@ -169,8 +169,8 @@ const CarruselMulti = ({
                     alt={logo.alt}
                     width={logo.width || 700}
                     height={logo.height || 200}
-                    className="h-14 sm:h-16 md:h-24 object-contain"
-                    sizes="(max-width: 640px) 220px, (max-width: 1024px) 360px, 700px"
+                    className="h-24 sm:h-28 md:h-32 lg:h-40 object-contain"
+                    sizes="(max-width: 640px) 300px, (max-width: 1024px) 400px, 700px"
                     priority={index < effectiveItemsPerView}
                   />
                 </div>
@@ -330,7 +330,7 @@ export const PartnersSection = () => {
           logos={coOrganizers}
           gap={20}
           autoplayInterval={3500}
-          responsive={{ base: 1, sm: 2, md: 3 }}
+          responsive={{ base: 1, sm: 1, md: 2, lg: 3 }}
         />
       </div>
     </section>
