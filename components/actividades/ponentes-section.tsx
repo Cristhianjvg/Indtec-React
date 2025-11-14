@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
@@ -18,7 +18,7 @@ const ponentes = [
     institucion: "CES Ecuador",
     imagen: "/img/ponentes/fidel.png",
     pais: "ECUADOR",
-    tema: "Aporte de la formación técnica y tecnológica",
+    tema: "Aporte de la formación técnica y tecnológica",
   },
   {
     nombre: "Alexandra Monserrate Jara Minga",
@@ -34,7 +34,7 @@ const ponentes = [
     institucion: "UIDE",
     imagen: "/img/ponentes/pabloruiz.png",
     pais: "ECUADOR",
-    tema: "La filosofía como innovación en el siglo XXI",
+    tema: "La filosofía como innovación en el siglo XXI",
   },
   {
     nombre: "Rosa Paola Flores Loaiza",
@@ -66,7 +66,7 @@ const ponentes = [
     institucion: "Clipp Ecuador SAS",
     imagen: "/img/ponentes/bruno.png",
     pais: "ECUADOR",
-    tema: "Transformación digital del transporte en taxi y buses para Loja Ecuador",
+    tema: "Transformación digital del transporte en taxi y buses para Loja Ecuador",
   },
   {
     nombre: "Ingrid Weingärtner Reis",
@@ -87,7 +87,7 @@ const ponentes = [
   {
     nombre: "María José Martínez Granda",
     cargo: "Jefe de Control de Calidad",
-    institucion: "Industria Lojana de Especerías ILE C.A.  ",
+    institucion: "Industria Lojana de Especerías ILE C.A.",
     imagen: "/img/ponentes/maria.png",
     pais: "ECUADOR",
     tema: "Certificaciones y Cultura de calidad en ILE C.A.",
@@ -95,7 +95,7 @@ const ponentes = [
   {
     nombre: "Juan Carlos Acosta Quevedo",
     cargo: "Catedrático Investigador Fundación Universitaria Área Andina",
-    institucion: "Fundación Universitaria Área Andina ",
+    institucion: "Fundación Universitaria Área Andina",
     imagen: "/img/ponentes/juanacosta.png",
     pais: "COLOMBIA",
     tema: "Revisión bibliográfica de tendencias tecnológicas adoptadas por empresas de transporte para reducir contaminación en Bogotá",
@@ -127,8 +127,7 @@ const ponentes = [
   },
   {
     nombre: "Jorge Antonio Barba Guamán",
-    cargo:
-      "Presidente de Nodo Cía. Ltda",
+    cargo: "Presidente de Nodo Cía. Ltda",
     institucion: "Nodo Cía. Ltda",
     imagen: "/img/ponentes/barba.png",
     pais: "ECUADOR",
@@ -141,13 +140,14 @@ const ponentes = [
     institucion: "Instituto Superior Tecnológico Tecnoecuatoriano",
     imagen: "/img/ponentes/edgar.png",
     pais: "ECUADOR",
-    tema: "Retos y perspectivas de la Innovación: Una Mirada Global",
+    tema: "Retos y perspectivas de la Innovación: Una Mirada Global",
   },
 ];
 
 export function PonentesSection() {
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [hasHover, setHasHover] = useState(true);
 
   const isTouchCapable = () => {
@@ -159,14 +159,13 @@ export function PonentesSection() {
     const hasMs =
       !!nav &&
       "msMaxTouchPoints" in nav &&
-      // type narrowing seguro
       (nav as Navigator & { msMaxTouchPoints?: number }).msMaxTouchPoints! > 0;
     const hasOntouch = "ontouchstart" in window;
 
     return hasMax || hasMs || hasOntouch;
   };
 
-  // Detecta táctil y corrige el falso “hover” en tablets
+  // Hover vs táctil (igual que antes)
   useEffect(() => {
     const touchCapable = isTouchCapable();
 
@@ -188,46 +187,150 @@ export function PonentesSection() {
     };
   }, []);
 
-  const itemsPerSlide = 4;
-  const totalSlides = Math.ceil(ponentes.length / itemsPerSlide);
+  const getVisibleCount = () => {
+    if (typeof window === "undefined") return 1;
+    const width = window.innerWidth;
+    if (width >= 1024) return 3; // lg
+    if (width >= 768) return 2; // md
+    return 1; // mobile
+  };
+
+  const scroll = (direction: "left" | "right") => {
+    if (!sliderRef.current) return;
+
+    const slider = sliderRef.current;
+    const visibleCount = getVisibleCount();
+    const totalItems = ponentes.length;
+
+    if (direction === "right") {
+      if (currentIndex >= totalItems - visibleCount) {
+        slider.scrollTo({ left: 0, behavior: "smooth" });
+        setCurrentIndex(0);
+      } else {
+        const nextIndex = currentIndex + 1;
+        const scrollAmount = slider.clientWidth;
+        slider.scrollBy({ left: scrollAmount, behavior: "smooth" });
+        setCurrentIndex(nextIndex);
+      }
+    } else {
+      if (currentIndex === 0) {
+        const lastIndex = totalItems - visibleCount;
+        const scrollAmount = slider.scrollWidth - slider.clientWidth;
+        slider.scrollTo({ left: scrollAmount, behavior: "smooth" });
+        setCurrentIndex(lastIndex);
+      } else {
+        const prevIndex = currentIndex - 1;
+        const scrollAmount = -slider.clientWidth;
+        slider.scrollBy({ left: scrollAmount, behavior: "smooth" });
+        setCurrentIndex(prevIndex);
+      }
+    }
+  };
+
+  // Actualizar índice cuando hay scroll manual
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    const handleScroll = () => {
+      const scrollLeft = slider.scrollLeft;
+      const itemWidth = slider.clientWidth / getVisibleCount();
+      const newIndex = Math.round(scrollLeft / itemWidth);
+      setCurrentIndex(newIndex);
+      setFlippedIndex(null); // opcional: cerrar tarjetas al deslizar
+    };
+
+    slider.addEventListener("scroll", handleScroll);
+    return () => slider.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const flipAt = (absIndex: number) =>
     setFlippedIndex((prev) => (prev === absIndex ? null : absIndex));
 
-  const nextSlide = () => setCurrentSlide((p) => (p + 1) % totalSlides);
-  const prevSlide = () =>
-    setCurrentSlide((p) => (p - 1 + totalSlides) % totalSlides);
-
-  const visiblePonentes = ponentes.slice(
-    currentSlide * itemsPerSlide,
-    currentSlide * itemsPerSlide + itemsPerSlide
-  );
-
   return (
-    <section className="py-24 bg-[#062135] text-white relative overflow-hidden">
-      <div className="mx-auto max-w-[1360px] sm:px-2 px-8 md:px-10 relative">
-        <h2 className="text-center text-3xl font-bold text-orange-500 mb-2">
-          CONFERENCIAS MAGISTRALES
-        </h2>
-        <p className="text-center uppercase text-gray-300 mb-12 tracking-widest">
-          Invitados Especiales
-        </p>
+    <section className="w-full bg-[#062135] text-white py-16 px-4 md:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto relative">
+        {/* Header similar a talleres */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-orange-500 mb-2">
+            CONFERENCIAS MAGISTRALES
+          </h2>
+          <p className="uppercase text-gray-300 mb-12 tracking-widest">
+            Invitados Especiales
+          </p>
+        </div>
 
-        <div className="flex justify-center relative">
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-x-4 gap-y-20 w-full">
-            {visiblePonentes.map((p, i) => {
-              const absIndex = i + currentSlide * itemsPerSlide;
-              const isFlipped = flippedIndex === absIndex;
+        {/* Botón izquierdo cristal */}
+        <button
+          onClick={() => scroll("left")}
+          className="
+            absolute left-0 top-1/2 -translate-y-1/2 z-10
+            w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center
+            rounded-full
+            bg-white/10 hover:bg-white/20
+            border border-white/30 hover:border-white/60
+            text-white
+            backdrop-blur-md
+            shadow-[0_8px_32px_rgba(0,0,0,0.5)]
+            transition-all duration-300
+            hover:scale-105
+            focus:outline-none focus:ring-4 focus:ring-white/30
+          "
+          aria-label="Ponentes anteriores"
+        >
+          <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7" strokeWidth={2.5} />
+        </button>
 
-              return (
+        {/* Botón derecho cristal */}
+        <button
+          onClick={() => scroll("right")}
+          className="
+            absolute right-0 top-1/2 -translate-y-1/2 z-10
+            w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center
+            rounded-full
+            bg-white/10 hover:bg-white/20
+            border border-white/30 hover:border-white/60
+            text-white
+            backdrop-blur-md
+            shadow-[0_8px_32px_rgba(0,0,0,0.5)]
+            transition-all duration-300
+            hover:scale-105
+            focus:outline-none focus:ring-4 focus:ring-white/30
+          "
+          aria-label="Siguientes ponentes"
+        >
+          <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7" strokeWidth={2.5} />
+        </button>
+
+        {/* SLIDER con estructura de talleres */}
+        <div
+          ref={sliderRef}
+          className="
+            flex gap-6 overflow-hidden scroll-smooth pb-4
+            snap-x snap-mandatory
+          "
+        >
+          {ponentes.map((p, index) => {
+            const isFlipped = flippedIndex === index;
+
+            return (
+              <div
+                key={p.nombre}
+                className="
+                  snap-start
+                  min-w-[90%]
+                  md:min-w-[48%]
+                  lg:min-w-[31%]
+                "
+              >
                 <div
-                  key={p.nombre}
-                  className="relative h-[460px] perspective-[1000px]"
-                  onMouseLeave={() =>
-                    hasHover &&
-                    setFlippedIndex((v) => (v === absIndex ? null : v))
-                  }
-                  onClick={() => !hasHover && flipAt(absIndex)} // tap-to-flip en táctil
+                  className="
+                    relative h-[460px] max-w-[360px] mx-auto
+                    perspective-[1000px]
+                  "
+                  onMouseEnter={() => hasHover && setFlippedIndex(null)}
+                  onMouseLeave={() => hasHover && setFlippedIndex(null)}
+                  onClick={() => !hasHover && flipAt(index)}
                   role={!hasHover ? "button" : undefined}
                   tabIndex={!hasHover ? 0 : -1}
                   aria-pressed={!hasHover ? isFlipped : undefined}
@@ -255,16 +358,16 @@ export function PonentesSection() {
                           alt={p.nombre}
                           fill
                           className="object-cover"
-                          sizes="(max-width: 640px) 90vw, (max-width: 1280px) 45vw, 320px"
+                          sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, (max-width: 1280px) 30vw, 320px"
                           priority={false}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0b2431]/70 via-[#0b2431]/20 to-transparent" />
 
-                        {/* Panel inferior: solo se mueve en desktop/hover */}
+                        {/* Panel inferior */}
                         <div
                           className={[
                             "absolute bottom-0 z-20 w-full bg-[#b55e2b]/35 backdrop-blur-md border-t border-[#b55e2b]/40 rounded-b-[28px] px-7 pt-5 pb-[90px] h-[210px] transition-transform duration-500 ease-out",
-                            hasHover ? "md:group-hover:translate-y-[50px]" : "",
+                            hasHover ? "group-hover:translate-y-[50px]" : "",
                           ].join(" ")}
                         >
                           <h3 className="text-[20px] pb-2 font-semibold border-b border-[#1c1c1c] leading-tight">
@@ -294,24 +397,22 @@ export function PonentesSection() {
                           </div>
                         </div>
 
-                        {/* BOTÓN */}
+                        {/* BOTÓN Tema de conferencia */}
                         <div
                           className={[
                             "absolute z-30 transition-all duration-300 ease-out",
                             hasHover
-                              ? // Desktop/hover: escondido hasta hover
-                                [
+                              ? [
                                   "left-1/2 -translate-x-1/2 bottom-3",
                                   "opacity-0 pointer-events-none",
-                                  "md:group-hover:opacity-100 md:group-hover:pointer-events-auto",
-                                  "md:group-hover:top-1/2 md:group-hover:bottom-auto md:group-hover:-translate-y-1/2",
+                                  "group-hover:opacity-100 group-hover:pointer-events-auto",
+                                  "group-hover:top-1/2 group-hover:bottom-auto group-hover:-translate-y-1/2",
                                 ].join(" ")
-                              : // Táctil: siempre visible y centrado
-                                "left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 opacity-100",
+                              : "left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 opacity-100",
                           ].join(" ")}
                           onClick={(e) => {
                             e.stopPropagation();
-                            flipAt(absIndex);
+                            flipAt(index);
                           }}
                           aria-hidden={hasHover ? undefined : false}
                         >
@@ -319,7 +420,7 @@ export function PonentesSection() {
                             className={[
                               "rounded-xl px-3 py-3 text-[14px] border border-[#15384a] backdrop-blur-sm shadow-lg cursor-pointer transition-colors duration-300 w-full",
                               hasHover
-                                ? "md:bg-transparent md:text-[#15384a] md:group-hover:bg-[#15384a] md:group-hover:text-white"
+                                ? "bg-transparent text-[#15384a] group-hover:bg-[#15384a] group-hover:text-white"
                                 : "bg-[#15384a] text-white",
                             ].join(" ")}
                           >
@@ -338,9 +439,9 @@ export function PonentesSection() {
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
-                            flipAt(absIndex);
+                            flipAt(index);
                           }}
-                          className="mt-4 rounded-lg px-4 py-2 bg-white/10 hover:bg-white/20 transition"
+                          className="mt-4 rounded-lg px-4 py-2 bg-white/10 hover:bg:white/20 transition"
                         >
                           Volver
                         </button>
@@ -348,26 +449,10 @@ export function PonentesSection() {
                     </div>
                   </motion.div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
-
-        {/* Navegación */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-[-28px] md:left-[-60px] top-1/2 -translate-y-1/2 bg-transparent hover:bg-white/10 text-white rounded-full p-3 transition"
-          aria-label="Anterior"
-        >
-          <ChevronLeft size={34} className="md:size-[40px]" />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="absolute right-[-28px] md:right-[-60px] top-1/2 -translate-y-1/2 bg-transparent hover:bg-white/10 text-white rounded-full p-3 transition"
-          aria-label="Siguiente"
-        >
-          <ChevronRight size={34} className="md:size-[40px]" />
-        </button>
       </div>
     </section>
   );
