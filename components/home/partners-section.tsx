@@ -169,8 +169,8 @@ const CarruselMulti = ({
                     alt={logo.alt}
                     width={logo.width || 700}
                     height={logo.height || 200}
-                    className="h-24 sm:h-28 md:h-32 lg:h-40 object-contain"
-                    sizes="(max-width: 640px) 300px, (max-width: 1024px) 400px, 700px"
+                    className="h-18 sm:h-20 md:h-26 lg:h-30 xl:h-30 object-contain"
+                    sizes="(max-width: 640px) 220px, (max-width: 1024px) 360px, 480px"
                     priority={index < effectiveItemsPerView}
                   />
                 </div>
@@ -209,7 +209,7 @@ export const PartnersSection = () => {
     },
   ];
 
-  const coOrganizers: LogoAsset[] = [
+  const coorganizers: LogoAsset[] = [
     {
       src: "/img/logos/tecnoecuatoriano.webp",
       alt: "Tecnoecuatoriano",
@@ -278,8 +278,10 @@ export const PartnersSection = () => {
                 ORGANIZADOR
               </h3>
             </div>
-            <div className="flex justify-start">
-              <div className="relative h-16 sm:h-20 md:h-28 w-[260px] sm:w-[380px] md:w-[520px]">
+
+            {/* === CAMBIO: centrar la imagen (antes "flex justify-start") === */}
+            <div className="flex justify-center">
+              <div className="relative h-24 sm:h-28 md:h-32 w-64 sm:w-80 md:w-96 mx-auto">
                 <Image
                   src={organizer.src}
                   alt={organizer.alt}
@@ -299,11 +301,13 @@ export const PartnersSection = () => {
                 SPONSORING
               </h3>
             </div>
-            <div className="flex justify-start">
+
+            {/* === CAMBIO: permitir varios sponsors, centrar y hacer wrap en pantallas pequeñas === */}
+            <div className="flex flex-wrap justify-center gap-4">
               {sponsors.map((s) => (
                 <div
                   key={s.alt}
-                  className="relative h-16 sm:h-20 md:h-28 w-[260px] sm:w-[380px] md:w-[520px]"
+                  className="relative h-20 sm:h-24 md:h-28 w-56 sm:w-72 md:w-80 mx-auto"
                 >
                   <Image
                     src={s.src}
@@ -327,7 +331,7 @@ export const PartnersSection = () => {
         {/* Co-organizadores responsivo */}
         <CarruselMulti
           title="COORGANIZADORES"
-          logos={coOrganizers}
+          logos={coorganizers}
           gap={20}
           autoplayInterval={3500}
           responsive={{ base: 1, sm: 1, md: 2, lg: 3 }}
