@@ -99,37 +99,37 @@ export function TalleresSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const getVisibleCount = () => {
-    if (typeof window === 'undefined') return 1;
-    
+    if (typeof window === "undefined") return 1;
+
     const width = window.innerWidth;
     if (width >= 1024) return 3; // lg
-    if (width >= 768) return 2;  // md
-    return 1;                    // mobile
+    if (width >= 768) return 2; // md
+    return 1; // mobile
   };
 
   const scroll = (direction: "left" | "right") => {
     if (!sliderRef.current) return;
-    
+
     const slider = sliderRef.current;
     const visibleCount = getVisibleCount();
     const totalItems = talleres.length;
-    
+
     if (direction === "right") {
       // Si estamos en el último grupo, volver al inicio
       if (currentIndex >= totalItems - visibleCount) {
         slider.scrollTo({
           left: 0,
-          behavior: "smooth"
+          behavior: "smooth",
         });
         setCurrentIndex(0);
       } else {
         // Avanzar al siguiente grupo
         const nextIndex = currentIndex + 1;
         const scrollAmount = slider.clientWidth;
-        
+
         slider.scrollBy({
           left: scrollAmount,
-          behavior: "smooth"
+          behavior: "smooth",
         });
         setCurrentIndex(nextIndex);
       }
@@ -138,20 +138,20 @@ export function TalleresSection() {
       if (currentIndex === 0) {
         const lastIndex = totalItems - visibleCount;
         const scrollAmount = slider.scrollWidth - slider.clientWidth;
-        
+
         slider.scrollTo({
           left: scrollAmount,
-          behavior: "smooth"
+          behavior: "smooth",
         });
         setCurrentIndex(lastIndex);
       } else {
         // Retroceder al grupo anterior
         const prevIndex = currentIndex - 1;
         const scrollAmount = -slider.clientWidth;
-        
+
         slider.scrollBy({
           left: scrollAmount,
-          behavior: "smooth"
+          behavior: "smooth",
         });
         setCurrentIndex(prevIndex);
       }
@@ -170,14 +170,13 @@ export function TalleresSection() {
       setCurrentIndex(newIndex);
     };
 
-    slider.addEventListener('scroll', handleScroll);
-    return () => slider.removeEventListener('scroll', handleScroll);
+    slider.addEventListener("scroll", handleScroll);
+    return () => slider.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <section className="w-full bg-white py-16 px-4 md:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto relative">
-
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-center text-3xl font-bold text-orange-500 mb-2">
@@ -189,57 +188,57 @@ export function TalleresSection() {
           </p>
         </div>
 
-        {/* Botón Izquierdo - Estilo similar a la imagen */}
+        {/* Botón Izquierdo */}
         <button
           onClick={() => scroll("left")}
           className="
-            absolute -left-14 top-1/2 -translate-y-1/2 z-10
-            w-12 h-12 flex items-center justify-center
-            rounded-full border-2 border-orange-500 bg-white
-            text-orange-500 hover:bg-orange-500 hover:text-white
-            transition-all duration-300 shadow-md
-            focus:outline-none focus:ring-4 focus:ring-orange-300 focus:ring-opacity-50
-          "
+        absolute left-0 top-1/2 -translate-y-1/2 z-10
+        w-12 h-12 flex items-center justify-center
+        rounded-full border-2 border-orange-500 bg-white
+        text-orange-500 hover:bg-orange-500 hover:text-white
+        transition-all duration-300 shadow-md
+        focus:outline-none focus:ring-4 focus:ring-orange-300 focus:ring-opacity-50
+      "
           aria-label="Talleres anteriores"
         >
-          <svg 
-            width="20" 
-            height="20" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="3" 
-            strokeLinecap="round" 
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
             strokeLinejoin="round"
           >
-            <path d="M15 18l-6-6 6-6"/>
+            <path d="M15 18l-6-6 6-6" />
           </svg>
         </button>
 
-        {/* Botón Derecho - Estilo similar a la imagen */}
+        {/* Botón Derecho */}
         <button
           onClick={() => scroll("right")}
           className="
-            absolute -right-14 top-1/2 -translate-y-1/2 z-10
-            w-12 h-12 flex items-center justify-center
-            rounded-full border-2 border-orange-500 bg-white
-            text-orange-500 hover:bg-orange-500 hover:text-white
-            transition-all duration-300 shadow-md
-            focus:outline-none focus:ring-4 focus:ring-orange-300 focus:ring-opacity-50
-          "
+        absolute right-0 top-1/2 -translate-y-1/2 z-10
+        w-12 h-12 flex items-center justify-center
+        rounded-full border-2 border-orange-500 bg-white
+        text-orange-500 hover:bg-orange-500 hover:text-white
+        transition-all duration-300 shadow-md
+        focus:outline-none focus:ring-4 focus:ring-orange-300 focus:ring-opacity-50
+      "
           aria-label="Siguientes talleres"
         >
-          <svg 
-            width="20" 
-            height="20" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="3" 
-            strokeLinecap="round" 
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
             strokeLinejoin="round"
           >
-            <path d="M9 18l6-6-6-6"/>
+            <path d="M9 18l6-6-6-6" />
           </svg>
         </button>
 
@@ -263,7 +262,6 @@ export function TalleresSection() {
             >
               {/* TARJETA ORIGINAL SIN MODIFICACIONES */}
               <div className="flex flex-col h-full bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-
                 <div className="relative w-full h-48 overflow-hidden">
                   <Image
                     src={taller.image}
@@ -322,12 +320,10 @@ export function TalleresSection() {
                     Inscribirse al Taller
                   </a>
                 </div>
-
               </div>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
