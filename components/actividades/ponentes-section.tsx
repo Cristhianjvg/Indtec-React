@@ -90,7 +90,7 @@ const ponentes = [
     institucion: "Industria Lojana de Especerías ILE C.A.  ",
     imagen: "/img/ponentes/maria.png",
     pais: "ECUADOR",
-    tema: "Certificaciones y Cultura de calidad en ILE C.A. ",
+    tema: "Certificaciones y Cultura de calidad en ILE C.A.",
   },
   {
     nombre: "Juan Carlos Acosta Quevedo",
