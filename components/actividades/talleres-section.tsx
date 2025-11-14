@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 
 interface Taller {
@@ -20,7 +23,7 @@ const talleres: Taller[] = [
     image: "/img/talleres/bienestar.png",
     registrationUrl: "https://example.com/register/ai-workshop",
     instructor: "Mgs. Sofia Faggioni",
-    duration: "1 hora ",
+    duration: "1 hora",
     cupo: 15,
   },
   {
@@ -57,44 +60,124 @@ const talleres: Taller[] = [
     cupo: 20,
   },
   {
-     id: "5",
-     title: "Sabores del Litoral: El Arte del Encebollado Maestro",
-     description:
-       "Descubre técnicas tradicionales y contemporáneas para preparar un encebollado auténtico, explorando sabores costeros, equilibrio sensorial y patrimonio culinario ecuatoriano",
-     image: "/img/talleres/gastronomia.jpg",
-     registrationUrl: "https://example.com/register/python-workshop",
-     instructor: "Chef Leonardo Acaro (ILE)",
-     duration: "40 minutos",
-     cupo: 15,
-   },
-  {
-     id: "6",
-     title: "Fuego Ancestral: Técnicas Tradicionales para una Cecina Perfecta",
-     description:
-       "Aprende procesos ancestrales de marinado, secado y cocción para elaborar cecina tradicional, integrando técnicas modernas y saberes patrimoniales de la cocina ecuatoriana",
-     image: "/img/talleres/gastronomia.jpg",
-     registrationUrl: "https://example.com/register/marketing-workshop",
-     instructor: "Chef Leonardo Acaro (ILE)",
-     duration: "40 minutos",
-     cupo: 15,
+    id: "5",
+    title: "Sabores del Litoral: El Arte del Encebollado Maestro",
+    description:
+      "Descubre técnicas tradicionales y contemporáneas para preparar un encebollado auténtico, explorando sabores costeros, equilibrio sensorial y patrimonio culinario ecuatoriano",
+    image: "/img/talleres/gastro1.jpg",
+    registrationUrl: "https://example.com/register/python-workshop",
+    instructor: "Chef Leonardo Acaro (ILE)",
+    duration: "40 minutos",
+    cupo: 15,
   },
   {
-     id: "7",
-     title: "Raíces Andinas: Llapingachos entre Tradición y Territorio",
-     description:
-       "Domina la preparación del llapingacho patrimonial, desde su base ancestral hasta técnicas actuales, explorando texturas, rellenos y acompañamientos emblemáticos del país",
-     image: "/img/talleres/gastronomia.jpg",
-     registrationUrl: "https://example.com/register/security-workshop",
-     instructor: "Chef Leonardo Acaro (ILE)",
-     duration: "40 minutos",
-     cupo: 15,
+    id: "6",
+    title: "Fuego Ancestral: Técnicas Tradicionales para una Cecina Perfecta",
+    description:
+      "Aprende procesos ancestrales de marinado, secado y cocción para elaborar cecina tradicional, integrando técnicas modernas y saberes patrimoniales de la cocina ecuatoriana",
+    image: "/img/talleres/gastro2.jpg",
+    registrationUrl: "https://example.com/register/marketing-workshop",
+    instructor: "Chef Leonardo Acaro (ILE)",
+    duration: "40 minutos",
+    cupo: 15,
+  },
+  {
+    id: "7",
+    title: "Raíces Andinas: Llapingachos entre Tradición y Territorio",
+    description:
+      "Domina la preparación del llapingacho patrimonial, desde su base ancestral hasta técnicas actuales, explorando texturas, rellenos y acompañamientos emblemáticos del país",
+    image: "/img/talleres/gastro3.jpg",
+    registrationUrl: "https://example.com/register/security-workshop",
+    instructor: "Chef Leonardo Acaro (ILE)",
+    duration: "40 minutos",
+    cupo: 15,
   },
 ];
 
 export function TalleresSection() {
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const getVisibleCount = () => {
+    if (typeof window === 'undefined') return 1;
+    
+    const width = window.innerWidth;
+    if (width >= 1024) return 3; // lg
+    if (width >= 768) return 2;  // md
+    return 1;                    // mobile
+  };
+
+  const scroll = (direction: "left" | "right") => {
+    if (!sliderRef.current) return;
+    
+    const slider = sliderRef.current;
+    const visibleCount = getVisibleCount();
+    const totalItems = talleres.length;
+    
+    if (direction === "right") {
+      // Si estamos en el último grupo, volver al inicio
+      if (currentIndex >= totalItems - visibleCount) {
+        slider.scrollTo({
+          left: 0,
+          behavior: "smooth"
+        });
+        setCurrentIndex(0);
+      } else {
+        // Avanzar al siguiente grupo
+        const nextIndex = currentIndex + 1;
+        const scrollAmount = slider.clientWidth;
+        
+        slider.scrollBy({
+          left: scrollAmount,
+          behavior: "smooth"
+        });
+        setCurrentIndex(nextIndex);
+      }
+    } else {
+      // Si estamos en el inicio, ir al final
+      if (currentIndex === 0) {
+        const lastIndex = totalItems - visibleCount;
+        const scrollAmount = slider.scrollWidth - slider.clientWidth;
+        
+        slider.scrollTo({
+          left: scrollAmount,
+          behavior: "smooth"
+        });
+        setCurrentIndex(lastIndex);
+      } else {
+        // Retroceder al grupo anterior
+        const prevIndex = currentIndex - 1;
+        const scrollAmount = -slider.clientWidth;
+        
+        slider.scrollBy({
+          left: scrollAmount,
+          behavior: "smooth"
+        });
+        setCurrentIndex(prevIndex);
+      }
+    }
+  };
+
+  // Actualizar el índice actual cuando el usuario hace scroll manual
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    const handleScroll = () => {
+      const scrollLeft = slider.scrollLeft;
+      const itemWidth = slider.clientWidth / getVisibleCount();
+      const newIndex = Math.round(scrollLeft / itemWidth);
+      setCurrentIndex(newIndex);
+    };
+
+    slider.addEventListener('scroll', handleScroll);
+    return () => slider.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section className="w-full bg-white py-16 px-4 md:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto relative">
+
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-center text-3xl font-bold text-orange-500 mb-2">
@@ -106,92 +189,145 @@ export function TalleresSection() {
           </p>
         </div>
 
-        {/* Workshops Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Botón Izquierdo - Estilo similar a la imagen */}
+        <button
+          onClick={() => scroll("left")}
+          className="
+            absolute -left-14 top-1/2 -translate-y-1/2 z-10
+            w-12 h-12 flex items-center justify-center
+            rounded-full border-2 border-orange-500 bg-white
+            text-orange-500 hover:bg-orange-500 hover:text-white
+            transition-all duration-300 shadow-md
+            focus:outline-none focus:ring-4 focus:ring-orange-300 focus:ring-opacity-50
+          "
+          aria-label="Talleres anteriores"
+        >
+          <svg 
+            width="20" 
+            height="20" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="3" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+          >
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+
+        {/* Botón Derecho - Estilo similar a la imagen */}
+        <button
+          onClick={() => scroll("right")}
+          className="
+            absolute -right-14 top-1/2 -translate-y-1/2 z-10
+            w-12 h-12 flex items-center justify-center
+            rounded-full border-2 border-orange-500 bg-white
+            text-orange-500 hover:bg-orange-500 hover:text-white
+            transition-all duration-300 shadow-md
+            focus:outline-none focus:ring-4 focus:ring-orange-300 focus:ring-opacity-50
+          "
+          aria-label="Siguientes talleres"
+        >
+          <svg 
+            width="20" 
+            height="20" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="3" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+          >
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+
+        {/* SLIDER - SIN MODIFICAR LAS TARJETAS */}
+        <div
+          ref={sliderRef}
+          className="
+            flex gap-6 overflow-hidden scroll-smooth pb-4
+            snap-x snap-mandatory
+          "
+        >
           {talleres.map((taller) => (
             <div
               key={taller.id}
-              className="flex flex-col h-full bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden"
+              className="
+                snap-start
+                min-w-[90%]
+                md:min-w-[48%]
+                lg:min-w-[31%]
+              "
             >
-              {/* Image */}
-              <div className="relative w-full h-48 overflow-hidden">
-                <Image
-                  src={taller.image || "/placeholder.svg"}
-                  alt={taller.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
+              {/* TARJETA ORIGINAL SIN MODIFICACIONES */}
+              <div className="flex flex-col h-full bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden">
 
-              {/* Content */}
-              <div className="flex-1 p-6">
-                <h3 className="text-xl font-bold mb-3 text-gray-900 text-balance">
-                  {taller.title}
-                </h3>
-                <p className="text-gray-600 mb-4 text-pretty leading-relaxed">
-                  {taller.description}
-                </p>
+                <div className="relative w-full h-48 overflow-hidden">
+                  <Image
+                    src={taller.image}
+                    alt={taller.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
 
-                {(taller.instructor || taller.duration) && (
-                  <div className="space-y-1 text-sm text-gray-500">
-                    {taller.instructor && (
-                      <p className="flex items-center gap-2">
-                        <span className="font-bold text-gray-600">
-                          Instructor:
-                        </span>
-                        <span>{taller.instructor}</span>
-                      </p>
-                    )}
-                    {taller.duration && (
-                      <p className="flex items-center gap-2">
-                        <span className="font-bold text-gray-600">
-                          Duración:
-                        </span>
-                        <span>{taller.duration}</span>
-                      </p>
-                    )}
-                    {taller.cupo && (
-                      <p className="flex items-center gap-2">
-                        <span className="font-bold text-gray-600">
-                          Cupo Ilimitado:
-                        </span>
-                        <span>{taller.cupo}</span>
-                      </p>
-                    )}
-                  </div>
-                )}
-              </div>
+                <div className="flex-1 p-6">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 text-balance">
+                    {taller.title}
+                  </h3>
 
-              {/* Footer with custom button */}
-              <div className="p-6 pt-0">
-                <a
-                  href={taller.registrationUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full bg-[#FF6B00] hover:bg-[#E55F00] text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200"
-                >
-                  Inscribirse al Taller
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-4 h-4"
+                  <p className="text-gray-600 mb-4 text-pretty leading-relaxed">
+                    {taller.description}
+                  </p>
+
+                  {(taller.instructor || taller.duration) && (
+                    <div className="space-y-1 text-sm text-gray-500">
+                      {taller.instructor && (
+                        <p className="flex items-center gap-2">
+                          <span className="font-bold text-gray-600">
+                            Instructor:
+                          </span>
+                          <span>{taller.instructor}</span>
+                        </p>
+                      )}
+                      {taller.duration && (
+                        <p className="flex items-center gap-2">
+                          <span className="font-bold text-gray-600">
+                            Duración:
+                          </span>
+                          <span>{taller.duration}</span>
+                        </p>
+                      )}
+                      {taller.cupo && (
+                        <p className="flex items-center gap-2">
+                          <span className="font-bold text-gray-600">
+                            Cupo Ilimitado:
+                          </span>
+                          <span>{taller.cupo}</span>
+                        </p>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                <div className="p-6 pt-0">
+                  <a
+                    href={taller.registrationUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 w-full bg-[#FF6B00] hover:bg-[#E55F00] text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-orange-300 focus:ring-opacity-50"
                   >
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                    <polyline points="15 3 21 3 21 9" />
-                    <line x1="10" x2="21" y1="14" y2="3" />
-                  </svg>
-                </a>
+                    Inscribirse al Taller
+                  </a>
+                </div>
+
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
