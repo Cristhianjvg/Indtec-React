@@ -58,13 +58,13 @@ export default function Estadisticas() {
   const stats = [
     {
       icon: Presentation,
-      number: 8,
+      number: 10,
       label: "COORGANIZADORES",
       color: "text-[var(--color-blue-icon)]",
     },
     {
       icon: Diamond,
-      number: 24,
+      number: 26,
       label: "AUSPICIANTES",
       color: "text-[var(--color-green-bright)]",
     },

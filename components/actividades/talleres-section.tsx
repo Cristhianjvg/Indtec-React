@@ -23,7 +23,7 @@ const talleres: Taller[] = [
     image: "/img/talleres/bienestar.png",
     registrationUrl: "https://example.com/register/ai-workshop",
     instructor: "Mgs. Sofia Faggioni",
-    duration: "1 hora",
+    duration: "50 minutos",
     cupo: 15,
   },
   {
@@ -34,7 +34,7 @@ const talleres: Taller[] = [
     image: "/img/talleres/baterias.jpg",
     registrationUrl: "https://example.com/register/nextjs-workshop",
     instructor: "Mgs. Santiago Díaz Vivanco",
-    duration: "40 minutos",
+    duration: "50 minutos",
     cupo: 15,
   },
   {
@@ -45,7 +45,7 @@ const talleres: Taller[] = [
     image: "/img/talleres/rcp.png",
     registrationUrl: "https://example.com/register/ux-workshop",
     instructor: "Md. Cristian Luna y Md. Dayanna López",
-    duration: "1 hora",
+    duration: "50 minutos",
     cupo: 15,
   },
   {
@@ -56,18 +56,18 @@ const talleres: Taller[] = [
     image: "/img/talleres/finanzas.png",
     registrationUrl: "https://example.com/register/ux-workshop",
     instructor: "Ing. María del Carmen Vásquez",
-    duration: "40 minutos",
-    cupo: 20,
+    duration: "50 minutos",
+    cupo: 15,
   },
   {
     id: "5",
     title: "Sabores del Litoral: El Arte del Encebollado Maestro",
     description:
       "Descubre técnicas tradicionales y contemporáneas para preparar un encebollado auténtico, explorando sabores costeros, equilibrio sensorial y patrimonio culinario ecuatoriano",
-    image: "/img/talleres/gastro1.jpg",
+    image: "/img/talleres/encebollado.jpg",
     registrationUrl: "https://example.com/register/python-workshop",
     instructor: "Chef Leonardo Acaro (ILE)",
-    duration: "40 minutos",
+    duration: "50 minutos",
     cupo: 15,
   },
   {
@@ -75,10 +75,10 @@ const talleres: Taller[] = [
     title: "Fuego Ancestral: Técnicas Tradicionales para una Cecina Perfecta",
     description:
       "Aprende procesos ancestrales de marinado, secado y cocción para elaborar cecina tradicional, integrando técnicas modernas y saberes patrimoniales de la cocina ecuatoriana",
-    image: "/img/talleres/gastro2.jpg",
+    image: "/img/talleres/gastro1.png",
     registrationUrl: "https://example.com/register/marketing-workshop",
     instructor: "Chef Leonardo Acaro (ILE)",
-    duration: "40 minutos",
+    duration: "50 minutos",
     cupo: 15,
   },
   {
@@ -86,10 +86,10 @@ const talleres: Taller[] = [
     title: "Raíces Andinas: Llapingachos entre Tradición y Territorio",
     description:
       "Domina la preparación del llapingacho patrimonial, desde su base ancestral hasta técnicas actuales, explorando texturas, rellenos y acompañamientos emblemáticos del país",
-    image: "/img/talleres/gastro3.jpg",
+    image: "/img/talleres/gastro3.png",
     registrationUrl: "https://example.com/register/security-workshop",
     instructor: "Chef Leonardo Acaro (ILE)",
-    duration: "40 minutos",
+    duration: "50 minutos",
     cupo: 15,
   },
 ];
