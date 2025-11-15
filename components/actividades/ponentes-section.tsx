@@ -103,7 +103,7 @@ const ponentes = [
   {
     nombre: "María del Cisne Merino Vivanco",
     cargo: "Entrenadora de CrossFit certificada",
-    institucion: "CrossFit SF",
+    institucion: "CrossFit CSF",
     imagen: "/img/ponentes/cisnemerina.png",
     pais: "ECUADOR",
     tema: "Entrenar para vivir mejor, el ejercicio en la salud y la logevidad",
@@ -259,23 +259,27 @@ export function PonentesSection() {
             Invitados Especiales
           </p>
         </div>
-
         {/* Botón izquierdo cristal */}
         <button
           onClick={() => scroll("left")}
           className="
-            absolute left-0 top-1/2 -translate-y-1/2 z-10
-            w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center
-            rounded-full
-            bg-white/10 hover:bg-white/20
-            border border-white/30 hover:border-white/60
-            text-white
-            backdrop-blur-md
-            shadow-[0_8px_32px_rgba(0,0,0,0.5)]
-            transition-all duration-300
-            hover:scale-105
-            focus:outline-none focus:ring-4 focus:ring-white/30
-          "
+    absolute top-1/2 -translate-y-1/2 z-10
+    w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center
+    rounded-full
+    bg-white/10 hover:bg-white/20
+    border border-white/30 hover:border-white/60
+    text-white
+    backdrop-blur-md
+    shadow-[0_8px_32px_rgba(0,0,0,0.5)]
+    transition-all duration-300
+    hover:scale-105
+    focus:outline-none focus:ring-4 focus:ring-white/30
+
+    left-[-23px]        /* móvil: un poco hacia afuera */
+    sm:left-[-20px]     /* sm */
+    md:left-[-25px]     /* md */
+    lg:left-[-30px]     /* lg */
+  "
           aria-label="Ponentes anteriores"
         >
           <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7" strokeWidth={2.5} />
@@ -285,23 +289,27 @@ export function PonentesSection() {
         <button
           onClick={() => scroll("right")}
           className="
-            absolute right-0 top-1/2 -translate-y-1/2 z-10
-            w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center
-            rounded-full
-            bg-white/10 hover:bg-white/20
-            border border-white/30 hover:border-white/60
-            text-white
-            backdrop-blur-md
-            shadow-[0_8px_32px_rgba(0,0,0,0.5)]
-            transition-all duration-300
-            hover:scale-105
-            focus:outline-none focus:ring-4 focus:ring-white/30
-          "
+    absolute top-1/2 -translate-y-1/2 z-10
+    w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center
+    rounded-full
+    bg-white/10 hover:bg-white/20
+    border border-white/30 hover:border-white/60
+    text-white
+    backdrop-blur-md
+    shadow-[0_8px_32px_rgba(0,0,0,0.5)]
+    transition-all duration-300
+    hover:scale-105
+    focus:outline-none focus:ring-4 focus:ring-white/30
+
+    right-[-12px]       /* móvil */
+    sm:right-[-20px]
+    md:right-[-25px]
+    lg:right-[-30px]
+  "
           aria-label="Siguientes ponentes"
         >
           <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7" strokeWidth={2.5} />
         </button>
-
         {/* SLIDER con estructura de talleres */}
         <div
           ref={sliderRef}
@@ -353,14 +361,15 @@ export function PonentesSection() {
                           isFlipped ? "" : "group"
                         }`}
                       >
-                        <Image
-                          src={p.imagen}
-                          alt={p.nombre}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, (max-width: 1280px) 30vw, 320px"
-                          priority={false}
-                        />
+                        <div className="relative w-full h-full">
+                          <Image
+                            src={p.imagen}
+                            alt={p.nombre}
+                            fill
+                            className="object-cover object-top"
+                            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, (max-width: 1280px) 30vw, 320px"
+                          />
+                        </div>
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0b2431]/70 via-[#0b2431]/20 to-transparent" />
 
                         {/* Panel inferior */}

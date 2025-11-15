@@ -192,13 +192,18 @@ export function TalleresSection() {
         <button
           onClick={() => scroll("left")}
           className="
-        absolute left-0 top-1/2 -translate-y-1/2 z-10
-        w-12 h-12 flex items-center justify-center
-        rounded-full border-2 border-orange-500 bg-white
-        text-orange-500 hover:bg-orange-500 hover:text-white
-        transition-all duration-300 shadow-md
-        focus:outline-none focus:ring-4 focus:ring-orange-300 focus:ring-opacity-50
-      "
+          absolute top-1/2 -translate-y-1/2 z-10
+          w-12 h-12 flex items-center justify-center
+          rounded-full border-2 border-orange-500 bg-white
+          text-orange-500 hover:bg-orange-500 hover:text-white
+          transition-all duration-300 shadow-md
+          focus:outline-none focus:ring-4 focus:ring-orange-300 focus:ring-opacity-50
+
+          left-[-23px]        /* móvil: un poco hacia adentro */
+          sm:left-[-20px]     /* sm: un poquito más separado del borde */
+          md:left-[-25px]    /* md: más hacia adentro */
+          lg:left-[-30px]   /* lg: más al centro, pero aún pegado al contenido */
+        "
           aria-label="Talleres anteriores"
         >
           <svg
@@ -219,13 +224,18 @@ export function TalleresSection() {
         <button
           onClick={() => scroll("right")}
           className="
-        absolute right-0 top-1/2 -translate-y-1/2 z-10
-        w-12 h-12 flex items-center justify-center
-        rounded-full border-2 border-orange-500 bg-white
-        text-orange-500 hover:bg-orange-500 hover:text-white
-        transition-all duration-300 shadow-md
-        focus:outline-none focus:ring-4 focus:ring-orange-300 focus:ring-opacity-50
-      "
+            absolute top-1/2 -translate-y-1/2 z-10
+            w-12 h-12 flex items-center justify-center
+            rounded-full border-2 border-orange-500 bg-white
+            text-orange-500 hover:bg-orange-500 hover:text-white
+            transition-all duration-300 shadow-md
+            focus:outline-none focus:ring-4 focus:ring-orange-300 focus:ring-opacity-50
+
+            right-[-12px]       /* móvil */
+            sm:right-[-20px]
+            md:right-[-25px]
+            lg:right-[-30px]
+          "
           aria-label="Siguientes talleres"
         >
           <svg
