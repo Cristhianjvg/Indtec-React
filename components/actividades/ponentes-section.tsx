@@ -139,7 +139,7 @@ const ponentes = [
     institucion: "Nodo Cía. Ltda",
     imagen: "/img/ponentes/barba.png",
     pais: "ECUADOR",
-    tema: "Ciudades inteligentes",
+    tema: "De la Teoría a la Acción: Cómo Construimos la Loja Inteligente del Presente",
   },
   {
     nombre: "Edgar Edurman García Silvera",
