@@ -21,6 +21,14 @@ const ponentes = [
     tema: "Aporte de la formación técnica y tecnológica",
   },
   {
+    nombre: "Dra. Carmita Álvarez Santana, Ph.D.",
+    cargo: "Consejera Académico del Consejo de Educación Superior",
+    institucion: "CES Ecuador",
+    imagen: "/img/ponentes/carmita.jpg",
+    pais: "ECUADOR",
+    tema: "Tema a definir",
+  },
+  {
     nombre: "Alexandra Monserrate Jara Minga",
     cargo: "Gobernadora de la ciudad de Loja",
     institucion: "Gobernación de Loja",

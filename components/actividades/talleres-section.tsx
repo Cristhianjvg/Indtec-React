@@ -15,6 +15,7 @@ interface Taller {
 }
 
 const talleres: Taller[] = [
+  // Agregar enlaces reales de inscripción
   {
     id: "1",
     title: "Bienestar emocional y proyección 2026",
