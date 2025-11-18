@@ -21,12 +21,12 @@ const ponentes = [
     tema: "Aporte de la formación técnica y tecnológica",
   },
   {
-    nombre: "Dra. Carmita Álvarez Santana, Ph.D.",
-    cargo: "Consejera Académico del Consejo de Educación Superior",
+    nombre: "Dra. Carmita Álvarez Santana Ph.D.",
+    cargo: "Consejera Académica del Consejo de Educación Superior",
     institucion: "CES Ecuador",
-    imagen: "/img/ponentes/carmita.jpg",
+    imagen: "/img/ponentes/carmita.png",
     pais: "ECUADOR",
-    tema: "Tema a definir",
+    tema: "El desarrollo de la educación técnica tecnológica en el país",
   },
   {
     nombre: "Alexandra Monserrate Jara Minga",
