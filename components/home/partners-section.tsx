@@ -194,7 +194,7 @@ const CarruselMulti = ({
 
 export const PartnersSection = () => {
   const organizer: LogoAsset = {
-    src: "/img/logos/suda.webp?v=2",
+    src: "/img/logos/suda.webp",
     alt: "Tecnológico Sudamericano",
     width: 500,
     height: 150,
@@ -211,61 +211,61 @@ export const PartnersSection = () => {
 
   const coorganizers: LogoAsset[] = [
     {
-      src: "/img/logos/tecnoecuatoriano.webp?v=2",
+      src: "/img/logos/tecnoecuatoriano-v2.webp",
       alt: "Tecnoecuatoriano",
       width: 700,
       height: 200,
     },
     {
-      src: "/img/logos/unl.webp?v=2",
+      src: "/img/logos/unl-v2.webp",
       alt: "Universidad Nacional de Loja",
       width: 700,
       height: 200,
     },
     {
-      src: "/img/logos/istamazonico.webp?v=2",
+      src: "/img/logos/istamazonico-v2.webp",
       alt: "Instituto Amazonico",
       width: 700,
       height: 200,
     },
     {
-      src: "/img/logos/apsybi.webp?v=2",
+      src: "/img/logos/apsybi-v2.webp",
       alt: "apsybi",
       width: 700,
       height: 200,
     },
     {
-      src: "/img/logos/REDISUR.webp?v=2",
+      src: "/img/logos/REDISUR-v2.webp",
       alt: "Reditsur",
       width: 700,
       height: 200,
     },
     {
-      src: "/img/logos/conservatorio.webp?v=2",
+      src: "/img/logos/conservatorio-v2.webp",
       alt: "Conservatorio",
       width: 700,
       height: 200,
     },
     {
-      src: "/img/logos/UTPL.webp?v=2",
+      src: "/img/logos/UTPL-v2.webp",
       alt: "Universidad Tecnica Particular de Loja",
       width: 700,
       height: 200,
     },
     {
-      src: "/img/logos/itsup.webp?v=2",
+      src: "/img/logos/itsup-v2.webp",
       alt: "Instituto Tecnológico Superior Universitario Portoviejo - ITSUP",
       width: 700,
       height: 200,
     },
     {
-      src: "/img/logos/tecnopichincha.webp?v=2",
+      src: "/img/logos/tecnopichincha-v2.webp",
       alt: "Tecnologico Universitario Pichincha",
       width: 700,
       height: 200,
     },
     {
-      src: "/img/logos/istdab.webp?v=2",
+      src: "/img/logos/istdab-v2.webp",
       alt: "Instituto Superior Tecnológico DAB - ISTDAB",
       width: 700,
       height: 200,
