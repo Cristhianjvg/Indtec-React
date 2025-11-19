@@ -18,7 +18,7 @@ const ponentes = [
     institucion: "CES Ecuador",
     imagen: "/img/ponentes/fidel.png",
     pais: "ECUADOR",
-    tema: "Aporte de la formación técnica y tecnológica",
+    tema: "Educación tecnológica y empleo en el 2030",
   },
   {
     nombre: "Dra. Carmita Álvarez Santana Ph.D.",
@@ -37,7 +37,7 @@ const ponentes = [
     tema: "La Administración Pública con enfoque de género en la agricultura",
   },
   {
-    nombre: "Pablo Jose Ruíz Aguirre",
+    nombre: "Pablo José Ruíz Aguirre",
     cargo: "Prorrector UIDE Loja",
     institucion: "UIDE",
     imagen: "/img/ponentes/pabloruiz.png",
