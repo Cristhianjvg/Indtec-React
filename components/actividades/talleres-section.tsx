@@ -22,7 +22,7 @@ const talleres: Taller[] = [
     description:
       "Este taller práctico invita a los participantes a reflexionar sobre su bienestar emocional y a desarrollar estrategias de autocuidado que favorezcan un cierre de año consciente",
     image: "/img/talleres/bienestar.png",
-    registrationUrl: "https://example.com/register/ai-workshop",
+    registrationUrl: "https://forms.office.com/r/cWx0H3sDdL?origin=lprLink",
     instructor: "Mgs. Sofia Faggioni",
     duration: "50 minutos",
     cupo: 15,
@@ -33,7 +33,7 @@ const talleres: Taller[] = [
     description:
       "Taller práctico especializado en diagnóstico, mantenimiento preventivo y correctivo de baterías de alto voltaje (HV) en vehículos híbridos y eléctricos",
     image: "/img/talleres/baterias.jpg",
-    registrationUrl: "https://example.com/register/nextjs-workshop",
+    registrationUrl: "https://forms.office.com/r/cWx0H3sDdL?origin=lprLink",
     instructor: "Mgs. Santiago Díaz Vivanco",
     duration: "50 minutos",
     cupo: 15,
@@ -44,7 +44,7 @@ const talleres: Taller[] = [
     description:
       "Aprende protocolos internacionales de RCP y primeros auxilios para intervenir con eficacia en situaciones críticas de paro cardíaco",
     image: "/img/talleres/rcp.png",
-    registrationUrl: "https://example.com/register/ux-workshop",
+    registrationUrl: "https://forms.office.com/r/cWx0H3sDdL?origin=lprLink",
     instructor: "Md. Cristian Luna y Md. Dayanna López",
     duration: "50 minutos",
     cupo: 15,
@@ -55,7 +55,7 @@ const talleres: Taller[] = [
     description:
       "Taller para fomentar el conocimiento financiero básico para administrar ingresos",
     image: "/img/talleres/finanzas.png",
-    registrationUrl: "https://example.com/register/ux-workshop",
+    registrationUrl: "https://forms.office.com/r/cWx0H3sDdL?origin=lprLink",
     instructor: "Ing. María del Carmen Vásquez",
     duration: "50 minutos",
     cupo: 15,
@@ -66,7 +66,7 @@ const talleres: Taller[] = [
     description:
       "Descubre técnicas tradicionales y contemporáneas para preparar un encebollado auténtico, explorando sabores costeros, equilibrio sensorial y patrimonio culinario ecuatoriano",
     image: "/img/talleres/encebollado.jpg",
-    registrationUrl: "https://example.com/register/python-workshop",
+    registrationUrl: "https://forms.office.com/r/cWx0H3sDdL?origin=lprLink",
     instructor: "Chef Leonardo Acaro (ILE)",
     duration: "50 minutos",
     cupo: 15,
@@ -77,7 +77,7 @@ const talleres: Taller[] = [
     description:
       "Aprende procesos ancestrales de marinado, secado y cocción para elaborar cecina tradicional, integrando técnicas modernas y saberes patrimoniales de la cocina ecuatoriana",
     image: "/img/talleres/gastro1.png",
-    registrationUrl: "https://example.com/register/marketing-workshop",
+    registrationUrl: "https://forms.office.com/r/cWx0H3sDdL?origin=lprLink",
     instructor: "Chef Leonardo Acaro (ILE)",
     duration: "50 minutos",
     cupo: 15,
@@ -88,7 +88,7 @@ const talleres: Taller[] = [
     description:
       "Domina la preparación del llapingacho patrimonial, desde su base ancestral hasta técnicas actuales, explorando texturas, rellenos y acompañamientos emblemáticos del país",
     image: "/img/talleres/gastro3.png",
-    registrationUrl: "https://example.com/register/security-workshop",
+    registrationUrl: "https://forms.office.com/r/cWx0H3sDdL?origin=lprLink",
     instructor: "Chef Leonardo Acaro (ILE)",
     duration: "50 minutos",
     cupo: 15,
