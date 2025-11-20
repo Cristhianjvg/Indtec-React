@@ -126,7 +126,7 @@ export function Footer() {
               </a>
               {/* tiktok en lugar de youtube */}
               <a
-                href="https://www.tiktok.com/"
+                href="https://www.tiktok.com/@ists_loja?_r=1&_t=ZM-91YtsNbtOjE"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-white hover:text-[#ff6b35] transition-colors"
