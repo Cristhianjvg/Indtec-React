@@ -150,6 +150,15 @@ const ponentes = [
     pais: "ECUADOR",
     tema: "Retos y perspectivas de la Innovación: Una Mirada Global",
   },
+  {
+    nombre: "Geovanny Fabián Armijos Samaniego ",
+    cargo:
+      "Docente investigador Instituto Superior Tecnológico Daniel Álvarez Burneo",
+    institucion: "Instituto Superior Tecnológico Daniel Álvarez Burneo",
+    imagen: "/img/ponentes/geovanny.png",
+    pais: "ECUADOR",
+    tema: "Integración de tecnologías IoT en la telemedicina moderna: Desafíos y oportunidades",
+  },
 ];
 
 export function PonentesSection() {
