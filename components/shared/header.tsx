@@ -36,6 +36,11 @@ export function Header() {
     router.push("/trabajos");
   };
 
+  const goInscripcion = () => {
+    setMobileMenuOpen(false);
+    router.push("https://forms.office.com/r/vr1TKLNYmp?origin=lprLink"); // ← reemplaza tu formulario
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/10">
       <div className="container mx-auto px-4 py-3">
@@ -71,13 +76,23 @@ export function Header() {
             ))}
           </nav>
 
-          {/* Botón escritorio y menú móvil */}
+          {/* Botones escritorio + menú móvil */}
           <div className="flex items-center gap-4">
+            {/* Botón Enviar Trabajos */}
             <button
               onClick={goTrabajos}
               className="hidden lg:flex bg-[#ff6b35] hover:bg-[#ff5722] text-white font-medium px-6 py-2 rounded-full items-center gap-2 transition-colors"
             >
               Enviar trabajos
+              <span className="text-lg">›</span>
+            </button>
+
+            {/* Botón Inscripción */}
+            <button
+              onClick={goInscripcion}
+              className="hidden lg:flex bg-[#ff6b35] hover:bg-[#ff5722] text-white font-medium px-6 py-2 rounded-full items-center gap-2 transition-colors"
+            >
+              Inscripción
               <span className="text-lg">›</span>
             </button>
 
@@ -98,7 +113,7 @@ export function Header() {
           </div>
         </div>
 
-        {/* Menú móvil (mismas opciones que desktop) */}
+        {/* Menú móvil */}
         {mobileMenuOpen && (
           <nav
             id="mobile-nav"
@@ -116,11 +131,21 @@ export function Header() {
               </Link>
             ))}
 
+            {/* Botón móvil: Enviar Trabajos */}
             <button
               onClick={goTrabajos}
               className="bg-[#ff6b35] hover:bg-[#ff5722] text-white font-medium px-6 py-2 rounded-full flex items-center justify-center gap-2 mt-2 transition-colors"
             >
               Enviar trabajos
+              <span className="text-lg">›</span>
+            </button>
+
+            {/* Botón móvil: Inscripción */}
+            <button
+              onClick={goInscripcion}
+              className="bg-[#ff6b35] hover:bg-[#ff5722] text-white font-medium px-6 py-2 rounded-full flex items-center justify-center gap-2 mt-2 transition-colors"
+            >
+              Inscripción
               <span className="text-lg">›</span>
             </button>
           </nav>
